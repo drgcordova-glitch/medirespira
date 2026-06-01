@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MediRespira – Guía de Medicamentos Respiratorios</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',sans-serif;background:#080e1c;color:#e2e8f0;min-height:100vh;}
+input,button{font-family:inherit;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#0f172a;}
+::-webkit-scrollbar-thumb{background:#1e3a5f;border-radius:4px;}
+
+/* HEADER */
+#header{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(148,163,184,0.1);
+  padding:12px 14px;position:sticky;top:0;z-index:60;backdrop-filter:blur(20px);}
+.header-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.logo{background:linear-gradient(135deg,#2563eb,#0891b2);border-radius:11px;
+  padding:8px 11px;font-size:18px;line-height:1;}
+.logo-text h1{font-size:16px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;}
+.logo-text p{font-size:9px;color:#475569;}
+.badge-ref{margin-left:auto;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);
+  border-radius:7px;padding:3px 9px;font-size:9px;color:#fca5a5;white-space:nowrap;}
+
+/* TABS */
+.tabs{display:flex;gap:4px;background:rgba(255,255,255,0.06);border-radius:10px;padding:3px;}
+.tab{padding:5px 12px;border-radius:8px;border:none;cursor:pointer;font-size:11px;
+  font-weight:700;transition:all .15s;background:transparent;color:#64748b;}
+.tab.active{background:#2563eb;color:#fff;}
+
+/* SEARCH */
+#search{width:100%;padding:9px 13px;border-radius:9px;
+  border:1px solid rgba(148,163,184,0.14);background:rgba(255,255,255,0.05);
+  color:#f1f5f9;font-size:12px;outline:none;}
+#search::placeholder{color:#475569;}
+
+/* FILTERS */
+.filters{display:flex;gap:4px;margin-top:7px;flex-wrap:wrap;align-items:center;}
+.cat-btn{padding:3px 9px;border-radius:14px;border:none;cursor:pointer;
+  font-size:9px;font-weight:700;transition:all .15s;white-space:nowrap;
+  background:rgba(255,255,255,0.06);color:#94a3b8;}
+.cat-btn.active{color:#fff;}
+.age-filters{margin-left:auto;display:flex;gap:3px;}
+.age-btn{padding:3px 8px;border-radius:10px;border:1px solid transparent;
+  cursor:pointer;font-size:9px;font-weight:700;
+  background:rgba(255,255,255,0.04);color:#64748b;}
+.age-btn.active{background:rgba(16,185,129,0.18);border-color:rgba(16,185,129,0.4);color:#34d399;}
+
+/* BODY LAYOUT */
+#body{max-width:1060px;margin:0 auto;padding:10px 10px 28px;display:flex;gap:10px;flex-wrap:wrap;}
+
+/* LIST */
+#list-panel{flex:0 0 248px;max-width:248px;}
+.result-count{font-size:9px;color:#334155;margin-bottom:5px;}
+#med-list{display:flex;flex-direction:column;gap:4px;
+  max-height:calc(100vh - 155px);overflow-y:auto;padding-right:2px;}
+.med-card{padding:8px 10px;border-radius:8px;cursor:pointer;
+  background:rgba(255,255,255,0.025);border:1px solid rgba(148,163,184,0.06);
+  transition:all .14s;}
+.med-card:hover{background:rgba(255,255,255,0.05);}
+.med-card.active{border-color:var(--ac)50;background:color-mix(in srgb, var(--ac) 10%, transparent);}
+.med-card .mn{font-size:11px;font-weight:700;color:#f1f5f9;line-height:1.25;}
+.med-card .mc{font-size:9px;font-weight:600;margin-top:1px;}
+.med-card .mm{font-size:9px;color:#475569;margin-top:1px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.edad-badge{font-size:8px;padding:1px 6px;border-radius:7px;
+  font-weight:700;margin-top:3px;display:inline-block;}
+
+/* DETAIL PANEL */
+#detail-panel{flex:1 1 370px;min-width:300px;
+  max-height:calc(100vh - 155px);overflow-y:auto;}
+.detail-box{border-radius:13px;overflow:hidden;
+  border:1px solid rgba(148,163,184,0.08);background:rgba(6,10,22,0.97);}
+.detail-head{padding:13px 15px;}
+.detail-name{font-size:14px;font-weight:800;color:#f8fafc;line-height:1.3;}
+.detail-comp{font-size:10px;margin-top:3px;line-height:1.5;}
+.head-badges{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;}
+.hbadge{font-size:8px;padding:2px 7px;border-radius:7px;}
+
+/* MARCAS TABLE */
+.marcas-section{padding:10px 14px;border-top:1px solid rgba(148,163,184,0.07);
+  border-bottom:1px solid rgba(148,163,184,0.07);}
+.section-title{font-size:9px;font-weight:800;color:#64748b;
+  text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+.marca-row{display:flex;gap:8px;align-items:flex-start;
+  background:rgba(255,255,255,0.025);border-radius:6px;padding:5px 8px;margin-bottom:3px;}
+.marca-name{font-size:10px;font-weight:700;min-width:140px;flex-shrink:0;}
+.marca-pres{font-size:9px;color:#94a3b8;line-height:1.4;}
+
+/* INFO GRID */
+.info-grid{padding:10px 14px;display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.info-box{border-radius:8px;padding:8px 10px;}
+.info-box.full{grid-column:span 2;}
+.info-box-title{font-size:8px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.5px;margin-bottom:4px;}
+.info-box-text{font-size:10px;color:#cbd5e1;line-height:1.65;}
+
+/* CALCULATOR */
+.calc-section{margin:0 14px 12px;border-radius:9px;padding:10px 12px;
+  background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.18);}
+.calc-title{font-size:9px;font-weight:800;color:#f59e0b;
+  text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
+.calc-row{display:flex;gap:6px;align-items:center;}
+#peso-input{width:65px;padding:7px 9px;border-radius:7px;
+  border:1px solid rgba(245,158,11,.3);background:rgba(0,0,0,.3);
+  color:#fbbf24;font-size:16px;font-weight:800;outline:none;text-align:center;}
+.calc-label{font-size:11px;color:#64748b;}
+.calc-result{margin-top:7px;background:rgba(245,158,11,.1);border-radius:7px;
+  padding:7px 10px;border:1px solid rgba(245,158,11,.22);display:none;}
+.calc-result-label{font-size:8px;color:#94a3b8;text-transform:uppercase;margin-bottom:2px;}
+.calc-result-value{font-size:13px;font-weight:800;color:#fbbf24;}
+
+/* DISCLAIMER */
+.disclaimer{margin:0 14px 12px;background:rgba(239,68,68,.05);border-radius:7px;
+  padding:6px 10px;border:1px solid rgba(239,68,68,.1);
+  font-size:8px;color:#7f1d1d;line-height:1.5;}
+
+/* EMPTY STATE */
+.empty-state{display:flex;align-items:center;justify-content:center;
+  min-height:280px;flex:1;}
+.empty-inner{text-align:center;color:#1e293b;}
+.empty-icon{font-size:48px;margin-bottom:8px;}
+.empty-text{font-size:12px;color:#334155;}
+.empty-sub{font-size:10px;color:#1e293b;margin-top:4px;}
+
+/* CHAT */
+#chat-panel{max-width:680px;margin:0 auto;
+  display:flex;flex-direction:column;height:calc(100vh - 130px);}
+#chat-messages{flex:1;overflow-y:auto;display:flex;
+  flex-direction:column;gap:10px;padding:8px 4px;}
+.chat-bubble{max-width:85%;padding:10px 13px;border-radius:12px;
+  font-size:12px;line-height:1.7;white-space:pre-wrap;}
+.chat-bubble.user{align-self:flex-end;background:#1d4ed8;color:#eff6ff;
+  border-bottom-right-radius:2px;}
+.chat-bubble.ai{align-self:flex-start;background:rgba(255,255,255,.05);
+  color:#cbd5e1;border-bottom-left-radius:2px;}
+.chat-loading{align-self:flex-start;background:rgba(255,255,255,.05);
+  border-radius:12px;border-bottom-left-radius:2px;
+  padding:10px 14px;font-size:12px;color:#64748b;}
+.chat-examples{text-align:center;padding:40px 20px;color:#334155;}
+.chat-ex-icon{font-size:44px;margin-bottom:10px;}
+.chat-ex-title{font-size:14px;color:#475569;margin-bottom:8px;}
+.chat-suggestion{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.12);
+  border-radius:8px;padding:6px 14px;color:#94a3b8;font-size:11px;
+  cursor:pointer;text-align:left;margin:3px auto;display:block;
+  width:90%;max-width:480px;transition:all .15s;}
+.chat-suggestion:hover{background:rgba(255,255,255,.07);color:#cbd5e1;}
+.chat-input-row{display:flex;gap:6px;padding:8px 0 0;}
+#chat-input{flex:1;padding:10px 13px;border-radius:10px;
+  border:1px solid rgba(148,163,184,.15);background:rgba(255,255,255,.06);
+  color:#f1f5f9;font-size:12px;outline:none;}
+#chat-input::placeholder{color:#475569;}
+#chat-send{padding:10px 16px;border-radius:10px;border:none;cursor:pointer;
+  font-size:13px;font-weight:700;background:#2563eb;color:#fff;transition:all .15s;}
+#chat-send:disabled{background:rgba(255,255,255,.05);color:#334155;cursor:not-allowed;}
+
+/* No results */
+.no-results{text-align:center;padding:30px 10px;color:#334155;}
+.no-results-icon{font-size:32px;}
+
+@media(max-width:600px){
+  #list-panel{flex:0 0 100%;max-width:100%;}
+  #detail-panel{flex:0 0 100%;}
+  .marca-name{min-width:110px;}
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div class="header-top">
+    <div class="logo">🫁</div>
+    <div class="logo-text">
+      <h1>MediRespira</h1>
+      <p id="subtitle">Cargando base de datos...</p>
+    </div>
+    <span class="badge-ref">⚕️ Solo referencia</span>
+    <div class="tabs" style="margin-left:12px;">
+      <button class="tab active" onclick="showTab('lista')">📋 Buscador</button>
+      <button class="tab" onclick="showTab('chat')">🤖 Consultar IA</button>
+    </div>
+  </div>
+  <div id="search-area">
+    <input id="search" type="text" placeholder="🔍  Buscar nombre, marca (Rinokid, Symbicort, Seretide, Nasonex, Neumocort...) o indicación"
+      oninput="renderList()"/>
+    <div class="filters" id="cat-filters"></div>
+  </div>
+</div>
+
+<div id="body">
+  <!-- Lista -->
+  <div id="list-panel">
+    <div class="result-count" id="result-count"></div>
+    <div id="med-list"></div>
+  </div>
+  <!-- Detalle -->
+  <div id="detail-panel">
+    <div class="empty-state" id="empty-detail">
+      <div class="empty-inner">
+        <div class="empty-icon">🫁</div>
+        <div class="empty-text">Selecciona un medicamento</div>
+        <div class="empty-sub">o usa 🤖 Consultar IA para preguntar en lenguaje natural</div>
+      </div>
+    </div>
+    <div id="drug-detail" style="display:none;"></div>
+  </div>
+  <!-- Chat -->
+  <div id="chat-panel" style="display:none;">
+    <div id="chat-messages">
+      <div class="chat-examples" id="chat-welcome">
+        <div class="chat-ex-icon">🤖</div>
+        <div class="chat-ex-title">Pregunta en lenguaje natural</div>
+        <button class="chat-suggestion" onclick="askSuggestion(this)">💬 ¿Qué spray nasal puedo dar a un niño menor de 2 años?</button>
+        <button class="chat-suggestion" onclick="askSuggestion(this)">💬 ¿Qué marcas tiene el Symbicort y en qué presentaciones?</button>
+        <button class="chat-suggestion" onclick="askSuggestion(this)">💬 Antibiótico para otitis en lactante de 4 meses</button>
+        <button class="chat-suggestion" onclick="askSuggestion(this)">💬 ¿Diferencia entre budesonida+formoterol y fluticasona+salmeterol?</button>
+        <button class="chat-suggestion" onclick="askSuggestion(this)">💬 Broncodilatador de rescate para niño de 3 años</button>
+        <button class="chat-suggestion" onclick="askSuggestion(this)">💬 ¿Qué mucolíticos hay para bebés desde recién nacido?</button>
+      </div>
+    </div>
+    <div class="chat-input-row">
+      <input id="chat-input" type="text" placeholder="Escribe tu consulta... (Enter para enviar)"
+        onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button id="chat-send" onclick="sendChat()">↑</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// BASE DE DATOS
+// ══════════════════════════════════════════════════════════════
+const DB = [
+
+// ── SOLUCIONES SALINAS (completas) ───────────────────────────
+{id:1,cat:"Spray Nasal",nombre:"Solución salina isotónica nasal (NaCl 0.9%)",via:"Nasal",
+composicion:"Cloruro de sodio 0.9% (NaCl isotónica) · Agua purificada · Sin fármaco activo",
+edadMin:0,edadLabel:"Desde recién nacido",
+tags:["rn","lactante","bebé","menor 2","spray","nasal","salina","isotónica"],
+marcasPresent:[
+  {m:"Sterimar® Bebé",p:"NaCl 0.9% · spray microdifusión · 50ml · desde RN"},
+  {m:"Sterimar® Niños",p:"NaCl 0.9% · spray · 100ml · 3 meses - 3 años"},
+  {m:"Sterimar® Adulto",p:"NaCl 0.9% · spray · 100ml y 135ml"},
+  {m:"Physiomer® Bebé",p:"NaCl 0.9% · spray microdifusión · 115ml · desde 1 mes"},
+  {m:"Physiomer® Niños/Adulto",p:"NaCl 0.9% · spray jet suave/normal/fuerte · 135ml"},
+  {m:"Rhinomer® Baby",p:"NaCl 0.9% · spray suave · desde 3 meses · 115ml"},
+  {m:"Rhinomer® 1 Suave",p:"NaCl 0.9% · spray · niños y adultos · 135ml"},
+  {m:"Rhinomer® 2 Normal / 3 Fuerte",p:"NaCl 0.9% · spray normal/fuerte · adultos · 135ml"},
+  {m:"Marimer® Isotónico Bebé",p:"Agua de mar isotónica · spray · desde RN · 100ml"},
+  {m:"Marimer® Isotónico Niños",p:"Agua de mar isotónica · spray · 3 meses - 6 años · 100ml"},
+  {m:"Marimer® Isotónico Adulto",p:"Agua de mar isotónica · spray · 100ml y 150ml"},
+  {m:"Isomar® Isotónico",p:"NaCl 0.9% · spray pediátrico y adulto · 100ml"},
+  {m:"Rinokid® 0.9% monodosis",p:"NaCl 0.9% · monodosis 5ml · desde lactantes · cajas 20/30 uds"},
+  {m:"Narivent® Isotónico",p:"NaCl 0.9% · spray · desde RN · 125ml"},
+  {m:"Prorhinel® Suero Fisiol. monodosis",p:"NaCl 0.9% · monodosis 5ml · toda la familia · caja 30 uds"},
+  {m:"Suero fisiológico en monodosis",p:"NaCl 0.9% · ampolletas 5ml · uso nasal/ocular · cajas 30-50 uds · marca EFG/genérico"},
+  {m:"Babysoin® Monodosis",p:"NaCl 0.9% · monodosis 5ml · bebés y niños"},
+  {m:"Actirub® Spray Nasal Infantil",p:"NaCl 0.9% · spray · desde 1 mes · 100ml"},
+  {m:"Gifrer Physiologica® monodosis",p:"NaCl 0.9% · monodosis 5ml · toda la familia"},
+],
+indicacion:"Higiene nasal diaria · Congestión nasal · Lavado antes de medicación · Rinitis · Resfriado",
+dosis:"RN-3m: 2-3 gotas/fosa c/6-8h · 3m-2a: spray suave 1-2 puls/fosa c/6-8h · >2a y adulto: 1-2 puls/fosa c/4-8h",
+contraindicacion:"Sin contraindicaciones · Sin límite de dosis · No genera efecto rebote ni dependencia",
+adversos:"Prácticamente ninguno · Leve picor transitorio (excepcional)"},
+
+{id:2,cat:"Spray Nasal",nombre:"Solución salina hipertónica nasal (NaCl 2-3%)",via:"Nasal",
+composicion:"Cloruro de sodio 2-3% (hipertónica) · Efecto descongestivo osmótico más potente que isotónica",
+edadMin:0,edadLabel:"Desde 3 meses (sprays suaves) · Monodosis desde RN",
+tags:["rn","lactante","bebé","menor 2","spray","nasal","hipertónica","3%"],
+marcasPresent:[
+  {m:"Sterimar® Hipertónico",p:"NaCl 2.3% · spray · niños >3a y adultos · 100ml"},
+  {m:"Physiomer® Hipertónico",p:"NaCl 2.3% · spray · >6 años y adultos · 135ml"},
+  {m:"Rhinomer® Hipertónico",p:"NaCl 2.3% · spray · adultos · 135ml"},
+  {m:"Marimer® Hipertónico",p:"Agua de mar hipertónica · spray · >6a y adultos · 100ml"},
+  {m:"Isomar® Hipertónico",p:"NaCl 3% · spray pediátrico (>1a) y adulto"},
+  {m:"Rinokid® 3% Spray",p:"NaCl 3% · spray 25ml · pediátrico · Chile/Perú/Ecuador"},
+  {m:"Rinokid® 3% Monodosis",p:"NaCl 3% · monodosis 5ml · desde lactantes · caja 20 uds"},
+  {m:"Nebial® 3%",p:"NaCl 3% · monodosis 5ml y spray 100ml · desde RN"},
+  {m:"Nasal Saline® Hipertónico",p:"NaCl 3% · spray · niños y adultos"},
+  {m:"Prorhinel® Hipertónico",p:"NaCl 2.2% · spray · >3 años y adultos"},
+],
+indicacion:"Congestión nasal moderada-intensa · Rinitis alérgica/viral · Sinusitis · Fluidifica moco espeso",
+dosis:"Monodosis 3% desde RN: 3-5 gotas/fosa c/6-8h · Sprays >3m-1a: 1-2 puls suave c/6-8h · Adulto: 1-2 puls c/6-8h",
+contraindicacion:"Epistaxis activa (relativa) · Usar con precaución en RN (usar monodosis, no spray a presión en < 3m)",
+adversos:"Leve picor/escozor transitorio · Estornudos · Sin dependencia ni efecto rebote"},
+
+// ── CORTICOIDES NASALES ──────────────────────────────────────
+{id:3,cat:"Spray Nasal",nombre:"Fluticasona propionato spray nasal",via:"Nasal",
+composicion:"Fluticasona propionato 50 mcg/pulsación · Corticoide intranasal",
+edadMin:4,edadLabel:"≥ 4 años",
+tags:["corticoide","nasal","rinitis","alérgica","spray"],
+marcasPresent:[
+  {m:"Flixonase®",p:"50 mcg/puls · 150 dosis · spray nasal"},
+  {m:"Flonase®",p:"50 mcg/puls · 120 dosis · spray nasal"},
+  {m:"Nasofan®",p:"50 mcg/puls · 150 dosis"},
+  {m:"Avamys® (furoato)",p:"27.5 mcg/puls · 120 dosis · más potente"},
+  {m:"Fluticasona Nasal EFG®",p:"50 mcg/puls · 150 dosis"},
+],
+indicacion:"Rinitis alérgica estacional y perenne · Poliposis nasal",
+dosis:"4-11a: 1 puls/fosa/día · ≥12a y adulto: 2 puls/fosa/día",
+contraindicacion:"< 4 años · Infección nasal activa · Cirugía nasal reciente",
+adversos:"Epistaxis · Sequedad nasal · Cefalea · (raro) perforación septal"},
+
+{id:4,cat:"Spray Nasal",nombre:"Mometasona furoato spray nasal",via:"Nasal",
+composicion:"Mometasona furoato 50 mcg/pulsación · Corticoide intranasal",
+edadMin:2,edadLabel:"≥ 2 años (FDA) / ≥ 3 años (EMA)",
+tags:["corticoide","nasal","menor 2","rinitis","spray"],
+marcasPresent:[
+  {m:"Nasonex®",p:"50 mcg/puls · 140 dosis"},
+  {m:"Dirnelid®",p:"50 mcg/puls · 140 dosis"},
+  {m:"Mometasona Cinfa® / EFG®",p:"50 mcg/puls · 140 dosis"},
+  {m:"Asmanex Nasal®",p:"50 mcg/puls · 140 dosis"},
+  {m:"Rhinocort Mometasona®",p:"50 mcg/puls · 140 dosis"},
+],
+indicacion:"Rinitis alérgica · Desde 2 años (FDA)",
+dosis:"2-11a: 1 puls/fosa/día · ≥12a y adulto: 2 puls/fosa/día",
+contraindicacion:"< 2 años · Cirugía nasal reciente",
+adversos:"Epistaxis 6% · Cefalea · Faringitis · Ardor nasal"},
+
+{id:5,cat:"Spray Nasal",nombre:"Triamcinolona acetonida spray nasal",via:"Nasal",
+composicion:"Triamcinolona acetonida 55 mcg/pulsación · Corticoide intranasal",
+edadMin:2,edadLabel:"≥ 2 años (FDA)",
+tags:["corticoide","nasal","menor 2","rinitis","spray"],
+marcasPresent:[
+  {m:"Nasacort®",p:"55 mcg/puls · 120 dosis"},
+  {m:"Allernaze®",p:"55 mcg/puls · 120 dosis"},
+  {m:"Triamcinolona Nasal EFG®",p:"55 mcg/puls · 120 dosis"},
+],
+indicacion:"Rinitis alérgica estacional y perenne · Desde 2 años (FDA)",
+dosis:"2-5a: 1 puls/fosa/día · 6-11a: 2 puls/fosa/día · Adulto: 2 puls/fosa/día",
+contraindicacion:"< 2 años · Hipersensibilidad",
+adversos:"Epistaxis · Cefalea · Faringitis"},
+
+{id:6,cat:"Spray Nasal",nombre:"Budesonida spray nasal",via:"Nasal",
+composicion:"Budesonida 64 mcg/pulsación · Corticoide intranasal",
+edadMin:6,edadLabel:"≥ 6 años",
+tags:["corticoide","nasal","rinitis","spray"],
+marcasPresent:[
+  {m:"Rhinocort®",p:"64 mcg/puls · 200 dosis"},
+  {m:"Budenasal®",p:"64 mcg/puls · 200 dosis"},
+  {m:"Noex®",p:"64 mcg/puls · 200 dosis"},
+  {m:"Budesonida Nasal EFG®",p:"64 mcg/puls · 200 dosis"},
+],
+indicacion:"Rinitis alérgica · Rinitis vasomotora",
+dosis:"6-12a: 2 puls/fosa/día · Adulto: 2-4 puls/fosa/día",
+contraindicacion:"< 6 años (spray) · TB activa",
+adversos:"Sequedad nasal · Epistaxis · Cefalea"},
+
+{id:7,cat:"Spray Nasal",nombre:"Azelastina spray nasal (antihistamínico)",via:"Nasal",
+composicion:"Azelastina HCl 140 mcg/pulsación · Antihistamínico H1 intranasal",
+edadMin:5,edadLabel:"≥ 5 años",
+tags:["antihistamínico","nasal","rinitis","spray"],
+marcasPresent:[
+  {m:"Allergodil®",p:"140 mcg/puls · 22ml spray"},
+  {m:"Afluon®",p:"140 mcg/puls · 22ml"},
+  {m:"Azep®",p:"140 mcg/puls · spray nasal"},
+  {m:"Azelastina Normon® / EFG®",p:"140 mcg/puls · spray"},
+],
+indicacion:"Rinitis alérgica · Acción rápida (15 min) · Sin corticoide",
+dosis:"5-11a: 1 puls/fosa c/12h · ≥12a y adulto: 2 puls/fosa c/12h",
+contraindicacion:"< 5 años · Hipersensibilidad",
+adversos:"Sabor amargo · Somnolencia leve · Irritación nasal"},
+
+{id:8,cat:"Spray Nasal",nombre:"Oximetazolina spray nasal (descongestionante)",via:"Nasal",
+composicion:"Oximetazolina HCl 0.025% pediátrico / 0.05% adulto · Descongestionante α-adrenérgico · ⚠️ Máx 3-5 días",
+edadMin:6,edadLabel:"⚠️ ≥ 6 años (FDA)",
+tags:["descongestionante","nasal","congestión","spray"],
+marcasPresent:[
+  {m:"Afrin®",p:"0.05% · 15/30ml · adulto"},
+  {m:"Nasivin®",p:"0.025% pediátrico 10ml · 0.05% adulto 15ml"},
+  {m:"Vicks Sinex®",p:"0.05% · 15ml"},
+  {m:"Otriduo®",p:"0.05% spray adulto"},
+  {m:"Oxilina®",p:"0.025% pediátrico / 0.05% adulto"},
+  {m:"Sinexal®",p:"0.025% / 0.05%"},
+],
+indicacion:"Congestión nasal aguda · Resfriado · Sinusitis · Solo ≥6 años",
+dosis:"6-12a: 0.025% 2-3 puls/fosa c/10-12h máx 3 días · Adulto: 0.05% 2-3 puls c/10-12h máx 5 días",
+contraindicacion:"⚠️ < 6 años · HTA · Hipertiroidismo · Glaucoma · MAOIs · No > 5 días",
+adversos:"Rinitis medicamentosa · Taquicardia · HTA · Insomnio"},
+
+{id:9,cat:"Spray Nasal",nombre:"Xilometazolina spray nasal (descongestionante)",via:"Nasal",
+composicion:"Xilometazolina HCl 0.05% pediátrico / 0.1% adulto · Descongestionante α-adrenérgico · ⚠️ Máx 7 días",
+edadMin:2,edadLabel:"≥ 2 años (sol. 0.05%)",
+tags:["descongestionante","nasal","menor 2","congestión","spray"],
+marcasPresent:[
+  {m:"Otrivine® / Otrivin®",p:"0.05% pediátrico 10ml · 0.1% adulto 10ml"},
+  {m:"Respir®",p:"0.05% / 0.1% spray y gotas"},
+  {m:"Novasel®",p:"0.05% pediátrico / 0.1% adulto"},
+  {m:"Ikilox®",p:"0.05% gotas pediátrico"},
+  {m:"Xilometazolina EFG®",p:"0.05% 10ml / 0.1% 10ml"},
+],
+indicacion:"Congestión nasal aguda · Resfriado · Sinusitis",
+dosis:"2-12a: 0.05% 1-2 puls/fosa c/8-10h máx 3 dosis/día · Adulto: 0.1% 1-3 puls c/8h",
+contraindicacion:"< 2 años (absoluta) · HTA · Glaucoma · MAOIs · No > 7 días",
+adversos:"Rinitis medicamentosa · Sequedad · Taquicardia"},
+
+// ── PUFF/AEROSOLES ───────────────────────────────────────────
+{id:10,cat:"Puff/Aerosol",nombre:"Salbutamol / Albuterol MDI",via:"Inhalatoria",
+composicion:"Salbutamol sulfato 100 mcg/puff · Broncodilatador β2-agonista acción corta (SABA)",
+edadMin:2,edadLabel:"≥ 2 años (aerocámara < 6a)",
+tags:["broncodilatador","asma","rescate","SABA","sibilancias"],
+marcasPresent:[
+  {m:"Ventolin® / Ventolín®",p:"100 mcg/puff · MDI 200 puffs"},
+  {m:"ProAir® / Proventil®",p:"90 mcg/puff · MDI 200 puffs (EEUU)"},
+  {m:"Ventoaldo®",p:"100 mcg/puff · MDI 200 puffs"},
+  {m:"Terbasmin®",p:"100 mcg/puff · MDI 200 puffs"},
+  {m:"Salamol®",p:"100 mcg/puff · MDI 200 puffs"},
+  {m:"Salbutamol Sandoz® / EFG®",p:"100 mcg/puff · MDI 200 puffs"},
+],
+indicacion:"Crisis asmática · Broncoespasmo · Prevención por ejercicio · EPOC agudizado",
+dosis:"Crisis: 2-4 puffs c/20min ×3 → c/4-6h · Prevención ejercicio: 2 puffs 15min antes · < 6a: SIEMPRE aerocámara",
+contraindicacion:"Hipersensibilidad · Taquiarritmias graves",
+adversos:"Taquicardia · Temblor · Hipopotasemia (dosis altas) · Cefalea"},
+
+{id:11,cat:"Puff/Aerosol",nombre:"Budesonida + Formoterol (Symbicort / Neumocort Plus)",via:"Inhalatoria",
+composicion:"Budesonida (ICS corticoide inhalado) + Formoterol fumarato (LABA β2-agonista larga acción) · Combinación ICS+LABA",
+edadMin:6,edadLabel:"⚠️ ≥ 6 años",
+tags:["ICS","LABA","asma","EPOC","Symbicort","Neumocort"],
+marcasPresent:[
+  {m:"Symbicort® Turbuhaler",p:"80/4.5 mcg · polvo seco · 60/120 d\n160/4.5 mcg · polvo seco · 60/120 d\n320/9 mcg · polvo seco · 60 d"},
+  {m:"Rilast® Turbuhaler",p:"160/4.5 mcg · polvo seco · 120 d\n320/9 mcg · polvo seco · 60 d"},
+  {m:"DuoResp Spiromax®",p:"160/4.5 mcg · polvo seco · 120 d\n320/9 mcg · 60 d"},
+  {m:"BiResp Spiromax®",p:"160/4.5 mcg · polvo seco · 120 d\n320/9 mcg · 60 d"},
+  {m:"Bufomix Easyhaler®",p:"160/4.5 mcg · polvo seco · 120 d\n320/9 mcg · 60 d"},
+  {m:"Gibiter Easyhaler®",p:"160/4.5 mcg · polvo seco · 120 d"},
+  {m:"Symbicort® MDI aerosol",p:"160/4.5 mcg · aerosol presurizado · 120 d"},
+  {m:"Neumocort Plus® (aerosol)",p:"160/4.5 mcg · aerosol presurizado · 150 d (Chile/Perú/Uruguay/Argentina)"},
+  {m:"Vannair® (aerosol)",p:"80/4.5 mcg · aerosol MDI · 120 d (Sudáfrica/Latam)"},
+  {m:"Forair® (aerosol)",p:"160/4.5 mcg · aerosol presurizado · 120 d"},
+  {m:"Budesonida/Formoterol Cipla®",p:"160/4.5 mcg polvo · 160/4.5 aerosol MDI · 320/9 polvo"},
+  {m:"Budesonida/Formoterol Teva®",p:"160/4.5 mcg polvo · 120 d | 320/9 mcg polvo · 60 d"},
+],
+indicacion:"Asma persistente moderada-grave (≥6a) · EPOC (adultos) · SMART therapy adultos",
+dosis:"6-11a: 1-2 puffs 80/4.5mcg c/12h · ≥12a: 1-2 puffs 160/4.5mcg c/12h · Adulto EPOC: 320/9mcg c/12h",
+contraindicacion:"⚠️ < 6 años · Crisis aguda severa · Enjuagar boca siempre",
+adversos:"Candidiasis oral (enjuagar boca) · Disfonía · Taquicardia · Temblor"},
+
+{id:12,cat:"Puff/Aerosol",nombre:"Fluticasona + Salmeterol (Seretide)",via:"Inhalatoria",
+composicion:"Fluticasona propionato (ICS) + Salmeterol xinafoato (LABA) · ICS+LABA",
+edadMin:4,edadLabel:"≥ 4 años",
+tags:["ICS","LABA","asma","Seretide","Advair"],
+marcasPresent:[
+  {m:"Seretide® MDI",p:"50/25 · 125/25 · 250/25 mcg · 120 d"},
+  {m:"Seretide® Accuhaler",p:"100/50 · 250/50 · 500/50 mcg · 60 d · polvo seco"},
+  {m:"Advair® MDI / Diskus",p:"45/21 · 115/21 · 230/21 mcg MDI · 100/50-500/50 Diskus (EEUU)"},
+  {m:"Anasma® MDI / Accuhaler",p:"50/25 · 125/25 · 250/25 MDI · 100/50-500/50 Accuhaler"},
+  {m:"Plusvent® MDI / Accuhaler",p:"50/25 · 125/25 · 250/25 MDI · 100/50-500/50 Accuhaler"},
+  {m:"Inaladuo® MDI / Accuhaler",p:"50/25 · 125/25 · 250/25 MDI"},
+  {m:"Airflusal Forspiro®",p:"92/22 mcg · 60 d · polvo seco Forspiro"},
+  {m:"Fluticasona/Salmeterol Cipla® / EFG®",p:"125/25 MDI · 250/25 MDI · 500/50 Accuhaler"},
+],
+indicacion:"Asma persistente moderada-grave · EPOC estable",
+dosis:"4-11a: 1 puff 50/25mcg c/12h · ≥12a y adulto: 1-2 puffs 125/25-250/25mcg c/12h",
+contraindicacion:"< 4 años · No usar como rescate · Hipersensibilidad",
+adversos:"Candidiasis oral · Ronquera · Cefalea · Taquicardia · Enjuagar boca"},
+
+{id:13,cat:"Puff/Aerosol",nombre:"Fluticasona furoato + Vilanterol (Relvar Ellipta)",via:"Inhalatoria",
+composicion:"Fluticasona furoato (ICS) + Vilanterol (LABA ultra-larga acción) · 1 vez al día",
+edadMin:12,edadLabel:"≥ 12 años",
+tags:["ICS","LABA","asma","Relvar","Ellipta"],
+marcasPresent:[
+  {m:"Relvar Ellipta®",p:"92/22 mcg · 30 d | 184/22 mcg · 30 d · polvo seco"},
+  {m:"Revinty Ellipta®",p:"92/22 mcg · 30 d | 184/22 mcg · 30 d"},
+  {m:"Breo Ellipta®",p:"100/25 mcg · 30 d (EEUU — EPOC)"},
+],
+indicacion:"Asma ≥12a · EPOC adultos · 1 sola inhalación diaria",
+dosis:"1 inhalación/día",
+contraindicacion:"< 12 años · Crisis aguda",
+adversos:"Nasofaringitis · Cefalea · Candidiasis oral"},
+
+{id:14,cat:"Puff/Aerosol",nombre:"Triple terapia ICS+LAMA+LABA (Trelegy/Trimbow)",via:"Inhalatoria",
+composicion:"ICS + LAMA + LABA · Triple broncodilatador+antiinflamatorio · Solo adultos",
+edadMin:18,edadLabel:"⚠️ Solo adultos ≥ 18 años",
+tags:["triple","EPOC","LAMA","LABA","ICS","Trelegy","Trimbow"],
+marcasPresent:[
+  {m:"Trelegy Ellipta®",p:"92/55/22 mcg FF/UMEC/VI · 30 d · polvo seco · 1×/día"},
+  {m:"Elebrato Ellipta®",p:"92/55/22 mcg · 30 d"},
+  {m:"Breztri Aerosphere®",p:"160/9/5 mcg BUD/GLY/FOR · MDI · 120 d"},
+  {m:"Trimbow® MDI",p:"87/9/5 mcg BDP/GLY/FOR · 120 d · extrafino"},
+  {m:"Trimbow® Nexthaler",p:"88/9/5 mcg · polvo seco · 120 d"},
+],
+indicacion:"EPOC moderado-muy grave · Triple terapia mantenimiento",
+dosis:"Adulto: 1 inh/día (Trelegy) o 2 inh/día (Trimbow)",
+contraindicacion:"< 18 años · Crisis aguda · Glaucoma · Retención urinaria",
+adversos:"Nasofaringitis · Candidiasis · Neumonía (EPOC) · Retención urinaria"},
+
+{id:15,cat:"Puff/Aerosol",nombre:"Tiotropio / Umeclidinio (LAMA solo)",via:"Inhalatoria",
+composicion:"Tiotropio 18 mcg/cáp (HandiHaler) o 2.5 mcg/puff (Respimat) / Umeclidinio 55 mcg (Ellipta) · LAMA anticolinérgico larga acción",
+edadMin:18,edadLabel:"⚠️ Solo adultos ≥ 18 años",
+tags:["LAMA","EPOC","Spiriva","Anoro"],
+marcasPresent:[
+  {m:"Spiriva® HandiHaler",p:"18 mcg/cápsula · 30/90 cáps · polvo inhalado"},
+  {m:"Spiriva® Respimat",p:"2.5 mcg/puff · 60 d · solución"},
+  {m:"Braltus® Zonda",p:"10 mcg/cápsula · polvo"},
+  {m:"Anoro Ellipta®",p:"55/22 mcg umeclidinio/vilanterol · 30 d · LAMA+LABA"},
+  {m:"Laventair Ellipta®",p:"55/22 mcg · 30 d · LAMA+LABA"},
+],
+indicacion:"EPOC mantenimiento · Tiotropio: asma severa adultos (Respimat) · Anoro: doble broncodilatador",
+dosis:"Adulto: 1 cápsula/día (HandiHaler) o 2 puffs/día (Respimat) o 1 inh/día (Ellipta)",
+contraindicacion:"< 18 años · Glaucoma · HBP · Hipersensibilidad",
+adversos:"Sequedad bucal · Estreñimiento · Retención urinaria"},
+
+{id:16,cat:"Puff/Aerosol",nombre:"Ipratropio MDI / Combivent",via:"Inhalatoria",
+composicion:"Bromuro de ipratropio 20 mcg/puff (Atrovent) o salbutamol 100 mcg + ipratropio 20 mcg (Combivent) · SAMA anticolinérgico",
+edadMin:6,edadLabel:"≥ 6 años (Atrovent) / ≥ 12 años (Combivent)",
+tags:["broncodilatador","SAMA","EPOC","Atrovent","Combivent"],
+marcasPresent:[
+  {m:"Atrovent® MDI",p:"20 mcg/puff · 200 puffs"},
+  {m:"Ipravent® MDI",p:"20 mcg/puff · 200 puffs"},
+  {m:"Combivent® MDI",p:"100/20 mcg salbutamol/ipratropio · 200 puffs"},
+  {m:"Combivent Respimat®",p:"100/20 mcg · solución Respimat"},
+],
+indicacion:"EPOC · Asma refractaria (combinado) · Combivent: doble broncodilatador acción corta",
+dosis:"≥6a Atrovent: 1-2 puffs c/6-8h · Adulto Combivent: 1-2 puffs c/6h",
+contraindicacion:"< 6a (Atrovent) · Glaucoma · Retención urinaria",
+adversos:"Sequedad bucal · Taquicardia · Retención urinaria"},
+
+// ── NEBULIZACIONES ───────────────────────────────────────────
+{id:17,cat:"Nebulización",nombre:"Salbutamol nebulización",via:"Nebulización",
+composicion:"Salbutamol 5 mg/ml · SABA nebulizado",
+edadMin:0,edadLabel:"Desde recién nacido",
+tags:["broncodilatador","asma","SABA","crisis","nebulización","RN","lactante"],
+marcasPresent:[
+  {m:"Ventolin Nebules®",p:"2.5 mg/2.5ml · ampollas · caja 20"},
+  {m:"Salamol® Nebules",p:"2.5 mg/2.5ml · ampollas"},
+  {m:"Salbutamol EFG® Neb",p:"2.5 mg/2.5ml o 5 mg/2.5ml · ampollas"},
+  {m:"Airet® sol.",p:"5 mg/ml · frasco multidosis"},
+],
+indicacion:"Crisis asmática · Broncoespasmo · Bronquiolitis · Sibilancias · EPOC agudizado",
+dosis:"< 20kg: 0.15mg/kg (mín 2.5mg) c/20min ×3 → c/4-6h · > 20kg: 2.5-5mg c/20min ×3 · Diluir SF hasta 3ml",
+contraindicacion:"Sin contraindicación en emergencia · Precaución hipopotasemia severa",
+adversos:"Taquicardia · Temblor · Hipopotasemia dosis repetidas",
+calcPeso:true,calcF:0.15,calcMin:2.5,calcMax:5,calcU:"mg/dosis"},
+
+{id:18,cat:"Nebulización",nombre:"Budesonida Respules nebulización",via:"Nebulización",
+composicion:"Budesonida 0.25/0.5/1 mg/ml · ICS nebulizado",
+edadMin:0.5,edadLabel:"≥ 6 meses",
+tags:["ICS","corticoide","croup","laringitis","asma","nebulización"],
+marcasPresent:[
+  {m:"Pulmicort® Respules 0.5mg",p:"0.5 mg/2ml · ampollas caja 20"},
+  {m:"Pulmicort® Respules 1mg",p:"1 mg/2ml · ampollas caja 20"},
+  {m:"Ribujet® Respules",p:"0.25/0.5/1 mg/2ml · ampollas"},
+  {m:"Budesonida EFG® Neb",p:"0.25/0.5/1 mg/2ml · ampollas"},
+],
+indicacion:"Croup (laringotraqueitis) ≥6m · Asma aguda · Bronquiolitis · EPOC",
+dosis:"Croup: 2mg dosis única · < 1a: 0.25-0.5mg c/12h · 1-12a: 0.5-1mg c/12h · Adulto: 1-2mg c/12h",
+contraindicacion:"< 6 meses (precaución) · TB activa",
+adversos:"Candidiasis oral · Irritación orofaríngea"},
+
+{id:19,cat:"Nebulización",nombre:"Adrenalina nebulizada (hospitalaria)",via:"Nebulización",
+composicion:"Epinefrina 1 mg/ml (1:1000) · ⚠️ Solo hospitalario",
+edadMin:0,edadLabel:"⚠️ Solo hospitalario · Desde RN",
+tags:["croup","laringitis","estridor","hospitalario","emergencia","RN"],
+marcasPresent:[
+  {m:"Adrenalina Braun® 1:1000",p:"1 mg/ml · ampollas 1ml · hospitalario"},
+  {m:"Adrenalina Nivel® 1:1000",p:"1 mg/ml · ampollas 1ml"},
+],
+indicacion:"⚠️ Croup moderado-severo · Edema laríngeo · Bronquiolitis grave",
+dosis:"0.5ml/kg de 1:1000 (máx 5ml) nebulizado",
+contraindicacion:"⚠️ Solo hospital con monitoreo continuo · Efecto rebote 2-4h",
+adversos:"Taquicardia · HTA · Efecto rebote",
+calcPeso:true,calcF:0.5,calcMin:0.5,calcMax:5,calcU:"ml (sol. 1:1000)"},
+
+// ── ANTIBIÓTICOS ────────────────────────────────────────────
+{id:20,cat:"Antibiótico",nombre:"Amoxicilina suspensión oral",via:"Oral",
+composicion:"Amoxicilina trihidrato 250 mg/5ml o 400 mg/5ml · Antibiótico betalactámico penicilínico",
+edadMin:0.07,edadLabel:"Desde 1 mes de vida",
+tags:["antibiótico","otitis","faringitis","neumonía","sinusitis","lactante","RN"],
+marcasPresent:[
+  {m:"Amoxil® / Amoxil Pediátrico®",p:"250 mg/5ml · 100ml | 500 mg cáps | 875 mg comp"},
+  {m:"Clamoxyl®",p:"250 mg/5ml · 100ml | 500/875 mg comp"},
+  {m:"Ardine®",p:"250 mg/5ml · 100ml"},
+  {m:"Amoxaren®",p:"250/400 mg/5ml · 100ml"},
+  {m:"Duramox®",p:"250 mg/5ml · 100ml"},
+  {m:"Amoxicilina EFG®",p:"250/400 mg/5ml | 500 mg cáps | 875 mg comp"},
+],
+indicacion:"Otitis media · Faringoamigdalitis estreptocócica · Sinusitis bacteriana · Neumonía leve · Desde 1 mes de vida",
+dosis:"> 1m-2m: 40mg/kg/día c/12h · > 2m: 40-90mg/kg/día c/8h · Dosis alta (neumococo): 90mg/kg/día · Adulto: 500mg c/8h o 875mg c/12h",
+contraindicacion:"Alergia a penicilinas · Mononucleosis infecciosa",
+adversos:"Diarrea · Náuseas · Rash · Candidiasis · (raro) Anafilaxia",
+calcPeso:true,calcF:45,calcMin:null,calcMax:3000,calcU:"mg/día ÷3",calcDiv:3},
+
+{id:21,cat:"Antibiótico",nombre:"Amoxicilina + Ácido Clavulánico (Augmentine)",via:"Oral",
+composicion:"Amoxicilina + ácido clavulánico 400/57 mg/5ml o 250/62.5 mg/5ml · Betalactámico + inhibidor betalactamasa",
+edadMin:0.25,edadLabel:"≥ 3 meses",
+tags:["antibiótico","otitis","sinusitis","neumonía","Augmentine","Augmentin"],
+marcasPresent:[
+  {m:"Augmentine® / Augmentin®",p:"250/62.5 mg/5ml · 100ml | 500/125 mg comp | 875/125 mg comp"},
+  {m:"Clavumox® / Clavulin®",p:"250/62.5 · 400/57 mg/5ml · 100ml"},
+  {m:"Duonasa®",p:"400/57 mg/5ml · 70ml"},
+  {m:"Amoxiclav EFG®",p:"400/57 mg/5ml | 875/125 mg comp"},
+  {m:"Augmentine Plus® 1000/62.5",p:"Comp. 1000/62.5 mg (adultos)"},
+],
+indicacion:"Otitis media recurrente · Sinusitis · Bronquitis bacteriana · Neumonía · H.influenzae · M.catarrhalis",
+dosis:"≥3m: 40-45mg/kg/día c/8h (400/57) · Grave: 90mg/kg/día · Adulto: 875/125mg c/12h",
+contraindicacion:"Alergia penicilinas · Ictericia colestásica previa · < 3 meses",
+adversos:"Diarrea (frecuente) · Náuseas · Elevación transaminasas",
+calcPeso:true,calcF:40,calcMin:null,calcMax:3000,calcU:"mg/día amox ÷3",calcDiv:3},
+
+{id:22,cat:"Antibiótico",nombre:"Azitromicina suspensión (Zithromax)",via:"Oral",
+composicion:"Azitromicina 200 mg/5ml · Antibiótico macrólido azálido",
+edadMin:0.5,edadLabel:"≥ 6 meses",
+tags:["antibiótico","macrólido","Mycoplasma","faringitis","Zithromax","Sumamed"],
+marcasPresent:[
+  {m:"Zithromax® / Sumamed®",p:"200 mg/5ml · 30ml | cáps 250/500 mg"},
+  {m:"Zentavion® / Azitro Kern®",p:"200 mg/5ml · 30ml"},
+  {m:"Toraseptol®",p:"200 mg/5ml · 30ml"},
+  {m:"Azitromicina Cinfa® / EFG®",p:"200 mg/5ml · 30ml | comp 250/500 mg"},
+],
+indicacion:"Neumonía atípica (Mycoplasma, Chlamydia) · Faringoamigdalitis (alergia penicilina) · Bronquitis",
+dosis:"≥6m: 10mg/kg/día ×3d o 10mg/kg d1 → 5mg/kg d2-5 · Máx 500mg/día · Adulto: 500mg/día ×3d",
+contraindicacion:"Hipersensibilidad macrólidos · Prolongación QT",
+adversos:"Diarrea · Náuseas · Prolongación QT (raro)",
+calcPeso:true,calcF:10,calcMin:null,calcMax:500,calcU:"mg/día (dosis única)",calcDiv:1},
+
+{id:23,cat:"Antibiótico",nombre:"Claritromicina suspensión (Klacid)",via:"Oral",
+composicion:"Claritromicina 125 mg/5ml o 250 mg/5ml · Antibiótico macrólido",
+edadMin:0.5,edadLabel:"≥ 6 meses",
+tags:["antibiótico","macrólido","Mycoplasma","Klacid","Biaxin"],
+marcasPresent:[
+  {m:"Klacid® / Klabax®",p:"125/250 mg/5ml · frasco | comp 500 mg"},
+  {m:"Fromilid® / Biaxin®",p:"125/250 mg/5ml · frasco"},
+  {m:"Claritromicina EFG®",p:"125/250 mg/5ml | comp 250/500 mg"},
+],
+indicacion:"Neumonía atípica · Faringoamigdalitis · Sinusitis · H.pylori (triple terapia)",
+dosis:"≥6m: 15mg/kg/día c/12h ×7-14d · Máx 500mg c/12h · Adulto: 250-500mg c/12h",
+contraindicacion:"Hipersensibilidad macrólidos · QT prolongado · Estatinas CYP3A4",
+adversos:"Sabor metálico · Diarrea · Prolongación QT",
+calcPeso:true,calcF:15,calcMin:null,calcMax:1000,calcU:"mg/día ÷2",calcDiv:2},
+
+{id:24,cat:"Antibiótico",nombre:"Cefuroxima axetilo (Zinnat)",via:"Oral",
+composicion:"Cefuroxima axetilo 125 mg/5ml · Cefalosporina 2ª generación",
+edadMin:0.25,edadLabel:"≥ 3 meses",
+tags:["antibiótico","cefalosporina","otitis","sinusitis","Zinnat"],
+marcasPresent:[
+  {m:"Zinnat®",p:"125 mg/5ml · frasco | comp 250/500 mg"},
+  {m:"Cepazine® / Curoxim®",p:"125 mg/5ml · frasco"},
+  {m:"Cefuroxima EFG®",p:"125 mg/5ml | comp 250/500 mg"},
+],
+indicacion:"Otitis media · Faringoamigdalitis · Sinusitis · Neumonía leve · Alternativa amoxicilina",
+dosis:"3m-12a: 30mg/kg/día c/12h · Máx 500mg c/12h · Adulto: 250-500mg c/12h ×5-10d",
+contraindicacion:"Alergia cefalosporinas · Precaución alergia penicilinas",
+adversos:"Diarrea · Náuseas · Rash · Candidiasis",
+calcPeso:true,calcF:30,calcMin:null,calcMax:1000,calcU:"mg/día ÷2",calcDiv:2},
+
+// ── MUCOLÍTICOS ─────────────────────────────────────────────
+{id:25,cat:"Mucolítico/Antitusivo",nombre:"Ambroxol jarabe (Mucosolvan)",via:"Oral",
+composicion:"Ambroxol HCl 7.5 mg/5ml (pediátrico) o 15 mg/5ml (adulto) · Mucolítico secretolítico",
+edadMin:0,edadLabel:"Desde recién nacido",
+tags:["mucolítico","tos productiva","expectorante","bronquitis","RN","lactante"],
+marcasPresent:[
+  {m:"Mucosolvan®",p:"7.5 mg/5ml pediátrico 200ml · 15 mg/5ml adulto · comp 30mg · retard 75mg"},
+  {m:"Lasolvan®",p:"7.5 mg/5ml pediátrico · 15 mg/5ml adulto"},
+  {m:"Mucosol® / Ambrobene®",p:"7.5/15 mg/5ml · jarabe"},
+  {m:"Bisolvon Expectorante®",p:"7.5/15 mg/5ml · jarabe"},
+  {m:"Ambroxol EFG®",p:"7.5/15 mg/5ml · jarabe"},
+],
+indicacion:"Tos productiva · Bronquitis aguda/crónica · Secreciones espesas · Facilita expectoración",
+dosis:"< 2a: 7.5mg c/12h · 2-5a: 7.5mg c/8h · 5-12a: 15mg c/8h · Adulto: 30mg c/8h → c/12h",
+contraindicacion:"Hipersensibilidad · Precaución úlcera gástrica activa",
+adversos:"Náuseas · Diarrea · (rara) Alergia · Sequedad bucal"},
+
+{id:26,cat:"Mucolítico/Antitusivo",nombre:"N-Acetilcisteína (NAC) Fluimucil",via:"Oral / Nebulización",
+composicion:"N-Acetilcisteína 100 mg/5ml (jarabe) · 200/600 mg (sobres) · Mucolítico reductor puentes disulfuro",
+edadMin:0,edadLabel:"Desde RN (con precaución)",
+tags:["mucolítico","NAC","EPOC","fibrosis quística","bronquitis","RN"],
+marcasPresent:[
+  {m:"Fluimucil®",p:"100 mg/5ml jarabe · sobres 200 mg · sobres 600 mg efervescente · ampollas 300 mg neb"},
+  {m:"Mucofluid®",p:"100 mg/5ml jarabe · sobres 200 mg · ampollas 20% neb"},
+  {m:"Hidonac® / Tussiflex®",p:"100 mg/5ml jarabe"},
+  {m:"Acetilcisteína EFG®",p:"100 mg/5ml · sobres 200/600 mg"},
+],
+indicacion:"Bronquitis crónica · EPOC · Fibrosis quística · Secreciones muy espesas · Antídoto paracetamol (IV)",
+dosis:"< 2a: 100mg c/12h · 2-6a: 100mg c/8h · >6a: 200mg c/8h · Adulto: 200mg c/8h o 600mg/día",
+contraindicacion:"Asma activo (broncoespasmo) · Úlcera gastroduodenal",
+adversos:"Broncoespasmo en asmáticos · Náuseas · Olor a azufre"},
+
+{id:27,cat:"Mucolítico/Antitusivo",nombre:"Bromhexina jarabe (Bisolvon)",via:"Oral",
+composicion:"Bromhexina HCl 2/4 mg/5ml · Mucolítico precursor del ambroxol",
+edadMin:2,edadLabel:"≥ 2 años",
+tags:["mucolítico","tos productiva","bronquitis","Bisolvon"],
+marcasPresent:[
+  {m:"Bisolvon®",p:"4 mg/5ml · jarabe pediátrico 200ml"},
+  {m:"Broncolisin® / Muciphar®",p:"4 mg/5ml · jarabe"},
+  {m:"Bromhexina EFG®",p:"4 mg/5ml · jarabe"},
+],
+indicacion:"Bronquitis · Tos productiva con moco adherente",
+dosis:"2-5a: 2mg c/8h · 5-10a: 4mg c/8h · >10a: 8mg c/8h · Adulto: 8-16mg c/8h",
+contraindicacion:"< 2 años · Úlcera péptica",
+adversos:"Náuseas · Sudoración · Mareo"},
+
+{id:28,cat:"Mucolítico/Antitusivo",nombre:"Dextrometorfano antitusivo (Romilar)",via:"Oral",
+composicion:"Dextrometorfano HBr 7.5/15 mg/5ml · Antitusivo central · ⚠️ NO mucolítico",
+edadMin:6,edadLabel:"⚠️ ≥ 6 años ESTRICTO",
+tags:["antitusivo","tos seca","Romilar"],
+marcasPresent:[
+  {m:"Romilar®",p:"7.5/15 mg/5ml · jarabe 200ml"},
+  {m:"Toseína® / Vicks Fórmula 44®",p:"7.5/15 mg/5ml · jarabe"},
+  {m:"Robitussin DM®",p:"10 mg/5ml · jarabe (+ guaifenesina)"},
+  {m:"Dextrometorfano EFG®",p:"15 mg/5ml · jarabe"},
+],
+indicacion:"Tos seca irritativa no productiva únicamente · ⚠️ < 6a: CONTRAINDICADO",
+dosis:"⚠️ < 6a: PROHIBIDO · 6-11a: 7.5-15mg c/6-8h Máx 60mg/día · Adulto: 15-30mg c/4-8h",
+contraindicacion:"⚠️ CONTRAINDICADO < 6 años · Tos productiva · Asma activo · MAOIs",
+adversos:"Somnolencia · Mareo · Náuseas · Potencial abuso"},
+
+// ── ANTIHISTAMÍNICOS ────────────────────────────────────────
+{id:29,cat:"Antihistamínico",nombre:"Cetirizina (Zyrtec) jarabe/comp",via:"Oral",
+composicion:"Cetirizina dihidrocloruro 1 mg/ml (solución) · 10 mg comp · Antihistamínico H1 2ª generación",
+edadMin:0.5,edadLabel:"≥ 6 meses",
+tags:["antihistamínico","rinitis","urticaria","Zyrtec"],
+marcasPresent:[
+  {m:"Zyrtec® / Reactine® / Virlix®",p:"1 mg/ml · 75/150ml sol | comp 10 mg"},
+  {m:"Alercet® / Alerlisin®",p:"1 mg/ml sol | comp 10 mg"},
+  {m:"Cetirizina EFG®",p:"1 mg/ml sol | comp 10 mg"},
+],
+indicacion:"Rinitis alérgica · Urticaria · Angioedema alérgico",
+dosis:"6-23m: 2.5mg/día · 1-5a: 5mg/día · 6-11a: 5mg c/12h o 10mg/día · Adulto: 10mg/día noche",
+contraindicacion:"< 6 meses · Insuf. renal severa",
+adversos:"Somnolencia leve · Cefalea · Sequedad bucal"},
+
+{id:30,cat:"Antihistamínico",nombre:"Loratadina (Clarityne) jarabe/comp",via:"Oral",
+composicion:"Loratadina 5 mg/5ml (jarabe) · 10 mg comp · Antihistamínico H1 2ª generación no sedante",
+edadMin:2,edadLabel:"≥ 2 años",
+tags:["antihistamínico","rinitis","urticaria","Clarityne","Claritin"],
+marcasPresent:[
+  {m:"Clarityne® / Claritin®",p:"5 mg/5ml jarabe 120ml | comp 10 mg"},
+  {m:"Velodan® / Lorafen®",p:"5 mg/5ml jarabe | comp 10 mg"},
+  {m:"Loratadina EFG®",p:"5 mg/5ml jarabe | comp 10 mg"},
+],
+indicacion:"Rinitis alérgica · Urticaria · Mínima sedación · Ideal conductores",
+dosis:"2-5a (< 30kg): 5mg/día · ≥6a y adulto: 10mg/día",
+contraindicacion:"< 2 años",
+adversos:"Cefalea · Somnolencia mínima · Sequedad bucal"},
+
+{id:31,cat:"Antihistamínico",nombre:"Levocetirizina (Xazal) gotas/comp",via:"Oral",
+composicion:"Levocetirizina dihidrocloruro 5 mg/ml gotas · 5 mg comp · Antihistamínico H1 3ª generación",
+edadMin:2,edadLabel:"≥ 2 años",
+tags:["antihistamínico","rinitis","urticaria","Xazal"],
+marcasPresent:[
+  {m:"Xazal® / Xusal® / Terzian®",p:"5 mg/ml gotas 10ml | comp 5 mg"},
+  {m:"Zenaro® / Levocetirizina EFG®",p:"5 mg/ml gotas | comp 5 mg"},
+],
+indicacion:"Rinitis alérgica · Urticaria crónica",
+dosis:"2-5a: 1.25mg c/12h · 6-11a: 2.5mg/día · ≥12a y adulto: 5mg/día noche",
+contraindicacion:"< 2 años · Insuf. renal severa",
+adversos:"Somnolencia · Cefalea · Sequedad"},
+
+{id:32,cat:"Antihistamínico",nombre:"Fexofenadina (Telfast/Allegra) comp",via:"Oral",
+composicion:"Fexofenadina HCl 30/120/180 mg comp · Antihistamínico H1 3ª gen. sin sedación",
+edadMin:6,edadLabel:"≥ 6 años",
+tags:["antihistamínico","rinitis","urticaria","Telfast","Allegra"],
+marcasPresent:[
+  {m:"Telfast® / Altiva®",p:"30 · 120 · 180 mg comp"},
+  {m:"Allegra® / Fastofen®",p:"30/60/120/180 mg comp"},
+  {m:"Fexofenadina EFG®",p:"120/180 mg comp"},
+],
+indicacion:"Rinitis alérgica · Urticaria crónica · Sin somnolencia",
+dosis:"6-11a: 30mg c/12h · ≥12a y adulto: 120mg c/12h o 180mg/día",
+contraindicacion:"< 6 años · No con zumo pomelo/naranja/manzana",
+adversos:"Cefalea · Náuseas · Somnolencia mínima"},
+
+{id:33,cat:"Antihistamínico",nombre:"Montelukast (Singulair) antileucotrieno",via:"Oral",
+composicion:"Montelukast sódico 4 mg granulado/masticable · 5 mg masticable · 10 mg comp · Antagonista leucotrienos CysLT1",
+edadMin:0.5,edadLabel:"≥ 6 meses (granulado)",
+tags:["antileucotrieno","asma","rinitis","Singulair","Airon"],
+marcasPresent:[
+  {m:"Singulair® / Airon®",p:"4 mg granulado · 4/5 mg masticable · 10 mg comp"},
+  {m:"Montair® / Molly®",p:"4/5/10 mg"},
+  {m:"Montelukast Sandoz® / EFG®",p:"4/5/10 mg"},
+],
+indicacion:"Asma leve persistente · Rinitis alérgica · Prevención broncoespasmo ejercicio",
+dosis:"6m-5a: 4mg/noche · 6-14a: 5mg/noche · ≥15a y adulto: 10mg/noche",
+contraindicacion:"< 6 meses · ⚠️ FDA Black Box: vigilar cambios neuropsiquiátricos",
+adversos:"Cefalea · ⚠️ Agitación · Insomnio · Pesadillas · Comportamiento suicida (Black Box FDA)"},
+
+// ── CORTICOIDES ORALES ────────────────────────────────────
+{id:34,cat:"Corticoide Oral",nombre:"Prednisona / Prednisolona / Metilprednisolona",via:"Oral / IM / IV",
+composicion:"Prednisona 5/20/50 mg comp · Prednisolona gotas 3 mg/ml · Metilprednisolona 4-1000 mg · Corticoide sistémico",
+edadMin:0,edadLabel:"Desde recién nacido",
+tags:["corticoide","asma","croup","laringitis","alérgica","prednisona","prednisolona"],
+marcasPresent:[
+  {m:"Dacortin® (prednisona)",p:"5/30 mg comp"},
+  {m:"Estilsona® (prednisolona gotas)",p:"3 mg/ml · frasco 30ml · pediátrico"},
+  {m:"Prednisolona EFG®",p:"5 mg/5ml sol oral · comp 5 mg"},
+  {m:"Urbason® (metilprednisolona)",p:"4/8/16/32/40 mg comp | amp 20-1000mg IV/IM"},
+  {m:"Solu-Medrol® (metilprednisolona IV)",p:"125/500 mg · 1g ampollas IV hospitalario"},
+  {m:"Prednisona EFG®",p:"5/20/50 mg comp"},
+],
+indicacion:"Crisis asmática · Croup/laringitis · Reacción alérgica severa · EPOC exacerbado",
+dosis:"Pediátrico: 1-2mg/kg/día c/12-24h ×3-5d (Máx 60mg/día) · Croup: 1-2mg/kg dosis única · Adulto: 40-60mg/día ×5-7d",
+contraindicacion:"Infección grave · Varicela activa · Úlcera péptica activa (relativa)",
+adversos:"Hiperglicemia · HTA · Insomnio · Irritabilidad · Inmunodepresión",
+calcPeso:true,calcF:1.5,calcMin:null,calcMax:60,calcU:"mg/día ÷2",calcDiv:2},
+
+{id:35,cat:"Corticoide Oral",nombre:"Dexametasona (Fortecortín)",via:"Oral / IM / IV",
+composicion:"Dexametasona 0.5/4 mg comp · 4 mg/ml ampolla · Corticoide potente (6× prednisolona)",
+edadMin:0,edadLabel:"Desde recién nacido",
+tags:["corticoide","croup","laringitis","asma","dexametasona","Fortecortin"],
+marcasPresent:[
+  {m:"Fortecortín®",p:"1/4 mg comp | amp 4/8 mg/ml IV/IM"},
+  {m:"Decadron® / Dexafar®",p:"0.5/4 mg comp | amp 4 mg/ml"},
+  {m:"Dexaval® gotas",p:"0.1% sol. oral · gotas pediátricas"},
+  {m:"Dexametasona EFG®",p:"0.5/4 mg comp | amp 4 mg/ml"},
+],
+indicacion:"Croup/laringotraqueitis · Asma severa · Edema cerebral · COVID-19 grave",
+dosis:"Croup: 0.15-0.6mg/kg VO/IM dosis única (Máx 10mg) · Asma: 0.6mg/kg/día ×2d · Adulto: 4-8mg c/6-12h IV",
+contraindicacion:"Infección fúngica sistémica · Vacunas virus vivos",
+adversos:"Hiperglicemia · Insomnio · Irritabilidad · HTA",
+calcPeso:true,calcF:0.6,calcMin:null,calcMax:10,calcU:"mg dosis única croup",calcDiv:1},
+
+// ── ANTIGRIPALES ────────────────────────────────────────────
+{id:36,cat:"Antigripal",nombre:"Paracetamol / Acetaminofén",via:"Oral / Rectal",
+composicion:"Paracetamol 150 mg/5ml o 250 mg/5ml suspensión · 500 mg/1g comp · Analgésico-antipirético",
+edadMin:0,edadLabel:"Desde recién nacido",
+tags:["antipirético","fiebre","dolor","resfriado","gripe","Apiretal","Panadol","RN"],
+marcasPresent:[
+  {m:"Apiretal®",p:"100 mg/ml gotas 15ml · 250 mg/5ml susp 150ml"},
+  {m:"Efferalgan®",p:"150/250 mg/5ml susp · comp 500mg · eferv 500/1000mg · supos"},
+  {m:"Panadol®",p:"120/250 mg/5ml susp · comp 500mg · supos"},
+  {m:"Gelocatil®",p:"150/250 mg/5ml susp · comp 500mg/1g"},
+  {m:"Termalgin® / Tylenol®",p:"500 mg comp · 1g comp (Tylenol EEUU: 160 mg/5ml susp)"},
+  {m:"Febrectal® supos.",p:"150/300/600 mg supositorios"},
+  {m:"Paracetamol EFG®",p:"100 mg/ml gotas · 150/250 mg/5ml susp · 500mg/1g comp"},
+],
+indicacion:"Fiebre · Dolor leve-moderado · Resfriado/gripe · Desde RN",
+dosis:"10-15mg/kg/dosis c/4-6h (Máx 5 dosis/día) · Adulto: 500-1000mg c/6-8h · Máx 4g/día",
+contraindicacion:"Insuf. hepática severa · Alcoholismo crónico",
+adversos:"Hepatotoxicidad (sobredosis) · Excelente tolerancia habitual",
+calcPeso:true,calcF:15,calcMin:null,calcMax:1000,calcU:"mg/dosis (c/6h)",calcDiv:1},
+
+{id:37,cat:"Antigripal",nombre:"Ibuprofeno (Nurofen/Dalsy) jarabe/comp",via:"Oral",
+composicion:"Ibuprofeno 100 mg/5ml o 200 mg/5ml susp · 200/400/600 mg comp · AINE inhibidor COX-1/COX-2",
+edadMin:0.5,edadLabel:"⚠️ ≥ 6 meses",
+tags:["AINE","antipirético","fiebre","dolor","Nurofen","Dalsy","≥6meses"],
+marcasPresent:[
+  {m:"Nurofen®",p:"100 mg/5ml susp 150ml · comp 200/400mg · supos"},
+  {m:"Dalsy®",p:"100 mg/5ml susp 100/200ml · sabor fresa/naranja"},
+  {m:"Espidifen® / Algiasdin®",p:"400/600 mg sobres granulado adulto"},
+  {m:"Advil® / Motrin® Pediátrico",p:"100 mg/5ml susp 100ml"},
+  {m:"Ibuprofeno EFG®",p:"100/200 mg/5ml susp · comp 400/600mg"},
+],
+indicacion:"Fiebre · Dolor · Inflamación · Resfriado/gripe · ⚠️ NO < 6 meses",
+dosis:"⚠️ < 6m: CONTRAINDICADO · 5-10mg/kg/dosis c/6-8h · Adulto: 200-400mg c/6-8h",
+contraindicacion:"⚠️ < 6 meses · Úlcera péptica · Insuf. renal/hepática · Varicela · Asma sensible AINEs",
+adversos:"Gastritis · Náuseas · Sangrado GI · Nefrotoxicidad",
+calcPeso:true,calcF:10,calcMin:null,calcMax:400,calcU:"mg/dosis (c/6-8h)",calcDiv:1},
+
+{id:38,cat:"Antigripal",nombre:"Oseltamivir (Tamiflu) antiviral gripal",via:"Oral",
+composicion:"Oseltamivir fosfato 12 mg/ml susp · 30/45/75 mg cáps · Antiviral inhibidor neuraminidasa gripal A y B",
+edadMin:0,edadLabel:"Desde RN (ajuste < 1 año)",
+tags:["antiviral","gripe","influenza","Tamiflu","RN"],
+marcasPresent:[
+  {m:"Tamiflu®",p:"12 mg/ml susp 60ml | cáps 30/45/75 mg"},
+  {m:"Ebilfumin® / Oseltamivir EFG®",p:"cáps 30/45/75 mg | susp 12 mg/ml"},
+],
+indicacion:"Influenza A y B (iniciar < 48h síntomas) · Profilaxis postexposición",
+dosis:"< 1a: 3mg/kg c/12h ×5d · <15kg: 30mg · 15-23kg: 45mg · 23-40kg: 60mg · >40kg: 75mg · c/12h ×5d",
+contraindicacion:"Hipersensibilidad · Inicio >48h (eficacia reducida) · Ajustar insuf. renal",
+adversos:"Náuseas/vómitos (con alimentos) · Cefalea · (raro) Comportamiento anormal niños"},
+
+];
+
+// ══════════════════════════════════════════════════════════════
+// APP STATE
+// ══════════════════════════════════════════════════════════════
+const CAT_COLORS = {
+  "Spray Nasal":"#0ea5e9","Puff/Aerosol":"#f59e0b",
+  "Nebulización":"#8b5cf6","Antibiótico":"#10b981",
+  "Mucolítico/Antitusivo":"#06b6d4","Antihistamínico":"#a78bfa",
+  "Corticoide Oral":"#f97316","Antigripal":"#ef4444",
+};
+const CAT_ICONS = {
+  "Spray Nasal":"💨","Puff/Aerosol":"🫁","Nebulización":"🌫️",
+  "Antibiótico":"🦠","Mucolítico/Antitusivo":"🧴",
+  "Antihistamínico":"🌿","Corticoide Oral":"⚡","Antigripal":"🤧",
+};
+const CATS = ["Todos",...Object.keys(CAT_COLORS)];
+
+let currentTab = "lista";
+let currentCat = "Todos";
+let currentEdad = "todos";
+let selectedId = null;
+let chatHistory = [];
+let chatLoading = false;
+
+// Update subtitle
+document.getElementById("subtitle").textContent =
+  `${DB.length} medicamentos · ${DB.reduce((a,m)=>a+(m.marcasPresent?.length||0),0)} marcas/presentaciones`;
+
+// ══════════════════════════════════════════════════════════════
+// BUILD CATEGORY FILTERS
+// ══════════════════════════════════════════════════════════════
+function buildFilters() {
+  const cf = document.getElementById("cat-filters");
+  cf.innerHTML = CATS.map(c => {
+    const color = CAT_COLORS[c] || "#2563eb";
+    const icon = CAT_ICONS[c] || "";
+    return `<button class="cat-btn${c===currentCat?' active':''}"
+      style="${c===currentCat?'background:'+color+';color:#fff':''}"
+      onclick="selectCat('${c}')">${icon} ${c}</button>`;
+  }).join("") +
+  `<div class="age-filters">
+    ${[["todos","👥"],["pediatrico","👶"],["adulto","🧑"]].map(([v,l])=>
+      `<button class="age-btn${currentEdad===v?' active':''}" onclick="selectEdad('${v}')">${l}</button>`
+    ).join("")}
+  </div>`;
+}
+
+function selectCat(c) {
+  currentCat = c; selectedId = null; buildFilters(); renderList(); showEmptyDetail();
+}
+function selectEdad(v) {
+  currentEdad = v; buildFilters(); renderList();
+}
+
+// ══════════════════════════════════════════════════════════════
+// FILTER + RENDER LIST
+// ══════════════════════════════════════════════════════════════
+function getFiltered() {
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  return DB.filter(m => {
+    const okC = currentCat === "Todos" || m.cat === currentCat;
+    const okQ = !q ||
+      m.nombre.toLowerCase().includes(q) ||
+      m.composicion.toLowerCase().includes(q) ||
+      m.indicacion.toLowerCase().includes(q) ||
+      (m.tags||[]).some(t=>t.toLowerCase().includes(q)) ||
+      (m.marcasPresent||[]).some(x=>
+        x.m.toLowerCase().includes(q)||x.p.toLowerCase().includes(q));
+    const okE = currentEdad==="todos" || currentEdad==="adulto" ||
+      (currentEdad==="pediatrico" && !m.soloAdultos);
+    return okC && okQ && okE;
+  });
+}
+
+function renderList() {
+  const list = getFiltered();
+  document.getElementById("result-count").textContent =
+    `${list.length} resultado${list.length!==1?"s":""}`;
+
+  const el = document.getElementById("med-list");
+  if (!list.length) {
+    el.innerHTML = `<div class="no-results"><div class="no-results-icon">🔍</div><p style="font-size:10px;margin-top:6px;">Sin resultados</p></div>`;
+    return;
+  }
+  el.innerHTML = list.map(m => {
+    const ac = CAT_COLORS[m.cat] || "#3b82f6";
+    const active = m.id === selectedId;
+    const ageCls = m.edadMin===0 ? "#34d399" : m.edadMin>=18 ? "#f87171" : "#93c5fd";
+    const ageBg  = m.edadMin===0 ? "rgba(16,185,129,0.12)" : m.edadMin>=18 ? "rgba(239,68,68,0.12)" : "rgba(59,130,246,0.12)";
+    const ageText = m.edadMin===0 ? "✅ RN" : m.edadMin>=18 ? "🔒 Solo adultos" : `✅ ${m.edadLabel}`;
+    return `<div class="med-card${active?' active':''}"
+      style="--ac:${ac}${active?';border-color:'+ac+'80;background:'+ac+'14':''}"
+      onclick="selectMed(${m.id})">
+      <div class="mn">${m.nombre}</div>
+      <div class="mc" style="color:${ac}">${CAT_ICONS[m.cat]||""} ${m.cat}</div>
+      <div class="mm">${(m.marcasPresent||[]).slice(0,2).map(x=>x.m).join(" · ")}</div>
+      <span class="edad-badge" style="background:${ageBg};color:${ageCls}">${ageText}</span>
+    </div>`;
+  }).join("");
+}
+
+// ══════════════════════════════════════════════════════════════
+// SHOW DETAIL
+// ══════════════════════════════════════════════════════════════
+function selectMed(id) {
+  selectedId = id;
+  const m = DB.find(x=>x.id===id);
+  if (!m) return;
+  renderList(); // re-render list to update active state
+  const ac = CAT_COLORS[m.cat] || "#3b82f6";
+  const ageCls = m.edadMin===0?"#34d399":m.edadMin>=18?"#f87171":"#93c5fd";
+  const ageBg  = m.edadMin===0?"rgba(16,185,129,.15)":m.edadMin>=18?"rgba(239,68,68,.15)":"rgba(59,130,246,.15)";
+  const ageText = m.edadMin===0?"✅ Desde Recién Nacido":m.edadMin>=18?"⚠️ "+m.edadLabel:"✅ "+m.edadLabel;
+
+  const marcasHTML = (m.marcasPresent||[]).map(mp=>
+    `<div class="marca-row">
+      <span class="marca-name" style="color:${ac}">${mp.m}</span>
+      <span class="marca-pres">${mp.p.replace(/\n/g,'<br>')}</span>
+    </div>`
+  ).join("");
+
+  const calcHTML = m.calcPeso ? `
+    <div class="calc-section">
+      <div class="calc-title">⚖️ Calculadora por peso</div>
+      <div class="calc-row">
+        <input id="peso-input" type="number" placeholder="kg" min="0.5" max="200" oninput="calcDosis(${m.id})"/>
+        <span class="calc-label">kg del paciente</span>
+      </div>
+      <div class="calc-result" id="calc-result">
+        <div class="calc-result-label">Dosis calculada</div>
+        <div class="calc-result-value" id="calc-result-value"></div>
+      </div>
+    </div>` : "";
+
+  document.getElementById("empty-detail").style.display = "none";
+  document.getElementById("drug-detail").style.display = "block";
+  document.getElementById("drug-detail").innerHTML = `
+    <div class="detail-box" style="border-color:${ac}30">
+      <div class="detail-head" style="background:${ac}12;border-bottom:1px solid ${ac}20">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div style="flex:1">
+            <div class="detail-name">${m.nombre}</div>
+            <div class="detail-comp" style="color:${ac}">${m.composicion}</div>
+          </div>
+          <button onclick="showEmptyDetail()" style="background:rgba(255,255,255,.07);border:none;border-radius:7px;color:#64748b;cursor:pointer;padding:3px 8px;font-size:14px;margin-left:8px;">✕</button>
+        </div>
+        <div class="head-badges">
+          <span class="hbadge" style="background:rgba(255,255,255,.07);color:#94a3b8">📍 ${m.via}</span>
+          <span class="hbadge" style="background:${ageBg};color:${ageCls};font-weight:700">${ageText}</span>
+          <span class="hbadge" style="background:${ac}15;color:${ac}">${CAT_ICONS[m.cat]||""} ${m.cat}</span>
+        </div>
+      </div>
+      <div class="marcas-section">
+        <div class="section-title">🏷️ Marcas comerciales y presentaciones</div>
+        ${marcasHTML}
+      </div>
+      <div class="info-grid">
+        <div class="info-box full" style="background:${ac}07;border:1px solid ${ac}18">
+          <div class="info-box-title" style="color:#3b82f6">🎯 INDICACIÓN</div>
+          <div class="info-box-text">${m.indicacion}</div>
+        </div>
+        <div class="info-box full" style="background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.18)">
+          <div class="info-box-title" style="color:#10b981">💉 DOSIS</div>
+          <div class="info-box-text">${m.dosis}</div>
+        </div>
+        <div class="info-box" style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18)">
+          <div class="info-box-title" style="color:#ef4444">🚫 CONTRAINDICACIONES</div>
+          <div class="info-box-text">${m.contraindicacion}</div>
+        </div>
+        <div class="info-box" style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.18)">
+          <div class="info-box-title" style="color:#f59e0b">⚠️ EFECTOS ADVERSOS</div>
+          <div class="info-box-text">${m.adversos}</div>
+        </div>
+      </div>
+      ${calcHTML}
+      <div class="disclaimer">⚕️ Información orientativa. Verificar con prospecto oficial y criterio médico.</div>
+    </div>`;
+}
+
+function showEmptyDetail() {
+  selectedId = null;
+  document.getElementById("empty-detail").style.display = "flex";
+  document.getElementById("drug-detail").style.display = "none";
+  renderList();
+}
+
+// ══════════════════════════════════════════════════════════════
+// CALCULADORA
+// ══════════════════════════════════════════════════════════════
+function calcDosis(id) {
+  const m = DB.find(x=>x.id===id);
+  const kg = parseFloat(document.getElementById("peso-input").value);
+  const resEl = document.getElementById("calc-result");
+  const valEl = document.getElementById("calc-result-value");
+  if (!m||!kg||isNaN(kg)||kg<=0){resEl.style.display="none";return;}
+
+  // Oseltamivir por rangos
+  if (m.id === 38) {
+    const rangos=[{max:15,d:"30 mg c/12h"},{min:15,max:23,d:"45 mg c/12h"},
+      {min:23,max:40,d:"60 mg c/12h"},{min:40,d:"75 mg c/12h"}];
+    const r = rangos.find(x=>((x.min==null||kg>=x.min)&&(x.max==null||kg<x.max)));
+    valEl.textContent = r ? r.d+" × 5 días" : "Ver prospecto";
+    resEl.style.display="block"; return;
+  }
+
+  let tot = m.calcF * kg;
+  if (m.calcMax && tot > m.calcMax) tot = m.calcMax;
+  let txt = `${tot.toFixed(1)} ${m.calcU}`;
+  if (m.calcDiv && m.calcDiv > 1) txt += ` → ${(tot/m.calcDiv).toFixed(1)} mg/dosis`;
+
+  // Intento ml
+  const match = (m.composicion||"").match(/(\d+(?:[,.]?\d+)?)\s*mg\/(\d+(?:[,.]?\d+)?)\s*ml/i);
+  if (match) {
+    const mgml = parseFloat(match[1])/parseFloat(match[2]);
+    const dv = m.calcDiv&&m.calcDiv>1 ? tot/m.calcDiv : tot;
+    if (!isNaN(dv/mgml)) txt += ` = ${(dv/mgml).toFixed(1)} ml/dosis`;
+  }
+  valEl.textContent = txt;
+  resEl.style.display = "block";
+}
+
+// ══════════════════════════════════════════════════════════════
+// TABS
+// ══════════════════════════════════════════════════════════════
+function showTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll(".tab").forEach((t,i)=>{
+    t.classList.toggle("active", (i===0&&tab==="lista")||(i===1&&tab==="chat"));
+  });
+  const body = document.getElementById("body");
+  const chatPanel = document.getElementById("chat-panel");
+  const listPanel = document.getElementById("list-panel");
+  const detailPanel = document.getElementById("detail-panel");
+  const searchArea = document.getElementById("search-area");
+
+  if (tab === "lista") {
+    listPanel.style.display = "";
+    detailPanel.style.display = "";
+    chatPanel.style.display = "none";
+    searchArea.style.display = "";
+    body.style.flexDirection = "";
+  } else {
+    listPanel.style.display = "none";
+    detailPanel.style.display = "none";
+    chatPanel.style.display = "flex";
+    searchArea.style.display = "none";
+    body.style.flexDirection = "column";
+    chatPanel.style.width = "100%";
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// CHAT IA — usa Anthropic API con contexto de la DB
+// ══════════════════════════════════════════════════════════════
+function askSuggestion(btn) {
+  const txt = btn.textContent.replace("💬 ","").trim();
+  document.getElementById("chat-input").value = txt;
+  sendChat();
+}
+
+function addBubble(rol, txt) {
+  const welcome = document.getElementById("chat-welcome");
+  if (welcome) welcome.style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+  const div = document.createElement("div");
+  div.className = `chat-bubble ${rol}`;
+  div.style.alignSelf = rol==="user"?"flex-end":"flex-start";
+  div.textContent = txt;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+async function sendChat() {
+  const inp = document.getElementById("chat-input");
+  const q = inp.value.trim();
+  if (!q || chatLoading) return;
+  inp.value = "";
+  addBubble("user", q);
+  chatHistory.push({role:"user", content:q});
+
+  chatLoading = true;
+  document.getElementById("chat-send").disabled = true;
+
+  const loadDiv = document.createElement("div");
+  loadDiv.className = "chat-loading";
+  loadDiv.textContent = "⏳ Consultando base de datos...";
+  document.getElementById("chat-messages").appendChild(loadDiv);
+  document.getElementById("chat-messages").scrollTop = 9999;
+
+  const dbCtx = DB.map(m =>
+    `[${m.id}] ${m.nombre} | ${m.cat} | Edad:${m.edadLabel} | Marcas:${(m.marcasPresent||[]).map(x=>x.m).join(",")} | Indicación:${m.indicacion} | Dosis:${m.dosis}`
+  ).join("\n");
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:1000,
+        system:`Eres un asistente farmacológico clínico experto en medicamentos respiratorios pediátricos y adultos. Tienes acceso a esta base de datos:\n\n${dbCtx}\n\nIMPORTANTE:\n- Cuando te pregunten por edad (ej. "menor de 2 años", "bebé", "lactante", "recién nacido"), filtra y lista SOLO los medicamentos apropiados para esa edad.\n- Para cada medicamento relevante muestra: nombre, marcas principales, edad mínima, dosis resumida.\n- Sé conciso, usa listas con •\n- Si preguntan por una categoría (ej. "spray nasal"), lista los de esa categoría filtrando por edad si se indica.\n- Siempre termina aclarando que es información de referencia y debe verificarse con el médico.\n- Responde siempre en español.`,
+        messages: chatHistory.slice(-10)
+      })
+    });
+    const data = await res.json();
+    const reply = (data.content||[]).map(x=>x.text||"").join("") || "Sin respuesta del servidor.";
+    chatHistory.push({role:"assistant", content:reply});
+    loadDiv.remove();
+    addBubble("ai", reply);
+  } catch(e) {
+    loadDiv.remove();
+    addBubble("ai", "❌ Error de conexión. Verifica tu internet e intenta de nuevo.");
+    chatHistory.pop();
+  }
+  chatLoading = false;
+  document.getElementById("chat-send").disabled = false;
+}
+
+// Enter en chat
+document.getElementById("chat-input").addEventListener("keydown", e=>{
+  if (e.key==="Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); }
+});
+
+// ══════════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════════
+buildFilters();
+renderList();
+</script>
+</body>
+</html>
