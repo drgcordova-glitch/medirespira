@@ -9,35 +9,58 @@
 body{font-family:'Segoe UI',sans-serif;background:#080e1c;color:#e2e8f0;min-height:100vh;}
 input,button{font-family:inherit;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#0f172a;}::-webkit-scrollbar-thumb{background:#1e3a5f;border-radius:4px;}
+ 
+/* HEADER */
 #hdr{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(148,163,184,0.1);padding:10px 14px;position:sticky;top:0;z-index:60;backdrop-filter:blur(20px);}
 .htop{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
 .logo{background:linear-gradient(135deg,#2563eb,#0891b2);border-radius:11px;padding:7px 10px;font-size:17px;line-height:1;}
 .ht h1{font-size:15px;font-weight:800;color:#f1f5f9;}.ht p{font-size:9px;color:#475569;}
-.bref{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:7px;padding:2px 8px;font-size:9px;color:#fca5a5;}
-.tabs{display:flex;gap:3px;background:rgba(255,255,255,0.06);border-radius:9px;padding:3px;margin-left:auto;}
-.tab{padding:4px 11px;border-radius:7px;border:none;cursor:pointer;font-size:11px;font-weight:700;background:transparent;color:#64748b;transition:all .15s;}
-.tab.on{background:#2563eb;color:#fff;}
-#srch{width:100%;padding:8px 12px;border-radius:9px;border:1px solid rgba(148,163,184,0.14);background:rgba(255,255,255,0.05);color:#f1f5f9;font-size:12px;outline:none;}
+.bref{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:7px;padding:2px 8px;font-size:9px;color:#fca5a5;white-space:nowrap;}
+ 
+/* MAIN TABS */
+.main-tabs{display:flex;gap:3px;background:rgba(255,255,255,0.06);border-radius:10px;padding:3px;margin-left:auto;}
+.main-tab{padding:5px 12px;border-radius:8px;border:none;cursor:pointer;font-size:11px;font-weight:700;background:transparent;color:#64748b;transition:all .15s;white-space:nowrap;}
+.main-tab.on{color:#fff;}
+.main-tab.t-ninos.on{background:#10b981;}
+.main-tab.t-adultos.on{background:#3b82f6;}
+.main-tab.t-jarabes.on{background:#06b6d4;}
+.main-tab.t-ia.on{background:#8b5cf6;}
+ 
+/* SEARCH */
+#srch{width:100%;padding:8px 12px;border-radius:9px;border:1px solid rgba(148,163,184,0.14);background:rgba(255,255,255,0.05);color:#f1f5f9;font-size:12px;outline:none;margin-bottom:7px;}
 #srch::placeholder{color:#475569;}
-.frow{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;align-items:center;}
+ 
+/* CATEGORY FILTERS */
+.frow{display:flex;gap:4px;flex-wrap:wrap;align-items:center;}
 .cb{padding:3px 9px;border-radius:14px;border:none;cursor:pointer;font-size:9px;font-weight:700;white-space:nowrap;background:rgba(255,255,255,0.06);color:#94a3b8;transition:all .15s;}
-.agf{margin-left:auto;display:flex;gap:3px;}
-.ab{padding:3px 8px;border-radius:10px;border:1px solid transparent;cursor:pointer;font-size:9px;font-weight:700;background:rgba(255,255,255,0.04);color:#64748b;}
-.ab.on{background:rgba(16,185,129,0.18);border-color:rgba(16,185,129,0.4);color:#34d399;}
+ 
+/* PESO CALCULATOR - top bar for niños */
+#peso-bar{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:8px 12px;margin-bottom:7px;display:none;align-items:center;gap:10px;flex-wrap:wrap;}
+#peso-bar label{font-size:11px;color:#34d399;font-weight:700;}
+#peso-global{width:80px;padding:6px 10px;border-radius:7px;border:1px solid rgba(16,185,129,0.3);background:rgba(0,0,0,0.3);color:#fbbf24;font-size:16px;font-weight:800;outline:none;text-align:center;}
+#peso-display{font-size:11px;color:#64748b;}
+ 
+/* BODY */
 #body{max-width:1060px;margin:0 auto;padding:10px 10px 28px;display:flex;gap:10px;flex-wrap:wrap;}
-#lp{flex:0 0 246px;max-width:246px;}
+ 
+/* LIST */
+#lp{flex:0 0 250px;max-width:250px;}
 .rc{font-size:9px;color:#334155;margin-bottom:5px;}
-#ml{display:flex;flex-direction:column;gap:4px;max-height:calc(100vh - 158px);overflow-y:auto;padding-right:2px;}
+#ml{display:flex;flex-direction:column;gap:4px;max-height:calc(100vh - 180px);overflow-y:auto;padding-right:2px;}
 .mc{padding:8px 10px;border-radius:8px;cursor:pointer;background:rgba(255,255,255,0.025);border:1px solid rgba(148,163,184,0.06);transition:all .14s;}
 .mc:hover{background:rgba(255,255,255,0.05);}
 .mn{font-size:11px;font-weight:700;color:#f1f5f9;line-height:1.25;}
 .mcat{font-size:9px;font-weight:600;margin-top:1px;}
 .mm{font-size:9px;color:#475569;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .eb{font-size:8px;padding:1px 6px;border-radius:7px;font-weight:700;margin-top:3px;display:inline-block;}
-#dp{flex:1 1 370px;min-width:300px;max-height:calc(100vh - 158px);overflow-y:auto;}
+ 
+/* DETAIL */
+#dp{flex:1 1 370px;min-width:300px;max-height:calc(100vh - 180px);overflow-y:auto;}
 .dbox{border-radius:13px;overflow:hidden;background:rgba(6,10,22,0.97);}
-.dh{padding:12px 14px;}.dn{font-size:14px;font-weight:800;color:#f8fafc;line-height:1.3;}
-.dc{font-size:10px;margin-top:3px;line-height:1.5;}.hbs{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;}
+.dh{padding:12px 14px;}
+.dn{font-size:14px;font-weight:800;color:#f8fafc;line-height:1.3;}
+.dc{font-size:10px;margin-top:3px;line-height:1.5;}
+.hbs{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;}
 .hb{font-size:8px;padding:2px 7px;border-radius:7px;}
 .ms{padding:9px 13px;border-top:1px solid rgba(148,163,184,0.07);border-bottom:1px solid rgba(148,163,184,0.07);}
 .st{font-size:9px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;}
@@ -48,15 +71,18 @@ input,button{font-family:inherit;}
 .ib{border-radius:8px;padding:8px 10px;}.ib.full{grid-column:span 2;}
 .it{font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
 .iv{font-size:10px;color:#cbd5e1;line-height:1.65;}
-.cs{margin:0 13px 11px;border-radius:9px;padding:9px 11px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.18);}
-.ct{font-size:9px;font-weight:800;color:#f59e0b;text-transform:uppercase;margin-bottom:6px;}
-.pi{width:70px;padding:7px 9px;border-radius:7px;border:1px solid rgba(245,158,11,.3);background:rgba(0,0,0,.3);color:#fbbf24;font-size:16px;font-weight:800;outline:none;text-align:center;}
-.cr{margin-top:6px;background:rgba(245,158,11,.1);border-radius:7px;padding:7px 10px;border:1px solid rgba(245,158,11,.22);display:none;}
-.crl{font-size:8px;color:#94a3b8;text-transform:uppercase;margin-bottom:2px;}
-.crv{font-size:14px;font-weight:800;color:#fbbf24;}
-.disc{margin:0 13px 12px;background:rgba(239,68,68,.05);border-radius:7px;padding:6px 10px;border:1px solid rgba(239,68,68,.1);font-size:8px;color:#7f1d1d;line-height:1.5;}
+ 
+/* DOSIS CALCULADA - resaltada */
+.dosis-calc{margin:0 13px 0;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:9px;padding:10px 13px;display:none;}
+.dosis-calc-titulo{font-size:9px;font-weight:800;color:#10b981;text-transform:uppercase;margin-bottom:6px;}
+.dosis-calc-valor{font-size:15px;font-weight:800;color:#34d399;}
+.dosis-calc-sub{font-size:9px;color:#64748b;margin-top:3px;}
+ 
+.disc{margin:8px 13px 12px;background:rgba(239,68,68,.05);border-radius:7px;padding:6px 10px;border:1px solid rgba(239,68,68,.1);font-size:8px;color:#7f1d1d;line-height:1.5;}
 .est{display:flex;align-items:center;justify-content:center;min-height:260px;}
-#cp{max-width:720px;margin:0 auto;display:flex;flex-direction:column;height:calc(100vh - 128px);width:100%;}
+ 
+/* CHAT */
+#cp{max-width:720px;margin:0 auto;display:flex;flex-direction:column;height:calc(100vh - 150px);width:100%;}
 #cms{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:9px;padding:6px 4px;}
 .cb2{max-width:88%;padding:10px 13px;border-radius:12px;font-size:12px;line-height:1.75;white-space:pre-wrap;}
 .cb2.u{align-self:flex-end;background:#1d4ed8;color:#eff6ff;border-bottom-right-radius:2px;}
@@ -64,470 +90,488 @@ input,button{font-family:inherit;}
 .cld{align-self:flex-start;background:rgba(255,255,255,.05);border-radius:12px;padding:10px 14px;font-size:12px;color:#64748b;}
 .cex{text-align:center;padding:20px 10px;}
 .cet{font-size:13px;color:#475569;margin-bottom:10px;}
-.cs2{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.12);border-radius:8px;padding:6px 13px;color:#94a3b8;font-size:11px;cursor:pointer;text-align:left;margin:3px auto;display:block;width:96%;max-width:540px;transition:all .15s;}
+.cs2{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.12);border-radius:8px;padding:6px 13px;color:#94a3b8;font-size:11px;cursor:pointer;text-align:left;margin:3px auto;display:block;width:96%;max-width:560px;transition:all .15s;}
 .cs2:hover{background:rgba(255,255,255,.08);color:#cbd5e1;}
 .cir{display:flex;gap:6px;padding:8px 0 0;}
 #ci{flex:1;padding:10px 13px;border-radius:10px;border:1px solid rgba(148,163,184,.15);background:rgba(255,255,255,.06);color:#f1f5f9;font-size:13px;outline:none;}
 #ci::placeholder{color:#475569;}
-#csnd{padding:10px 18px;border-radius:10px;border:none;cursor:pointer;font-size:16px;font-weight:700;background:#2563eb;color:#fff;}
+#csnd{padding:10px 18px;border-radius:10px;border:none;cursor:pointer;font-size:16px;font-weight:700;background:#8b5cf6;color:#fff;}
 #csnd:disabled{background:rgba(255,255,255,.05);color:#334155;cursor:not-allowed;}
 .nr{text-align:center;padding:28px 10px;color:#334155;}
-@media(max-width:620px){#lp{flex:0 0 100%;max-width:100%;max-height:260px;}#dp{flex:0 0 100%;}.mk{min-width:100px;}}
+ 
+@media(max-width:620px){
+  #lp{flex:0 0 100%;max-width:100%;max-height:260px;}
+  #dp{flex:0 0 100%;}
+  .mk{min-width:100px;}
+  .main-tab span{display:none;}
+}
 </style>
 </head>
 <body>
 <div id="hdr">
   <div class="htop">
     <div class="logo">🫁</div>
-    <div class="ht"><h1>MediRespira Ecuador</h1><p id="sub">Fybeca · Pharmacys · Mia · Económicas · IA Groq</p></div>
+    <div class="ht"><h1>MediRespira Ecuador</h1><p id="sub">Fybeca · Pharmacys · Mia · Económicas</p></div>
     <span class="bref">⚕️ Solo referencia</span>
-    <div class="tabs">
-      <button class="tab on" onclick="showTab('l')">📋 Buscador</button>
-      <button class="tab" onclick="showTab('c')">🤖 IA Clínica</button>
+    <div class="main-tabs">
+      <button class="main-tab t-ninos" onclick="setTab('ninos')">👶 <span>Niños</span></button>
+      <button class="main-tab t-adultos" onclick="setTab('adultos')">🧑 <span>Adultos</span></button>
+      <button class="main-tab t-jarabes" onclick="setTab('jarabes')">🧴 <span>Jarabes</span></button>
+      <button class="main-tab t-ia on" onclick="setTab('ia')">🤖 <span>IA Clínica</span></button>
     </div>
   </div>
-  <div id="sa">
-    <input id="srch" type="text" placeholder="🔍  Buscar: Abrilar, Fluritox, Neogripal, Tussolvina, Degraler, Ventolin, Seretide, Nasonex, Rinokid, Amoxil, Augmentine..." oninput="rl()"/>
+  <div id="sa" style="display:none">
+    <input id="srch" type="text" placeholder="🔍  Buscar por nombre, principio activo o marca (acetilcisteína, ambroxol, Fluimucil, Ventolin, Augmentine...)" oninput="rl()"/>
+    <div id="peso-bar">
+      <label>⚖️ Peso del niño:</label>
+      <input id="peso-global" type="number" placeholder="kg" min="1" max="100" oninput="updateAllDosis()"/>
+      <span id="peso-display"></span>
+    </div>
     <div class="frow" id="cf"></div>
   </div>
 </div>
+ 
 <div id="body">
-  <div id="lp"><div class="rc" id="rc"></div><div id="ml"></div></div>
-  <div id="dp">
+  <!-- Lista -->
+  <div id="lp" style="display:none"><div class="rc" id="rc"></div><div id="ml"></div></div>
+  <!-- Detalle -->
+  <div id="dp" style="display:none">
     <div class="est" id="ed">
       <div style="text-align:center">
         <div style="font-size:46px;margin-bottom:8px">🫁</div>
         <div style="font-size:12px;color:#334155">Selecciona un medicamento</div>
-        <div style="font-size:10px;color:#1e293b;margin-top:3px">o usa 🤖 IA Clínica — pregunta lo que quieras</div>
       </div>
     </div>
     <div id="dd" style="display:none"></div>
   </div>
-  <div id="cp" style="display:none">
+  <!-- Chat IA -->
+  <div id="cp">
     <div id="cms">
       <div class="cex" id="cw">
         <div style="font-size:36px;margin-bottom:6px">🤖</div>
-        <div class="cet">Pregunta lo que quieras — Groq llama3-70b · Ecuador</div>
+        <div class="cet" style="font-weight:700;color:#8b5cf6">IA Clínica — Groq llama3-70b · Ecuador</div>
+        <div class="cet">Pregunta lo que quieras — medicamentos, dosis, marcas, edades</div>
         <button class="cs2" onclick="askS(this)">💬 ¿Qué spray nasal puedo dar a un bebé de 2 meses?</button>
-        <button class="cs2" onclick="askS(this)">💬 ¿Tussolvina o Abrilar para mi niño de 3 años con tos?</button>
+        <button class="cs2" onclick="askS(this)">💬 Jarabe para tos productiva en niño de 3 años, ¿Abrilar o Ambroxol?</button>
+        <button class="cs2" onclick="askS(this)">💬 Todas las marcas de acetilcisteína disponibles en Ecuador</button>
         <button class="cs2" onclick="askS(this)">💬 ¿Qué contiene Fluritox F y para qué edad sirve?</button>
-        <button class="cs2" onclick="askS(this)">💬 ¿Neogripal se puede dar a niños de 4 años?</button>
-        <button class="cs2" onclick="askS(this)">💬 ¿Puedo darle Trioval a mi hijo de 8 años?</button>
-        <button class="cs2" onclick="askS(this)">💬 Antibiótico para otitis en bebé de 4 meses, ¿Amoxil o Augmentine?</button>
-        <button class="cs2" onclick="askS(this)">💬 Dosis de salbutamol nebulizado para niño de 10 kg</button>
-        <button class="cs2" onclick="askS(this)">💬 ¿Qué diferencia hay entre Symbicort y Seretide?</button>
+        <button class="cs2" onclick="askS(this)">💬 Antibiótico para otitis en bebé de 4 meses — dosis para 6 kg</button>
         <button class="cs2" onclick="askS(this)">💬 ¿Budesonida+formoterol se puede dar a niño de 4 años?</button>
-        <button class="cs2" onclick="askS(this)">💬 Mucolítico para bebé de 1 mes en Fybeca</button>
-        <button class="cs2" onclick="askS(this)">💬 ¿Cuál antihistamínico no da sueño para niño de 2 años?</button>
+        <button class="cs2" onclick="askS(this)">💬 Diferencia entre Symbicort y Seretide</button>
+        <button class="cs2" onclick="askS(this)">💬 ¿Puedo darle Trioval a mi hijo de 8 años?</button>
+        <button class="cs2" onclick="askS(this)">💬 Dosis de salbutamol nebulizado para niño de 12 kg</button>
+        <button class="cs2" onclick="askS(this)">💬 Antihistamínico sin somnolencia para niño de 2 años</button>
         <button class="cs2" onclick="askS(this)">💬 ¿Tusigen necesita receta médica?</button>
+        <button class="cs2" onclick="askS(this)">💬 Medicamentos vía aérea superior para niños menores de 2 años</button>
       </div>
     </div>
     <div class="cir">
-      <input id="ci" type="text" placeholder="✍️ Escribe aquí tu pregunta... (Enter para enviar)"/>
+      <input id="ci" type="text" placeholder="✍️ Escribe tu pregunta clínica... (Enter para enviar)"/>
       <button id="csnd" onclick="sendC()">↑</button>
     </div>
   </div>
 </div>
+ 
 <script>
 const GK="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";
-const DB=[
  
-// ══ SPRAY NASAL ══════════════════════════════════════════════════
-{id:1,cat:"Spray Nasal",via:"🔴 Superior",n:"Solución salina isotónica NaCl 0.9%",eMin:0,eL:"Desde RN",
-comp:"Cloruro sodio 0.9% · Sin fármaco activo · Higiene nasal fisiológica",
-mp:[{m:"Rinokid® 0.9% monodosis 5ml",p:"desde RN · Fybeca/Pharmacys/Económicas ✅ más económico"},{m:"Rinokid® 0.9% Spray 25ml",p:"pediátrico · Fybeca/Pharmacys ✅"},{m:"Marimer® Bebé / Niños / Adulto",p:"agua de mar 0.9% · desde RN · Fybeca ✅"},{m:"Sterimar® Bebé / Niños / Adulto",p:"NaCl 0.9% · desde RN · Fybeca/Pharmacys ✅"},{m:"Physiomer® Bebé / Niños / Adulto",p:"NaCl 0.9% · desde 1 mes · Fybeca ✅"},{m:"Suero fisiológico monodosis EFG",p:"NaCl 0.9% · ampolletas 5ml · todas las farmacias ✅ más económico"}],
-ind:"Higiene nasal · Congestión · Lavado pre-medicación · Sin efecto rebote · Sin dependencia · Sin límite de uso",
-dos:"RN-3m: 2-3 gotas/fosa c/6-8h · 3m-2a: 1-2 puls suave c/6-8h · >2a y adulto: 1-2 puls c/4-8h",
+// ══ BASE DE DATOS ══════════════════════════════════════════════════
+const DB=[
+// ── SPRAY NASAL ───────────────────────────────────────────────────
+{id:1,cat:"Spray Nasal",tipo:"jarabes_no",via:"Superior",n:"Solución salina isotónica NaCl 0.9%",eMin:0,eL:"Desde RN",
+comp:"NaCl 0.9% · Sin fármaco activo · Higiene nasal fisiológica",
+mp:[{m:"Rinokid® 0.9% monodosis 5ml",p:"desde RN · Fybeca/Pharmacys/Económicas ✅"},{m:"Rinokid® 0.9% Spray 25ml",p:"pediátrico · Fybeca ✅"},{m:"Marimer® Bebé/Niños/Adulto",p:"agua de mar 0.9% · desde RN · Fybeca ✅"},{m:"Sterimar® Bebé/Niños/Adulto",p:"NaCl 0.9% · desde RN · Fybeca/Pharmacys ✅"},{m:"Physiomer® Bebé/Niños/Adulto",p:"desde 1 mes · Fybeca ✅"},{m:"Suero fisiológico monodosis EFG",p:"NaCl 0.9% · todas las farmacias ✅ más económico"}],
+ind:"Higiene nasal · Congestión · Lavado pre-medicación · Sin efecto rebote",
+dosNino:"RN-3m: 2-3 gotas/fosa c/6-8h · 3m-2a: 1-2 puls suave c/6-8h · 2a+: 1-2 puls c/6-8h",
+dosAdulto:"1-2 pulsaciones/fosa c/4-8h · Sin límite de uso",
 ci:"Sin contraindicaciones",adv:"Prácticamente ninguno"},
  
-{id:2,cat:"Spray Nasal",via:"🔴 Superior",n:"Solución salina hipertónica NaCl 2-3%",eMin:0,eL:"Desde RN (monodosis)",
-comp:"NaCl 2-3% · Efecto descongestivo osmótico · Fluidifica moco espeso",
-mp:[{m:"Rinokid® 3% Monodosis 5ml",p:"desde lactantes · Fybeca/Pharmacys/Económicas ✅"},{m:"Rinokid® 3% Spray 25ml",p:"pediátrico · Fybeca/Pharmacys Ecuador ✅"},{m:"Nebial® 3% monodosis/spray",p:"desde RN · Pharmacys ✅"},{m:"Sterimar® Hipertónico",p:"NaCl 2.3% · >3a · Fybeca ✅"},{m:"Marimer® Hipertónico",p:">6a · Fybeca ✅"}],
+{id:2,cat:"Spray Nasal",tipo:"jarabes_no",via:"Superior",n:"Solución salina hipertónica NaCl 2-3%",eMin:0,eL:"Desde RN monodosis",
+comp:"NaCl 2-3% · Efecto descongestivo osmótico",
+mp:[{m:"Rinokid® 3% Monodosis 5ml",p:"desde lactantes · Fybeca/Pharmacys/Económicas ✅"},{m:"Rinokid® 3% Spray 25ml",p:"pediátrico · Fybeca ✅"},{m:"Nebial® 3% monodosis/spray",p:"desde RN · Pharmacys ✅"},{m:"Sterimar® Hipertónico",p:"NaCl 2.3% · >3a · Fybeca ✅"},{m:"Marimer® Hipertónico",p:">6a · Fybeca ✅"}],
 ind:"Congestión moderada-intensa · Rinitis · Sinusitis · Fluidifica moco",
-dos:"Monodosis desde RN: 3-5 gotas/fosa c/6-8h · Spray >3m: 1-2 puls c/6-8h",
-ci:"Spray fuerte no en <3m · Epistaxis activa",adv:"Leve escozor · Sin dependencia"},
+dosNino:"Monodosis desde RN: 3-5 gotas/fosa c/6-8h · Spray >3m: 1-2 puls c/6-8h",
+dosAdulto:"1-2 pulsaciones/fosa c/6-8h",
+ci:"Spray a presión fuerte no en <3m",adv:"Leve escozor · Sin dependencia"},
  
-{id:3,cat:"Spray Nasal",via:"🔴 Superior",n:"Mometasona furoato (Nasonex) ≥2 años",eMin:2,eL:"≥ 2 años",
+{id:3,cat:"Spray Nasal",tipo:"jarabes_no",via:"Superior",n:"Mometasona furoato nasal (Nasonex) ≥2a",eMin:2,eL:"≥ 2 años",
 comp:"Mometasona furoato 50mcg/pulsación · Corticoide intranasal",
-mp:[{m:"Nasonex® 50mcg · 140 dosis",p:"Fybeca/Pharmacys · receta ✅"},{m:"Mometasona genérico",p:"Económicas/Mia ✅"}],
-ind:"Rinitis alérgica estacional y perenne · Desde 2 años (FDA)",
-dos:"2-11a: 1 puls/fosa/día · ≥12a: 2 puls/fosa/día",
-ci:"<2 años · Cirugía nasal reciente",adv:"Epistaxis · Cefalea · Faringitis"},
+mp:[{m:"Nasonex® 50mcg · 140d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Mometasona genérico",p:"Económicas/Mia ✅"}],
+ind:"Rinitis alérgica estacional y perenne",
+dosNino:"2-11a: 1 puls/fosa/día",dosAdulto:"≥12a: 2 puls/fosa/día",
+ci:"<2 años",adv:"Epistaxis · Cefalea · Faringitis"},
  
-{id:4,cat:"Spray Nasal",via:"🔴 Superior",n:"Fluticasona nasal (Flixonase/Avamys) ≥4 años",eMin:4,eL:"≥ 4 años",
-comp:"Fluticasona propionato 50mcg/puls · Fluticasona furoato (Avamys) 27.5mcg/puls · Corticoide intranasal",
-mp:[{m:"Flixonase® 50mcg · 150 dosis",p:"Fybeca/Pharmacys · receta ✅"},{m:"Avamys® furoato 27.5mcg · 120 dosis",p:"Fybeca · receta ✅"},{m:"Fluticasona genérico nasal",p:"Económicas ✅"}],
+{id:4,cat:"Spray Nasal",tipo:"jarabes_no",via:"Superior",n:"Fluticasona nasal (Flixonase/Avamys) ≥4a",eMin:4,eL:"≥ 4 años",
+comp:"Fluticasona propionato 50mcg/puls · Avamys furoato 27.5mcg/puls · Corticoide intranasal",
+mp:[{m:"Flixonase® 50mcg · 150d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Avamys® furoato 27.5mcg · 120d",p:"Fybeca · receta ✅"}],
 ind:"Rinitis alérgica · Poliposis nasal",
-dos:"4-11a: 1 puls/fosa/día · ≥12a: 2 puls/fosa/día",
-ci:"<4 años · Infección nasal activa",adv:"Epistaxis · Sequedad nasal · Cefalea"},
+dosNino:"4-11a: 1 puls/fosa/día",dosAdulto:"≥12a: 2 puls/fosa/día",
+ci:"<4 años",adv:"Epistaxis · Sequedad nasal"},
  
-{id:5,cat:"Spray Nasal",via:"🔴 Superior",n:"Budesonida spray nasal (Rhinocort) ≥6 años",eMin:6,eL:"≥6a spray / Neb desde 6m",
+{id:5,cat:"Spray Nasal",tipo:"jarabes_no",via:"Superior",n:"Budesonida spray nasal (Rhinocort) ≥6a",eMin:6,eL:"≥ 6 años spray",
 comp:"Budesonida 64mcg/pulsación · Corticoide intranasal",
-mp:[{m:"Rhinocort® 64mcg · 200 dosis",p:"Fybeca/Pharmacys · receta ✅"}],
+mp:[{m:"Rhinocort® 64mcg · 200d",p:"Fybeca/Pharmacys · receta ✅"}],
 ind:"Rinitis alérgica · Rinitis vasomotora",
-dos:"6-12a: 2 puls/fosa/día · Adulto: 2-4 puls/fosa/día",
-ci:"<6a spray (nebulización sí desde 6m) · TB activa",adv:"Sequedad nasal · Epistaxis"},
+dosNino:"6-12a: 2 puls/fosa/día",dosAdulto:"Adulto: 2-4 puls/fosa/día",
+ci:"<6a spray · TB activa",adv:"Sequedad nasal · Epistaxis"},
  
-{id:6,cat:"Spray Nasal",via:"🔴 Superior",n:"Aerotrop Spray Nasal (ipratropio) ≥6 años",eMin:6,eL:"≥ 6 años",
-comp:"Ipratropio bromuro 20mcg/puls · Anticolinérgico intranasal · Reduce rinorrea acuosa",
-mp:[{m:"Aerotrop® Spray Nasal",p:"Fybeca · receta ✅"}],
-ind:"Rinitis vasomotora · Rinorrea acuosa persistente",
-dos:"≥6a y adulto: 2 puls/fosa 3-4 veces/día",
-ci:"<6a · Hipersensibilidad atropina · Glaucoma",adv:"Sequedad nasal · Epistaxis · Cefalea"},
- 
-{id:7,cat:"Spray Nasal",via:"🔴 Superior",n:"Xilometazolina (Otrivine) ≥2 años — máx 7 días",eMin:2,eL:"≥ 2 años (0.05%)",
+{id:6,cat:"Spray Nasal",tipo:"jarabes_no",via:"Superior",n:"Xilometazolina (Otrivine) ≥2a — máx 7 días",eMin:2,eL:"≥ 2 años (0.05%)",
 comp:"Xilometazolina 0.05% pediátrico / 0.1% adulto · Descongestionante α-adrenérgico",
-mp:[{m:"Otrivine® / Otrivin® 0.05% pediátrico",p:"10ml · Fybeca/Pharmacys/Económicas ✅"},{m:"Otrivine® / Otrivin® 0.1% adulto",p:"10ml · Fybeca/Pharmacys ✅"},{m:"Xilometazolina genérico",p:"Económicas/Mia ✅"}],
-ind:"Congestión nasal aguda · Resfriado · Sinusitis · Máx 7 días",
-dos:"2-12a: 0.05% 1-2 puls c/8-10h · Adulto: 0.1% 1-3 puls c/8h",
-ci:"<2a absoluta · HTA · Glaucoma · MAOIs · No >7 días",adv:"Rinitis medicamentosa (rebote) · Taquicardia"},
+mp:[{m:"Otrivine®/Otrivin® 0.05% pediátrico 10ml",p:"Fybeca/Pharmacys/Económicas ✅"},{m:"Otrivine®/Otrivin® 0.1% adulto 10ml",p:"Fybeca/Pharmacys ✅"},{m:"Xilometazolina genérico",p:"Económicas/Mia ✅"}],
+ind:"Congestión nasal aguda · Resfriado · Máx 7 días",
+dosNino:"2-12a: 0.05% 1-2 puls/fosa c/8-10h",dosAdulto:"0.1% 1-3 puls/fosa c/8h",
+ci:"<2a · HTA · Glaucoma · No >7 días",adv:"Rinitis medicamentosa (rebote)"},
  
-// ══ PUFF / AEROSOLES ══════════════════════════════════════════════
-{id:8,cat:"Puff/Aerosol",via:"🔵 Inferior",n:"Salbutamol MDI (Ventolin) — broncodilatador rescate",eMin:2,eL:"≥2a · Aerocámara <6a",
+// ── PUFF / AEROSOLES ──────────────────────────────────────────────
+{id:7,cat:"Puff/Aerosol",tipo:"jarabes_no",via:"Inferior",n:"Salbutamol MDI (Ventolin) — rescate",eMin:2,eL:"≥2a · Aerocámara <6a",
 comp:"Salbutamol sulfato 100mcg/puff · SABA β2 acción corta",
-mp:[{m:"Ventolin® Inhalador 100mcg · 200 dosis",p:"Fybeca/Pharmacys ✅"},{m:"Ventolin® Accuhaler polvo seco",p:"Fybeca ✅"},{m:"Salbutamol genérico MDI",p:"Económicas/Mia ✅"}],
-ind:"Crisis asmática · Broncoespasmo · Prevención ejercicio · EPOC agudizado",
-dos:"Crisis: 2-4 puffs c/20min ×3 → c/4-6h · Ejercicio: 2 puffs 15min antes · <6a SIEMPRE aerocámara",
+mp:[{m:"Ventolin® Inhalador 100mcg · 200d",p:"Fybeca/Pharmacys ✅"},{m:"Ventolin® Accuhaler polvo seco",p:"Fybeca ✅"},{m:"Salbutamol genérico MDI",p:"Económicas/Mia ✅"}],
+ind:"Crisis asmática · Broncoespasmo · Prevención ejercicio · EPOC",
+dosNino:"Crisis: 2-4 puffs c/20min ×3 → c/4-6h · <6a SIEMPRE aerocámara",dosAdulto:"2-4 puffs c/20min ×3 → c/4-6h",
 ci:"Hipersensibilidad · Taquiarritmias",adv:"Taquicardia · Temblor · Hipopotasemia"},
  
-{id:9,cat:"Puff/Aerosol",via:"🔵 Inferior",n:"Budesonida+Formoterol (Symbicort/Neumocort Plus) ≥6a",eMin:6,eL:"⚠️ ≥ 6 años",
-comp:"Budesonida (ICS) + Formoterol (LABA β2 larga acción) · Combinación ICS+LABA",
-mp:[{m:"Symbicort® Turbuhaler 80/4.5mcg (polvo)",p:"60-120d · Fybeca/Pharmacys · receta ✅"},{m:"Symbicort® Turbuhaler 160/4.5mcg (polvo)",p:"60-120d · Fybeca/Pharmacys · receta ✅"},{m:"Symbicort® Turbuhaler 320/9mcg (polvo)",p:"60d · EPOC · Fybeca · receta ✅"},{m:"Neumocort Plus® MDI 160/4.5mcg (aerosol)",p:"150d · Fybeca/Pharmacys Ecuador ✅"},{m:"DuoResp / BiResp Spiromax® 160/4.5 · 320/9mcg",p:"Pharmacys ✅"},{m:"Budesonida/Formoterol genérico",p:"Económicas/Mia ✅"}],
-ind:"Asma persistente moderada-grave ≥6a · EPOC adultos · Enjuagar boca SIEMPRE",
-dos:"6-11a: 1-2 puffs 80/4.5mcg c/12h · ≥12a: 1-2 puffs 160/4.5mcg c/12h · EPOC: 320/9mcg c/12h",
-ci:"⚠️ <6a · Crisis aguda severa",adv:"Candidiasis oral (enjuagar boca) · Disfonía · Taquicardia"},
+{id:8,cat:"Puff/Aerosol",tipo:"jarabes_no",via:"Inferior",n:"Budesonida+Formoterol (Symbicort/Neumocort Plus) ≥6a",eMin:6,eL:"⚠️ ≥ 6 años",
+comp:"Budesonida (ICS) + Formoterol (LABA) · ICS+LABA",
+mp:[{m:"Symbicort® Turbuhaler 80/4.5mcg polvo · 60-120d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Symbicort® Turbuhaler 160/4.5mcg polvo · 60-120d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Symbicort® Turbuhaler 320/9mcg polvo · 60d",p:"EPOC · Fybeca · receta ✅"},{m:"Neumocort Plus® MDI 160/4.5mcg aerosol · 150d",p:"Fybeca/Pharmacys Ecuador ✅"},{m:"DuoResp/BiResp Spiromax® 160/4.5 · 320/9mcg",p:"Pharmacys ✅"},{m:"Budesonida/Formoterol genérico",p:"Económicas/Mia ✅"}],
+ind:"Asma persistente moderada-grave ≥6a · EPOC adultos",
+dosNino:"6-11a: 1-2 puffs 80/4.5mcg c/12h · Enjuagar boca",dosAdulto:"1-2 puffs 160/4.5mcg c/12h · EPOC: 320/9mcg c/12h",
+ci:"⚠️ <6 años",adv:"Candidiasis oral (enjuagar boca) · Disfonía"},
  
-{id:10,cat:"Puff/Aerosol",via:"🔵 Inferior",n:"Fluticasona+Salmeterol (Seretide) ≥4 años",eMin:4,eL:"≥ 4 años",
+{id:9,cat:"Puff/Aerosol",tipo:"jarabes_no",via:"Inferior",n:"Fluticasona+Salmeterol (Seretide) ≥4a",eMin:4,eL:"≥ 4 años",
 comp:"Fluticasona propionato (ICS) + Salmeterol (LABA) · ICS+LABA",
-mp:[{m:"Seretide® MDI 50/25mcg · 120d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Seretide® MDI 125/25mcg · 120d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Seretide® MDI 250/25mcg · 120d",p:"Fybeca · receta ✅"},{m:"Seretide® Accuhaler 100/50 · 250/50 · 500/50mcg",p:"polvo seco · Fybeca ✅"},{m:"Fluticasona/Salmeterol genérico",p:"Económicas ✅"}],
-ind:"Asma persistente moderada-grave · EPOC estable adultos",
-dos:"4-11a: 1 puff 50/25mcg c/12h · ≥12a: 1-2 puffs 125/25-250/25mcg c/12h",
-ci:"<4a · No como único rescate",adv:"Candidiasis oral · Ronquera · Enjuagar boca"},
+mp:[{m:"Seretide® MDI 50/25mcg · 120d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Seretide® MDI 125/25mcg · 120d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Seretide® MDI 250/25mcg · 120d",p:"Fybeca · receta ✅"},{m:"Seretide® Accuhaler 100/50 · 250/50 · 500/50mcg",p:"Fybeca ✅"},{m:"Fluticasona/Salmeterol genérico",p:"Económicas ✅"}],
+ind:"Asma persistente moderada-grave · EPOC estable",
+dosNino:"4-11a: 1 puff 50/25mcg c/12h",dosAdulto:"1-2 puffs 125/25-250/25mcg c/12h",
+ci:"<4a · No como único rescate",adv:"Candidiasis oral · Ronquera"},
  
-{id:11,cat:"Puff/Aerosol",via:"🔵 Inferior",n:"Flixotide ICS solo (fluticasona MDI/Accuhaler) ≥4a",eMin:4,eL:"≥ 4 años",
+{id:10,cat:"Puff/Aerosol",tipo:"jarabes_no",via:"Inferior",n:"Flixotide ICS solo (fluticasona) ≥4a",eMin:4,eL:"≥ 4 años",
 comp:"Fluticasona propionato 50/125/250mcg MDI · 100/250/500mcg Accuhaler · ICS solo",
 mp:[{m:"Flixotide® MDI 50/125/250mcg · 120d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Flixotide® Accuhaler 100/250/500mcg · 60d",p:"Fybeca · receta ✅"},{m:"Fluticasona genérico MDI",p:"Económicas ✅"}],
-ind:"Asma persistente leve-moderada-grave · Control inflamación",
-dos:"4-11a: 50-100mcg c/12h · Adulto: 100-500mcg c/12h",
-ci:"<4a",adv:"Candidiasis oral · Disfonía · Enjuagar boca"},
+ind:"Asma persistente leve-moderada-grave",
+dosNino:"4-11a: 50-100mcg c/12h",dosAdulto:"100-500mcg c/12h",
+ci:"<4a",adv:"Candidiasis oral · Disfonía"},
  
-{id:12,cat:"Puff/Aerosol",via:"🔵 Inferior",n:"Pulmicort ICS solo budesonida ≥6a MDI / Respules ≥6m",eMin:6,eL:"≥6a MDI · Respules ≥6m",
-comp:"Budesonida 100/200/400mcg · ICS solo · MDI ≥6a / Respules desde 6 meses",
-mp:[{m:"Pulmicort® Turbuhaler 100/200/400mcg",p:"polvo seco · Fybeca/Pharmacys · receta ✅"},{m:"Pulmicort® Respules 0.5mg/1mg · ampollas",p:"nebulización · Fybeca · receta ✅"},{m:"Budesonida genérico MDI",p:"Económicas ✅"}],
-ind:"Asma persistente · Respules: croup desde 6m · Asma aguda nebulizada",
-dos:"6-11a: 100-200mcg c/12h · Adulto: 200-400mcg c/12h · Croup Respules: 2mg dosis única",
-ci:"MDI <6a · TB activa",adv:"Candidiasis oral · Enjuagar boca"},
+{id:11,cat:"Puff/Aerosol",tipo:"jarabes_no",via:"Inferior",n:"Pulmicort ICS solo (budesonida) ≥6a MDI",eMin:6,eL:"≥6a MDI · Respules ≥6m",
+comp:"Budesonida 100/200/400mcg · ICS solo",
+mp:[{m:"Pulmicort® Turbuhaler 100/200/400mcg",p:"Fybeca/Pharmacys · receta ✅"},{m:"Pulmicort® Respules 0.5mg/1mg ampollas",p:"nebulización ≥6m · Fybeca ✅"},{m:"Budesonida genérico MDI",p:"Económicas ✅"}],
+ind:"Asma persistente · Respules: croup desde 6m",
+dosNino:"6-11a: 100-200mcg c/12h · Croup Respules: 2mg dosis única",dosAdulto:"200-400mcg c/12h",
+ci:"MDI <6a · TB activa",adv:"Candidiasis oral"},
  
-{id:13,cat:"Puff/Aerosol",via:"🔵 Inferior",n:"Aerotrop/Atrovent MDI (ipratropio) ≥6a",eMin:6,eL:"≥6a MDI · Neb desde RN",
-comp:"Ipratropio bromuro 20mcg/puff · SAMA · MDI ≥6a — nebulización desde RN en crisis",
-mp:[{m:"Aerotrop® Inhalador 250 dosis",p:"Fybeca · receta ✅"},{m:"Atrovent® MDI 20mcg · 200 puffs",p:"Pharmacys · receta ✅"},{m:"Ipratropio genérico MDI",p:"Económicas ✅"}],
-ind:"EPOC · Asma refractaria · MDI ≥6a · Nebulización desde RN en bronquiolitis",
-dos:"MDI ≥6a: 1-2 puffs c/6-8h · Adulto: 2-3 puffs c/6h",
-ci:"MDI <6a · Glaucoma · Retención urinaria",adv:"Sequedad bucal · Taquicardia"},
+{id:12,cat:"Puff/Aerosol",tipo:"jarabes_no",via:"Inferior",n:"Aerotrop/Atrovent MDI (ipratropio) ≥6a",eMin:6,eL:"≥6a MDI · Neb desde RN",
+comp:"Ipratropio bromuro 20mcg/puff · SAMA",
+mp:[{m:"Aerotrop® Inhalador 250d",p:"Fybeca · receta ✅"},{m:"Atrovent® MDI 200d",p:"Pharmacys · receta ✅"},{m:"Ipratropio genérico MDI",p:"Económicas ✅"}],
+ind:"EPOC · Asma refractaria · Nebulización desde RN en bronquiolitis",
+dosNino:"MDI ≥6a: 1-2 puffs c/6-8h · Neb: 250mcg c/20min ×3",dosAdulto:"2-3 puffs c/6h",
+ci:"MDI <6a · Glaucoma",adv:"Sequedad bucal · Taquicardia"},
  
-{id:14,cat:"Puff/Aerosol",via:"🔵 Inferior",n:"Relvar Ellipta (fluticasona furoato+vilanterol) 1×día ≥12a",eMin:12,eL:"≥ 12 años",
-comp:"Fluticasona furoato 92/184mcg + Vilanterol 22mcg · ICS+LABA ultra-larga · 1 vez/día",
-mp:[{m:"Relvar Ellipta® 92/22mcg · 30d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Relvar Ellipta® 184/22mcg · 30d",p:"Fybeca · receta ✅"}],
-ind:"Asma ≥12a · EPOC adultos · 1 inhalación/día",dos:"1 inh/día",
-ci:"<12a · Crisis aguda",adv:"Nasofaringitis · Cefalea · Candidiasis"},
- 
-{id:15,cat:"Puff/Aerosol",via:"🔵 Inferior",n:"Trelegy/Trimbow triple terapia — solo adultos EPOC",eMin:18,eL:"⚠️ Solo adultos ≥18a",
-comp:"ICS+LAMA+LABA · Trelegy Ellipta: FF/UMEC/VI · Trimbow: BDP/GLY/FOR · Solo ≥18a",
-mp:[{m:"Trelegy Ellipta® 92/55/22mcg · 30d",p:"Fybeca/Pharmacys · receta ✅"},{m:"Trimbow® MDI 87/9/5mcg · 120d",p:"Fybeca · receta ✅"}],
-ind:"EPOC moderado-muy grave · Triple terapia mantenimiento",dos:"1 inh/día Trelegy o 2 inh/día Trimbow",
-ci:"<18a · Crisis aguda · Glaucoma",adv:"Nasofaringitis · Candidiasis · Neumonía EPOC"},
- 
-// ══ NEBULIZACIONES ════════════════════════════════════════════════
-{id:16,cat:"Nebulización",via:"🔵 Inferior",n:"Salbutamol nebulización — desde RN",eMin:0,eL:"Desde RN",
+// ── NEBULIZACIONES ────────────────────────────────────────────────
+{id:13,cat:"Nebulización",tipo:"jarabes_no",via:"Inferior",n:"Salbutamol nebulización — desde RN",eMin:0,eL:"Desde RN",
 comp:"Salbutamol 2.5mg/2.5ml ampollas · SABA nebulizado",
 mp:[{m:"Ventolin® Nebules 2.5mg/2.5ml · caja 20",p:"Fybeca/Pharmacys · receta ✅"},{m:"Salbutamol Neb. genérico",p:"Económicas/Mia ✅"}],
-ind:"Crisis asmática · Broncoespasmo · Bronquiolitis · Sibilancias · EPOC · Desde RN",
-dos:"<20kg: 0.15mg/kg (mín 2.5mg) c/20min ×3 → c/4-6h · >20kg: 2.5-5mg c/20min ×3 · Diluir SF hasta 3ml",
-ci:"Sin contraindicación absoluta en emergencia",adv:"Taquicardia · Temblor · Hipopotasemia",
-cp:true,cf:0.15,cma:5,cu:"mg/dosis (mín 2.5mg)"},
+ind:"Crisis asmática · Bronquiolitis · Sibilancias · EPOC · Desde RN",
+dosNino:"<20kg: 0.15mg/kg (mín 2.5mg) c/20min ×3 · diluir SF hasta 3ml",dosAdulto:"2.5-5mg c/20min ×3",
+ci:"Sin contraindicación absoluta en emergencia",adv:"Taquicardia · Temblor",
+calcPeso:true,calcF:0.15,calcMin:2.5,calcMax:5,calcU:"mg/dosis"},
  
-{id:17,cat:"Nebulización",via:"🔵 Inferior",n:"Pulmicort Respules nebulización — desde 6m",eMin:0.5,eL:"≥ 6 meses",
+{id:14,cat:"Nebulización",tipo:"jarabes_no",via:"Inferior",n:"Pulmicort Respules nebulización ≥6m",eMin:0.5,eL:"≥ 6 meses",
 comp:"Budesonida 0.25/0.5/1 mg/ml · ICS nebulizado",
-mp:[{m:"Pulmicort® Respules 0.5mg/2ml · caja 20",p:"Fybeca/Pharmacys · receta ✅"},{m:"Pulmicort® Respules 1mg/2ml · caja 20",p:"Fybeca · receta ✅"},{m:"Budesonida Neb. genérico",p:"Económicas ✅"}],
-ind:"Croup ≥6m · Asma aguda · Bronquiolitis · EPOC",
-dos:"Croup: 2mg dosis única (repetir 30min si precisa) · <1a: 0.25-0.5mg c/12h · 1-12a: 0.5-1mg c/12h",
-ci:"<6m precaución · TB activa",adv:"Candidiasis oral (enjuagar)"},
+mp:[{m:"Pulmicort® Respules 0.5mg/2ml · caja 20",p:"Fybeca/Pharmacys · receta ✅"},{m:"Pulmicort® Respules 1mg/2ml",p:"Fybeca · receta ✅"}],
+ind:"Croup ≥6m · Asma aguda · Bronquiolitis",
+dosNino:"Croup: 2mg dosis única · <1a: 0.25-0.5mg c/12h · 1-12a: 0.5-1mg c/12h",dosAdulto:"1-2mg c/12h",
+ci:"<6m precaución · TB activa",adv:"Candidiasis oral"},
  
-{id:18,cat:"Nebulización",via:"🔵 Inferior",n:"Ipratropio nebulización — desde RN en crisis",eMin:0,eL:"Desde RN (hospitalario)",
-comp:"Ipratropio bromuro 250-500mcg · SAMA nebulizado",
-mp:[{m:"Atrovent® Neb 250mcg/ml · 500mcg/2ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Ipratropio Neb. genérico",p:"Económicas ✅"}],
-ind:"Crisis asmática severa (con salbutamol) · EPOC · Bronquiolitis grave",
-dos:"<12a: 250mcg c/20min ×3 · Adulto: 500mcg c/20min ×3",
-ci:"Hipersensibilidad atropina · Glaucoma",adv:"Sequedad bucal · Retención urinaria"},
+// ── MUCOLÍTICOS / ANTITUSIVOS (JARABES) ──────────────────────────
+{id:15,cat:"Mucolítico",tipo:"jarabe",via:"Oral",n:"Acetilcisteína NAC — Fluimucil",eMin:0,eL:"Desde RN",
+comp:"N-Acetilcisteína (NAC) · 100mg/5ml jarabe · 200mg sobres · 600mg efervescente · Mucolítico reductor disulfuro",
+mp:[{m:"Fluimucil® Jarabe 100mg/5ml",p:"frasco · Fybeca/Pharmacys ✅"},{m:"Fluimucil® Sobres 100mg/200mg",p:"caja 30 sobres · Fybeca ✅"},{m:"Fluimucil® Forte 600mg efervescente",p:"caja 20/30 comp · Fybeca/Pharmacys ✅"},{m:"Fluimucil® Ampolla 300mg",p:"nebulización/IV · Fybeca · receta ✅"},{m:"Mucofluid® Jarabe / Sobres",p:"Pharmacys/Mia ✅"},{m:"Hidonac® Jarabe / Sobres",p:"Fybeca/Pharmacys ✅"},{m:"Tussiflex® Jarabe pediátrico",p:"Fybeca ✅"},{m:"Acetilcisteína ECAR / genérico",p:"polvo jarabe 2% · Económicas ✅ más económico"},{m:"Acetilcisteína genérico 200mg sobres",p:"Económicas/Mia ✅"}],
+ind:"Bronquitis crónica · EPOC · Fibrosis quística · Secreciones muy espesas · Antioxidante",
+dosNino:"<2a: 100mg c/12h · 2-6a: 100mg c/8h · >6a: 200mg c/8h",dosAdulto:"200mg c/8h o 600mg/día (efervescente)",
+ci:"Asma activo (broncoespasmo) · Úlcera gastroduodenal",adv:"Broncoespasmo en asmáticos · Náuseas · Olor azufre",
+calcPeso:true,calcF:30,calcMax:600,calcU:"mg/día ÷3"},
  
-// ══ MUCOLÍTICOS / ANTITUSIVOS ═════════════════════════════════════
-{id:19,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"Abrilar jarabe (extracto hiedra Hedera helix) ≥2a",eMin:2,eL:"≥ 2 años",
-comp:"Extracto seco hojas hiedra 35mg pediátrico / 70mg adulto por 5ml · Mucolítico fitofarmacéutico · Sin azúcar",
-mp:[{m:"Abrilar® 35mg/5ml · 100ml pediátrico",p:"Fybeca/Pharmacys/Mia ✅ · sin azúcar · sin somnolencia"},{m:"Abrilar® 70mg/5ml · 100ml adulto",p:"Fybeca/Pharmacys ✅"},{m:"Prospan® (marca orig. internacional)",p:"35/70mg/5ml · Fybeca ✅"},{m:"Muxelix® 35mg/5ml · 120ml",p:"extracto hiedra · Fybeca ✅ (desde 1 año)"}],
-ind:"Tos productiva · Bronquitis aguda/crónica · Expectorante · No produce somnolencia · Sin azúcar",
-dos:"1-5a (Muxelix): 2.5ml c/8h | Abrilar 2-5a: 2.5ml c/8h · 6-11a: 5ml c/8h · ≥12a: 5-7.5ml c/8h",
-ci:"<2a Abrilar (<1a Muxelix) · Insuf. renal o hepática · No con dextrometorfano/codeína",adv:"Náuseas · Vómitos · Diarrea (raros)"},
- 
-{id:20,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"Ambroxol — Muxol / Mucosolvan · desde RN",eMin:0,eL:"Desde RN",
-comp:"Ambroxol HCl 7.5mg/5ml pediátrico · 15mg/5ml adulto · 30mg comp · Mucolítico secretolítico",
-mp:[{m:"Muxol® OTC Comp. 30mg · caja 20 · $4.20",p:"Fybeca · adultos ✅"},{m:"Muxol® Jarabe 15mg/5ml",p:"Fybeca/Pharmacys/Mia ✅"},{m:"Mucosolvan® 7.5mg/5ml pediátrico · 200ml",p:"Fybeca ✅"},{m:"Mucosolvan® 15mg/5ml adulto · 200ml",p:"Fybeca ✅"},{m:"Ambroxol genérico 7.5/15mg/5ml",p:"Económicas/Mia ✅ más económico"}],
+{id:16,cat:"Mucolítico",tipo:"jarabe",via:"Oral",n:"Ambroxol — Muxol / Mucosolvan",eMin:0,eL:"Desde RN",
+comp:"Ambroxol HCl · 7.5mg/5ml pediátrico · 15mg/5ml adulto · 30mg comp · Mucolítico secretolítico",
+mp:[{m:"Muxol® OTC Comp. 30mg C/20 · $4.20",p:"Fybeca · adultos ✅"},{m:"Muxol® Jarabe 15mg/5ml",p:"Fybeca/Pharmacys/Mia ✅"},{m:"Muxelix® 35mg/5ml · 120ml",p:"hiedra+ambroxol · Fybeca ✅ desde 1a"},{m:"Mucosolvan® 7.5mg/5ml pediátrico · 200ml",p:"Fybeca ✅"},{m:"Mucosolvan® 15mg/5ml adulto · 200ml",p:"Fybeca ✅"},{m:"Bisolvon Expectorante® Jarabe",p:"Fybeca ✅"},{m:"Ambroxol genérico 7.5/15mg/5ml",p:"Económicas/Mia ✅ más económico"}],
 ind:"Tos productiva · Bronquitis · Secreciones espesas · Desde RN",
-dos:"<2a: 7.5mg c/12h · 2-5a: 7.5mg c/8h · 5-12a: 15mg c/8h · Adulto: 30mg c/8h",
-ci:"Hipersensibilidad · Precaución úlcera gástrica",adv:"Náuseas · Diarrea"},
+dosNino:"<2a: 7.5mg c/12h · 2-5a: 7.5mg c/8h · 5-12a: 15mg c/8h",dosAdulto:"30mg c/8h (1ª semana) → 30mg c/12h",
+ci:"Hipersensibilidad · Precaución úlcera gástrica",adv:"Náuseas · Diarrea",
+calcPeso:true,calcF:1.6,calcMax:60,calcU:"mg/dosis c/8h (1.6mg/kg/dosis)"},
  
-{id:21,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"Bromhexina — Bisolvon / Broncotosil · ≥2a",eMin:2,eL:"≥ 2 años",
-comp:"Bromhexina HCl 4mg/5ml pediátrico · 8mg/5ml adulto · Mucolítico precursor ambroxol",
-mp:[{m:"Bisolvon® Infantil 4mg/5ml · 120ml",p:"Fybeca ✅"},{m:"Bisolvon® Adultos 8mg/5ml · 120ml",p:"Fybeca ✅"},{m:"Broncotosil® 0.8mg/ml (4mg/5ml) · 120ml",p:"Lab. Bagó Ecuador · Fybeca/Pharmacys ✅"},{m:"Broncotosil® Cáps 8mg · C/15 · $9.30",p:"Fybeca · adultos y >10a ✅"},{m:"Bromhexina genérico 4mg/5ml",p:"Económicas/Mia ✅ más económico"}],
+{id:17,cat:"Mucolítico",tipo:"jarabe",via:"Oral",n:"Bromhexina — Bisolvon / Broncotosil",eMin:2,eL:"≥ 2 años",
+comp:"Bromhexina HCl · 4mg/5ml pediátrico · 8mg/5ml adulto · Mucolítico precursor ambroxol",
+mp:[{m:"Bisolvon® Infantil 4mg/5ml · 120ml",p:"Fybeca ✅"},{m:"Bisolvon® Adultos 8mg/5ml · 120ml",p:"Fybeca ✅"},{m:"Broncotosil® 0.8mg/ml · 120ml",p:"Lab. Bagó Ecuador · Fybeca/Pharmacys ✅"},{m:"Broncotosil® Cáps 8mg C/15 · $9.30",p:"Fybeca · adultos >10a ✅"},{m:"Bromhexina genérico 4mg/5ml",p:"Económicas/Mia ✅"}],
 ind:"Bronquitis · Tos productiva con moco espeso",
-dos:"2-5a: 2.5ml c/8h (2mg) · 5-12a: 5ml c/8h (4mg) · >12a: 10ml c/8h · Adulto: 8-16mg c/8h",
+dosNino:"2-5a: 2mg c/8h (2.5ml) · 5-12a: 4mg c/8h (5ml)",dosAdulto:"8-16mg c/8h",
 ci:"<2a · Úlcera péptica",adv:"Náuseas · Sudoración · Mareo"},
  
-{id:22,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"N-Acetilcisteína NAC — Fluimucil · desde RN",eMin:0,eL:"Desde RN (precaución)",
-comp:"N-Acetilcisteína 100mg/5ml jarabe · 200/600mg sobres · Mucolítico reductor disulfuro",
-mp:[{m:"Fluimucil® 100mg/5ml jarabe",p:"Fybeca/Pharmacys ✅"},{m:"Fluimucil® Sobres 200mg · 600mg efervescente",p:"Fybeca ✅"},{m:"NAC genérico 100mg/5ml · sobres",p:"Económicas ✅"}],
-ind:"Bronquitis crónica · EPOC · Fibrosis quística · Secreciones muy espesas",
-dos:"<2a: 100mg c/12h · 2-6a: 100mg c/8h · >6a: 200mg c/8h · Adulto: 200mg c/8h o 600mg/día",
-ci:"Asma activo (broncoespasmo) · Úlcera gastroduodenal",adv:"Broncoespasmo en asmáticos · Náuseas · Olor azufre"},
+{id:18,cat:"Mucolítico",tipo:"jarabe",via:"Oral",n:"Extracto hiedra — Abrilar / Prospan",eMin:1,eL:"≥ 1 año",
+comp:"Extracto seco hojas hiedra Hedera helix · 35mg pediátrico / 70mg adulto por 5ml · Fitofarmacéutico · Sin azúcar",
+mp:[{m:"Abrilar® 35mg/5ml · 100ml pediátrico",p:"Fybeca/Pharmacys/Mia ✅ · sin azúcar"},{m:"Abrilar® 70mg/5ml · 100ml adulto",p:"Fybeca ✅"},{m:"Prospan® (marca original internacional)",p:"Fybeca ✅"},{m:"Muxelix® 35mg/5ml · 120ml",p:"hiedra+ambroxol · Fybeca ✅"}],
+ind:"Tos productiva · Bronquitis · Expectorante · Sin somnolencia · Sin azúcar",
+dosNino:"1-5a: 2.5ml c/8h · 6-11a: 5ml c/8h",dosAdulto:"5-7.5ml c/8h",
+ci:"<1a · Insuf. renal o hepática · No combinar con dextrometorfano",adv:"Náuseas (raros)"},
  
-{id:23,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"Carbocisteína — Noraver ≥2 años",eMin:2,eL:"≥ 2 años",
-comp:"Carbocisteína 250mg + Vitamina C 50mg / 5ml · Mucolítico + vitamina C",
-mp:[{m:"Noraver® Tabs. Menta C/12 · $5-7",p:"Fybeca ✅"},{m:"Noraver® Jarabe pediátrico",p:"Fybeca/Pharmacys ✅"}],
-ind:"Bronquitis · Tos productiva · Mucolítico",
-dos:"2-5a: 2.5ml c/8h · 6-11a: 5ml c/8h · Adulto: 1-2 tabs c/8h",
-ci:"<2a · Hipersensibilidad",adv:"Náuseas · Molestias GI"},
- 
-{id:24,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"Guaifenesina — Vaporal Expectorante ≥2 años",eMin:2,eL:"≥ 2 años",
+{id:19,cat:"Mucolítico",tipo:"jarabe",via:"Oral",n:"Guaifenesina — Vaporal Expectorante",eMin:2,eL:"≥ 2 años",
 comp:"Guaifenesina 100mg/5ml · Expectorante puro sin antitusivo",
 mp:[{m:"Vaporal® Expectorante Jarabe 120ml",p:"Fybeca Ecuador ✅"}],
-ind:"Tos productiva · Expectorante · Bronquitis · Resfriado · Solo moviliza moco, no suprime tos",
-dos:"2-5a: 2.5ml c/6-8h · 6-11a: 5ml c/6-8h · Adulto: 10ml c/4-6h · Beber agua abundante",
+ind:"Tos productiva · Expectorante · Bronquitis · Solo moviliza moco",
+dosNino:"2-5a: 2.5ml c/6-8h · 6-11a: 5ml c/6-8h",dosAdulto:"10ml c/4-6h · Beber abundante agua",
 ci:"<2a · Tos crónica sin diagnóstico",adv:"Náuseas leves"},
  
-{id:25,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"Tussolvina jarabe (dextrometorfano+guaifenesina) ≥2a",eMin:2,eL:"Tussolvina ≥2a · Forte ≥6a",
-comp:"Tussolvina: Dextrometorfano 10mg + Guaifenesina 100mg/5ml · Forte: + Clorfeniramina 4mg/5ml",
-mp:[{m:"Tussolvina® Jarabe 120ml",p:"Dextrometorfano 10mg + Guaifenesina 100mg/5ml · Fybeca/Pharmacys ✅"},{m:"Tussolvina® FIT Jarabe (sin azúcar)",p:"Fybeca ✅ · diabéticos"},{m:"Tussolvina® Forte Jarabe 120ml",p:"+Clorfeniramina 4mg/5ml · Fybeca ✅ · ≥6a"},{m:"Tussolvina® Forte FIT sin azúcar",p:"Fybeca ✅"},{m:"Dextrin G® Jarabe 120ml",p:"Dextrometorfano 15mg + Guaifenesina 100mg/5ml · Fybeca ✅"},{m:"Romilar® Jarabe 15mg/5ml",p:"Dextrometorfano 15mg · ≥6a · Pharmacys/Económicas ✅"}],
-ind:"Tos seca e irritativa · Resfriado · Forte: + rinitis alérgica",
-dos:"Tussolvina: 2-5a: 2.5ml c/8h · 6-11a: 5ml c/8h · Adulto: 10ml c/8h | Forte ≥6a: 5ml c/8h",
-ci:"⚠️ Tussolvina <2a · Forte <6a · Romilar <6a · Asma activo · MAOIs",adv:"Forte: somnolencia (clorfeniramina) · Náuseas · No con alcohol"},
+{id:20,cat:"Mucolítico",tipo:"jarabe",via:"Oral",n:"Carbocisteína — Noraver",eMin:2,eL:"≥ 2 años",
+comp:"Carbocisteína 250mg + Vitamina C 50mg/5ml · Mucolítico + vitamina C",
+mp:[{m:"Noraver® Tabs. Menta C/12 · $5-7",p:"Fybeca ✅"},{m:"Noraver® Jarabe pediátrico",p:"Fybeca/Pharmacys ✅"}],
+ind:"Bronquitis · Tos productiva · Mucolítico con soporte vitamínico",
+dosNino:"2-5a: 2.5ml c/8h · 6-11a: 5ml c/8h",dosAdulto:"1-2 tabs c/8h",
+ci:"<2a",adv:"Náuseas · Molestias GI"},
  
-{id:26,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"Salbutamol oral — Ventolin Exp. / Nebulasma ≥2a",eMin:2,eL:"≥ 2 años",
-comp:"Salbutamol sulfato 2mg/10ml (Ventolin Exp.) o 2mg/5ml (Nebulasma) · Broncodilatador oral",
-mp:[{m:"Ventolin® Expectorante Jarabe 120ml",p:"Salbutamol 2mg/10ml · Fybeca ✅"},{m:"Nebulasma® Jarabe 2mg/5ml · 120ml",p:"Fybeca/Pharmacys/Mia ✅"},{m:"Nebulasma® Expectorante 120ml",p:"Fybeca ✅"}],
-ind:"Broncoespasmo leve · Asma niños leve · ⚠️ NO reemplaza MDI en crisis aguda",
-dos:"2-6a: 5ml c/8h · 6-12a: 10ml c/8h · Adulto: 10-20ml c/8h",
-ci:"<2a · ⚠️ Jarabe NO sirve en crisis aguda — usar inhalador",adv:"Taquicardia · Temblor · Nerviosismo"},
+{id:21,cat:"Mucolítico",tipo:"jarabe",via:"Oral",n:"Dextrometorfano+Guaifenesina — Tussolvina",eMin:2,eL:"Tussolvina ≥2a · Forte ≥6a",
+comp:"Tussolvina: Dextrometorfano 10mg + Guaifenesina 100mg/5ml · Forte: +Clorfeniramina 4mg",
+mp:[{m:"Tussolvina® Jarabe 120ml",p:"Fybeca/Pharmacys ✅"},{m:"Tussolvina® FIT sin azúcar",p:"Fybeca ✅"},{m:"Tussolvina® Forte Jarabe 120ml",p:"≥6a · Fybeca ✅"},{m:"Tussolvina® Forte FIT sin azúcar",p:"Fybeca ✅"},{m:"Dextrin G® Jarabe 120ml",p:"Dextro 15mg + Guaifenesina 100mg/5ml · Fybeca ✅"},{m:"Pectobronc Forte® Jarabe 120ml",p:"Dextro 15mg/5ml · Fybeca ✅"},{m:"Romilar® Jarabe 15mg/5ml",p:"≥6a · Pharmacys/Económicas ✅"}],
+ind:"Tos seca e irritativa · Resfriado · Forte: +rinitis alérgica",
+dosNino:"≥2a Tussolvina: 2.5ml c/8h · ≥6a Forte: 5ml c/8h",dosAdulto:"10ml c/8h",
+ci:"⚠️ Tussolvina <2a · Forte <6a · Asma activo · MAOIs",adv:"Forte: somnolencia · No con alcohol"},
  
-{id:27,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"Pectobronc Forte jarabe (dextrometorfano) ≥6a",eMin:6,eL:"⚠️ ≥ 6 años",
-comp:"Dextrometorfano HBr 15mg/5ml · Antitusivo central",
-mp:[{m:"Pectobronc Forte® Jarabe 120ml",p:"Dextrometorfano 15mg/5ml · Fybeca/Pharmacys ✅"}],
-ind:"Tos seca irritativa no productiva · ≥6 años",
-dos:"⚠️ <6a CONTRAINDICADO · 6-11a: 2.5-5ml c/6-8h · Adulto: 5-10ml c/6-8h",
-ci:"⚠️ <6a · Tos productiva · Asma activo · MAOIs",adv:"Somnolencia · Mareo · Náuseas"},
+{id:22,cat:"Mucolítico",tipo:"jarabe",via:"Oral",n:"Salbutamol oral — Nebulasma jarabe",eMin:2,eL:"≥ 2 años",
+comp:"Salbutamol sulfato 2mg/5ml · Broncodilatador oral · ⚠️ No reemplaza MDI en crisis",
+mp:[{m:"Ventolin® Expectorante Jarabe 120ml",p:"Fybeca ✅"},{m:"Nebulasma® Jarabe 2mg/5ml · 120ml",p:"Fybeca/Pharmacys/Mia ✅"},{m:"Nebulasma® Expectorante 120ml",p:"Fybeca ✅"}],
+ind:"Broncoespasmo leve · Asma leve niños · ⚠️ NO en crisis aguda",
+dosNino:"2-6a: 5ml c/8h (1mg) · 6-12a: 10ml c/8h (2mg)",dosAdulto:"10-20ml c/8h",
+ci:"<2a · ⚠️ NO reemplaza inhalador en crisis",adv:"Taquicardia · Temblor · Nerviosismo"},
  
-{id:28,cat:"Mucolítico/Jarabe",via:"🟢 Oral",n:"Tusigen jarabe ⚠️ Codeína — solo ≥12a — receta",eMin:12,eL:"⚠️ Solo ≥12a — RECETA",
+{id:23,cat:"Mucolítico",tipo:"jarabe",via:"Oral",n:"Codeína+Pseudoefedrina — Tusigen ⚠️ receta ≥12a",eMin:12,eL:"⚠️ Solo ≥12a RECETA",
 comp:"Codeína 10mg + Pseudoefedrina 30mg + Clorfeniramina 2mg / 5ml · REQUIERE RECETA",
 mp:[{m:"Tusigen® Jarabe 120ml",p:"Lab. Bagó Ecuador · Fybeca/Pharmacys CON RECETA ✅"}],
-ind:"Tos seca refractaria severa · Solo cuando otros antitusivos fallan",
-dos:"⚠️ <12a CONTRAINDICADO · 12-18a: 5ml c/4-6h Máx 30ml/día · Adulto: 5-10ml c/4-6h",
-ci:"⚠️ <12a · HTA · Hipertiroidismo · MAOIs · Embarazo · Lactancia · Glaucoma",adv:"Somnolencia · Estreñimiento · Dependencia (codeína) · No con alcohol"},
+ind:"Tos seca refractaria severa · Solo cuando otros fallan",
+dosNino:"⚠️ CONTRAINDICADO <12a",dosAdulto:"5-10ml c/4-6h · Máx 40ml/día",
+ci:"⚠️ <12a · HTA · MAOIs · Embarazo",adv:"Somnolencia · Dependencia (codeína)"},
  
-// ══ ANTIGRIPALES ══════════════════════════════════════════════════
-{id:29,cat:"Antigripal",via:"🟢 Oral",n:"Fluritox jarabe/gotas/cáps (paracetamol+cetirizina+pseudoefedrina)",eMin:6,eL:"⚠️ ≥ 6 años",
-comp:"Fluritox: Paracetamol 325mg + Cetirizina 5mg + Pseudoefedrina 15mg/5ml | Fluritox F: Fenilefrina (sin pseudoefedrina) | Fluritox D: Cetirizina + Pseudoefedrina · Farmayala Ecuador",
-mp:[{m:"Fluritox® Jarabe 60ml",p:"325mg+5mg+15mg pseudo/5ml · Fybeca/Pharmacys ✅"},{m:"Fluritox® Gotas 30ml sin azúcar",p:"100mg+1mg+15mg/ml · Fybeca ✅"},{m:"Fluritox® Cáps. C/20",p:"500mg+5mg+60mg pseudo · adultos · Fybeca ✅"},{m:"Fluritox® Sobres C/20",p:"+Vitamina C · Fybeca ✅"},{m:"Fluritox F® Jarabe/Gotas/Cáps.",p:"con Fenilefrina en lugar de pseudo · Fybeca ✅"},{m:"Fluritox D® Jarabe",p:"Cetirizina+Pseudoefedrina · Fybeca ✅"}],
-ind:"Gripe · Resfriado · Fiebre + congestión + rinitis alérgica",
-dos:"⚠️ <6a NO · 6-11a: 5ml c/8h · ≥12a: 5-10ml c/6-8h o 1 cáps c/8h",
-ci:"⚠️ <6a · HTA · Hipertiroidismo · MAOIs · Glaucoma · Embarazo · Hepatopatía",adv:"Somnolencia (cetirizina) · Taquicardia (pseudoefedrina) · Sequedad · No con alcohol"},
+// ── ANTIGRIPALES ─────────────────────────────────────────────────
+{id:24,cat:"Antigripal",tipo:"jarabe",via:"Oral",n:"Fluritox (paracetamol+cetirizina+pseudoefedrina)",eMin:6,eL:"⚠️ ≥ 6 años",
+comp:"Paracetamol 325mg + Cetirizina 5mg + Pseudoefedrina 15mg/5ml · Fluritox F: Fenilefrina en lugar de pseudo",
+mp:[{m:"Fluritox® Jarabe 60ml",p:"Fybeca/Pharmacys ✅"},{m:"Fluritox® Gotas 30ml sin azúcar",p:"Fybeca ✅"},{m:"Fluritox® Cáps. C/20",p:"adultos · Fybeca ✅"},{m:"Fluritox® Sobres C/20",p:"Fybeca ✅"},{m:"Fluritox F® Jarabe/Gotas",p:"con fenilefrina · Fybeca ✅"},{m:"Fluritox D® Jarabe",p:"Cetirizina+Pseudo · Fybeca ✅"}],
+ind:"Gripe · Resfriado · Fiebre+congestión+rinitis",
+dosNino:"6-11a: 5ml c/8h",dosAdulto:"5-10ml c/6-8h o 1 cáps c/8h",
+ci:"<6a · HTA · MAOIs · Glaucoma · Embarazo",adv:"Somnolencia · Taquicardia · No con alcohol"},
  
-{id:30,cat:"Antigripal",via:"🟢 Oral",n:"Neogripal jarabe/gotas (paracetamol+pseudoefedrina+clorfeniramina)",eMin:4,eL:"≥ 4 años (jarabe)",
-comp:"Neogripal: Pseudoefedrina 15mg + Clorfeniramina 2.5mg + Paracetamol 325mg / 5ml · Lab. Chalver Colombia · Fybeca Ecuador | Neogripal F: con Fenilefrina+Loratadina",
-mp:[{m:"Neogripal® Jarabe F/60ml",p:"Pseudo 15mg+Clorfeniramina 2.5mg+Paracetamol 325mg/5ml · Fybeca ✅"},{m:"Neogripal® Gotas pediátricas",p:"Paracetamol 100mg+Pseudo 0.7mg+Clorfeniramina/ml · Fybeca ✅"},{m:"Neogripal F® Jarabe/Gotas",p:"Paracetamol+Fenilefrina+Loratadina · Fybeca ✅"}],
-ind:"Resfriado · Rinitis · Fiebre · Congestión · Afecciones vías superiores · Sinusitis · Rinitis vasomotora",
-dos:"4-12a: 5ml jarabe c/12h · Adulto: 10ml c/12h · Gotas: 3-4 gotas/kg c/12h",
-ci:"<4a jarabe (<2a gotas) · HTA · Hipertiroidismo · MAOIs · Glaucoma",adv:"Somnolencia (clorfeniramina) · Taquicardia · Sequedad bucal"},
+{id:25,cat:"Antigripal",tipo:"jarabe",via:"Oral",n:"Neogripal jarabe (paracetamol+pseudo+clorfeniramina)",eMin:4,eL:"≥ 4 años jarabe",
+comp:"Pseudoefedrina 15mg + Clorfeniramina 2.5mg + Paracetamol 325mg/5ml · Lab. Chalver · Neogripal F: Fenilefrina+Loratadina",
+mp:[{m:"Neogripal® Jarabe F/60ml",p:"Fybeca ✅"},{m:"Neogripal® Gotas pediátricas",p:"Fybeca ✅"},{m:"Neogripal F® Jarabe/Gotas",p:"con Loratadina · Fybeca ✅"}],
+ind:"Resfriado · Rinitis · Fiebre · Sinusitis · Vías respiratorias superiores",
+dosNino:"4-12a: 5ml jarabe c/12h",dosAdulto:"10ml c/12h",
+ci:"<4a jarabe · HTA · MAOIs · Glaucoma",adv:"Somnolencia · Taquicardia · Sequedad"},
  
-{id:31,cat:"Antigripal",via:"🟢 Oral",n:"Trioval (paracetamol+pseudoefedrina+clorfeniramina)",eMin:6,eL:"⚠️ ≥ 6 años",
-comp:"Tabs: Paracetamol 500mg + Pseudoefedrina 30mg + Clorfeniramina 2mg · Susp. pediátrica 100ml · Indeurec Ecuador",
-mp:[{m:"Trioval® Tabs. Día C/10 · $4.40",p:"Fybeca ✅"},{m:"Trioval® Comp. Día/Noche C/5 dosis · $7-9",p:"Fybeca ✅"},{m:"Trioval® Susp. 100ml · $6.42",p:"fórmula pediátrica · Fybeca ✅"}],
-ind:"Resfriado y gripe: fiebre + congestión + rinitis · ≥6 años",
-dos:"⚠️ <6a NO · 6-11a: ver susp. pediátrica · ≥12a: 1-2 comp c/6-8h",
-ci:"⚠️ <6a · HTA · Hipertiroidismo · MAOIs · Glaucoma · Alcohol",adv:"Somnolencia · Sequedad bucal · Taquicardia"},
+{id:26,cat:"Antigripal",tipo:"jarabe",via:"Oral",n:"Trioval (paracetamol+pseudo+clorfeniramina) ≥6a",eMin:6,eL:"⚠️ ≥ 6 años",
+comp:"Paracetamol 500mg + Pseudoefedrina 30mg + Clorfeniramina 2mg · Indeurec Ecuador",
+mp:[{m:"Trioval® Tabs. Día C/10 · $4.40",p:"Fybeca ✅"},{m:"Trioval® Comp. Día/Noche C/5 · $7-9",p:"Fybeca ✅"},{m:"Trioval® Susp. 100ml · $6.42",p:"pediátrico · Fybeca ✅"}],
+ind:"Resfriado y gripe: fiebre+congestión+rinitis",
+dosNino:"6-11a: ver susp. pediátrica",dosAdulto:"1-2 comp c/6-8h · Máx 8/día",
+ci:"<6a · HTA · MAOIs · Glaucoma",adv:"Somnolencia · Sequedad · Taquicardia"},
  
-{id:32,cat:"Antigripal",via:"🟢 Oral",n:"Paracetamol / Acetaminofén — desde RN",eMin:0,eL:"Desde RN",
+{id:27,cat:"Antigripal",tipo:"jarabe",via:"Oral",n:"Paracetamol / Acetaminofén — desde RN",eMin:0,eL:"Desde RN",
 comp:"Paracetamol 150/250mg/5ml susp · 500mg/1g comp · 100mg/ml gotas · Analgésico-antipirético",
-mp:[{m:"Apiretal® 100mg/ml gotas · 250mg/5ml susp",p:"Fybeca/Pharmacys ✅"},{m:"Panadol® / Gelocatil® / Efferalgan®",p:"susp+comp+supos · Fybeca ✅"},{m:"Tempra® Pediátrico / Tylenol®",p:"150mg/5ml susp · Pharmacys/Mia ✅"},{m:"Paracetamol genérico EFG",p:"Económicas/Mia ✅ más económico"}],
+mp:[{m:"Apiretal® 100mg/ml gotas · 250mg/5ml susp",p:"Fybeca/Pharmacys ✅"},{m:"Panadol® / Gelocatil® / Efferalgan®",p:"susp+comp+supos · Fybeca ✅"},{m:"Tempra® Pediátrico / Tylenol®",p:"Pharmacys/Mia ✅"},{m:"Paracetamol genérico EFG",p:"Económicas/Mia ✅ más económico"}],
 ind:"Fiebre · Dolor leve-moderado · Resfriado/gripe · Desde RN",
-dos:"10-15mg/kg/dosis c/4-6h (Máx 5 dosis/día) · Adulto: 500-1000mg c/6-8h",
+dosNino:"10-15mg/kg/dosis c/4-6h (Máx 5 dosis/día)",dosAdulto:"500-1000mg c/6-8h · Máx 4g/día",
 ci:"Insuf. hepática · Alcoholismo",adv:"Hepatotoxicidad (sobredosis) · Excelente tolerancia",
-cp:true,cf:15,cma:1000,cu:"mg/dosis (c/6h)"},
+calcPeso:true,calcF:15,calcMax:1000,calcU:"mg/dosis"},
  
-{id:33,cat:"Antigripal",via:"🟢 Oral",n:"Ibuprofeno (Nurofen/Dalsy) ⚠️ NO <6 meses",eMin:0.5,eL:"⚠️ ≥ 6 meses",
+{id:28,cat:"Antigripal",tipo:"jarabe",via:"Oral",n:"Ibuprofeno (Nurofen/Dalsy) ⚠️ NO <6 meses",eMin:0.5,eL:"⚠️ ≥ 6 meses",
 comp:"Ibuprofeno 100mg/5ml susp · 200/400/600mg comp · AINE",
 mp:[{m:"Nurofen® Pediátrico 100mg/5ml · 150ml",p:"Fybeca/Pharmacys ✅"},{m:"Dalsy® 100mg/5ml · 100-200ml",p:"Fybeca/Pharmacys ✅"},{m:"Ibuprofeno genérico 100mg/5ml",p:"Económicas/Mia ✅ más económico"}],
 ind:"Fiebre · Dolor · Inflamación · ⚠️ NO <6m",
-dos:"⚠️ <6m CONTRAINDICADO · 5-10mg/kg/dosis c/6-8h · Adulto: 200-400mg c/6-8h",
-ci:"⚠️ <6m · Úlcera péptica · Insuf. renal/hepática · Varicela · Asma sensible AINEs",adv:"Gastritis · Sangrado GI · Nefrotoxicidad",
-cp:true,cf:10,cma:400,cu:"mg/dosis (c/6-8h)"},
+dosNino:"⚠️ <6m CONTRAINDICADO · 5-10mg/kg/dosis c/6-8h",dosAdulto:"200-400mg c/6-8h",
+ci:"⚠️ <6m · Úlcera péptica · Insuf. renal/hepática · Varicela",adv:"Gastritis · Sangrado GI",
+calcPeso:true,calcF:10,calcMax:400,calcU:"mg/dosis"},
  
-{id:34,cat:"Antigripal",via:"🟢 Oral",n:"Oseltamivir (Tamiflu) antiviral gripal — desde RN",eMin:0,eL:"Desde RN (ajuste <1a)",
+{id:29,cat:"Antigripal",tipo:"jarabes_no",via:"Oral",n:"Oseltamivir (Tamiflu) antiviral gripal",eMin:0,eL:"Desde RN",
 comp:"Oseltamivir fosfato 12mg/ml susp · 30/45/75mg cáps · Antiviral inhibidor neuraminidasa",
-mp:[{m:"Tamiflu® 12mg/ml susp 60ml · cáps 30/45/75mg",p:"Fybeca/Pharmacys · receta ✅"},{m:"Oseltamivir genérico",p:"Económicas · receta ✅"}],
+mp:[{m:"Tamiflu® 12mg/ml susp · cáps 30/45/75mg",p:"Fybeca/Pharmacys · receta ✅"},{m:"Oseltamivir genérico",p:"Económicas · receta ✅"}],
 ind:"Influenza A y B (iniciar <48h síntomas) · Profilaxis",
-dos:"<1a: 3mg/kg c/12h · <15kg:30mg · 15-23kg:45mg · 23-40kg:60mg · >40kg:75mg · c/12h ×5d",
+dosNino:"<1a: 3mg/kg c/12h · <15kg:30mg · 15-23kg:45mg · 23-40kg:60mg c/12h ×5d",dosAdulto:"75mg c/12h ×5d",
 ci:"Inicio >48h (eficacia reducida)",adv:"Náuseas/vómitos (con alimentos)"},
  
-// ══ ANTIHISTAMÍNICOS ══════════════════════════════════════════════
-{id:35,cat:"Antihistamínico",via:"🟢 Oral",n:"Degraler (levocetirizina 2.5mg/5ml) — desde 6m · Bagó",eMin:0.5,eL:"≥ 6 meses",
-comp:"Levocetirizina diclorhidrato 2.5mg/5ml jarabe · Antihistamínico H1 3ª gen · Lab. Bagó Ecuador",
-mp:[{m:"Degraler® Jarabe 2.5mg/5ml · F/100ml · $14-16",p:"Lab. Bagó Ecuador · Fybeca ✅"},{m:"Levocetirizina genérico 5mg/ml gotas / 5mg comp",p:"Pharmacys/Económicas ✅"}],
-ind:"Rinitis alérgica · Urticaria · Desde 6 meses · Mayor potencia que cetirizina",
-dos:"6m-5a: 2.5mg (5ml jarabe)/día · 6-11a: 5ml jarabe/día · ≥12a: 10ml o 1 comp 5mg/día",
-ci:"<6m · Insuf. renal severa",adv:"Somnolencia leve · Cefalea · Sequedad bucal"},
+// ── ANTIHISTAMÍNICOS ─────────────────────────────────────────────
+{id:30,cat:"Antihistamínico",tipo:"jarabe",via:"Oral",n:"Levocetirizina — Degraler (Bagó Ecuador) ≥6m",eMin:0.5,eL:"≥ 6 meses",
+comp:"Levocetirizina diclorhidrato 2.5mg/5ml jarabe · 5mg comp · Antihistamínico H1 3ª gen · Lab. Bagó Ecuador",
+mp:[{m:"Degraler® Jarabe 2.5mg/5ml F/100ml · $14-16",p:"Lab. Bagó Ecuador · Fybeca ✅"},{m:"Levocetirizina genérico 5mg comp",p:"Pharmacys/Económicas ✅"}],
+ind:"Rinitis alérgica · Urticaria · Mayor potencia que cetirizina",
+dosNino:"6m-5a: 2.5mg (5ml)/día · 6-11a: 5ml/día",dosAdulto:"10ml jarabe o 1 comp 5mg/día noche",
+ci:"<6m · Insuf. renal severa",adv:"Somnolencia leve · Cefalea"},
  
-{id:36,cat:"Antihistamínico",via:"🟢 Oral",n:"Luzka / Loratadina (Clarityne) — desde 2 años",eMin:2,eL:"≥ 2 años",
+{id:31,cat:"Antihistamínico",tipo:"jarabe",via:"Oral",n:"Loratadina — Luzka / Clarityne ≥2a",eMin:2,eL:"≥ 2 años",
 comp:"Loratadina 10mg comp · 4mg masticable · 5mg/5ml jarabe · Antihistamínico H1 no sedante",
-mp:[{m:"Luzka® Comp. Rec. 10mg C/30 · $29-36",p:"Fybeca ✅"},{m:"Luzka® Comp. Mast. 4mg C/30 · $18-24",p:"Fybeca · niños 2-5a ✅"},{m:"Clarityne® / Claritin® 10mg comp / 5mg/5ml jarabe",p:"Fybeca/Pharmacys ✅"},{m:"Loratadina genérico 5mg/5ml jarabe",p:"Económicas/Mia ✅ más económico"}],
-ind:"Rinitis alérgica · Urticaria · Sin somnolencia · Desde 2 años",
-dos:"2-5a (<30kg): 5mg/día · ≥6a: 10mg/día",
+mp:[{m:"Luzka® Comp. Rec. 10mg C/30 · $29-36",p:"Fybeca ✅"},{m:"Luzka® Comp. Mast. 4mg C/30 · $18-24",p:"niños 2-5a · Fybeca ✅"},{m:"Clarityne®/Claritin® 10mg / 5mg/5ml jarabe",p:"Fybeca/Pharmacys ✅"},{m:"Loratadina genérico 5mg/5ml jarabe",p:"Económicas/Mia ✅"}],
+ind:"Rinitis alérgica · Urticaria · Sin somnolencia",
+dosNino:"2-5a (<30kg): 5mg/día · ≥6a: 10mg/día",dosAdulto:"10mg/día",
 ci:"<2a",adv:"Cefalea · Somnolencia mínima"},
  
-{id:37,cat:"Antihistamínico",via:"🟢 Oral",n:"Zyrtec / Cetirizina — desde 6 meses",eMin:0.5,eL:"≥ 6 meses",
+{id:32,cat:"Antihistamínico",tipo:"jarabe",via:"Oral",n:"Cetirizina — Zyrtec ≥6m",eMin:0.5,eL:"≥ 6 meses",
 comp:"Cetirizina dihidrocloruro 1mg/ml sol · 10mg comp · Antihistamínico H1 2ª gen",
-mp:[{m:"Zyrtec® Tabs 10mg C/20 · $7-8",p:"Fybeca ✅"},{m:"Zyrtec® Sol. 1mg/ml · 75-150ml",p:"Fybeca/Pharmacys ✅"},{m:"Cetirizina genérico 1mg/ml / 10mg",p:"Económicas/Mia ✅ más económico"}],
+mp:[{m:"Zyrtec® Tabs 10mg C/20 · $7-8",p:"Fybeca ✅"},{m:"Zyrtec® Sol. 1mg/ml · 75-150ml",p:"Fybeca/Pharmacys ✅"},{m:"Cetirizina genérico 1mg/ml / 10mg",p:"Económicas/Mia ✅"}],
 ind:"Rinitis alérgica · Urticaria · Desde 6 meses",
-dos:"6-23m: 2.5mg/día · 1-5a: 5mg/día · 6-11a: 10mg/día · Adulto: 10mg/día noche",
-ci:"<6m · Insuf. renal severa",adv:"Somnolencia leve · Cefalea · Sequedad bucal"},
+dosNino:"6-23m: 2.5mg/día · 1-5a: 5mg/día · 6-11a: 10mg/día",dosAdulto:"10mg/día noche",
+ci:"<6m · Insuf. renal severa",adv:"Somnolencia leve · Cefalea"},
  
-{id:38,cat:"Antihistamínico",via:"🟢 Oral",n:"Expectuss Aler / Fexofenadina (Telfast) — desde 6 años",eMin:6,eL:"≥ 6 años",
+{id:33,cat:"Antihistamínico",tipo:"jarabes_no",via:"Oral",n:"Fexofenadina — Expectuss Aler / Telfast ≥6a",eMin:6,eL:"≥ 6 años",
 comp:"Fexofenadina HCl 30/120/180mg comp · Antihistamínico H1 sin sedación",
-mp:[{m:"Expectuss Aler® 30mg C/10 · $6",p:"Fybeca ✅"},{m:"Telfast® / Altiva® / Allegra® 120/180mg",p:"Fybeca/Pharmacys ✅"},{m:"Fexofenadina genérico",p:"Económicas ✅"}],
+mp:[{m:"Expectuss Aler® 30mg C/10 · $6",p:"Fybeca ✅"},{m:"Telfast®/Altiva®/Allegra® 120/180mg",p:"Fybeca/Pharmacys ✅"},{m:"Fexofenadina genérico",p:"Económicas ✅"}],
 ind:"Rinitis alérgica · Urticaria crónica · Sin somnolencia",
-dos:"6-11a: 30mg c/12h · ≥12a: 120mg c/12h o 180mg/día",
-ci:"<6a · No con zumo pomelo/naranja/manzana",adv:"Cefalea · Náuseas"},
+dosNino:"6-11a: 30mg c/12h",dosAdulto:"120mg c/12h o 180mg/día",
+ci:"<6a · No con zumo pomelo/naranja",adv:"Cefalea · Náuseas"},
  
-{id:39,cat:"Antihistamínico",via:"🟢 Oral",n:"Montelukast (Singulair/Medigener) — desde 6 meses",eMin:0.5,eL:"≥ 6 meses",
+{id:34,cat:"Antihistamínico",tipo:"jarabes_no",via:"Oral",n:"Montelukast — Singulair / Medigener ≥6m",eMin:0.5,eL:"≥ 6 meses",
 comp:"Montelukast 4mg granulado · 5mg masticable · 10mg comp · Antileucotrieno CysLT1",
-mp:[{m:"Singulair® / Airon® 4/5/10mg",p:"Fybeca/Pharmacys · receta ✅"},{m:"Montelukast Medigener® 4mg mast. · $3",p:"Fybeca ✅"},{m:"Montelukast La Sante® 5mg mast. · $3.90",p:"Fybeca ✅"},{m:"Montelukast genérico",p:"Económicas/Mia ✅ más económico"}],
-ind:"Asma leve persistente · Rinitis alérgica · Prevención broncoespasmo ejercicio",
-dos:"6m-5a: 4mg/noche · 6-14a: 5mg/noche · ≥15a: 10mg/noche",
-ci:"<6m · ⚠️ FDA Black Box: vigilar cambios neuropsiquiátricos",adv:"⚠️ Agitación · Insomnio · Pesadillas · Comportamiento suicida (vigilar)"},
+mp:[{m:"Singulair®/Airon® 4/5/10mg",p:"Fybeca/Pharmacys · receta ✅"},{m:"Montelukast Medigener® 4mg mast. · $3",p:"Fybeca ✅"},{m:"Montelukast La Sante® 5mg · $3.90",p:"Fybeca ✅"},{m:"Montelukast genérico",p:"Económicas/Mia ✅"}],
+ind:"Asma leve persistente · Rinitis alérgica · Prevención broncoespasmo",
+dosNino:"6m-5a: 4mg/noche · 6-14a: 5mg/noche",dosAdulto:"10mg/noche",
+ci:"<6m · ⚠️ FDA Black Box neuropsiquiátrico",adv:"⚠️ Agitación · Insomnio · Pesadillas (vigilar)"},
  
-// ══ CORTICOIDES ORALES ════════════════════════════════════════════
-{id:40,cat:"Corticoide Oral",via:"🟢 Oral",n:"Prednisona / Prednisolona / Metilprednisolona — desde RN",eMin:0,eL:"Desde RN",
+// ── CORTICOIDES ORALES ────────────────────────────────────────────
+{id:35,cat:"Corticoide Oral",tipo:"jarabes_no",via:"Oral",n:"Prednisona / Prednisolona / Metilprednisolona",eMin:0,eL:"Desde RN",
 comp:"Prednisona 5/20/50mg · Prednisolona gotas 3mg/ml · Metilprednisolona 4-1000mg · Corticoide sistémico",
-mp:[{m:"Dacortin® / Prednisona genérico 5/20/50mg",p:"Fybeca/Pharmacys/Económicas · receta ✅"},{m:"Estilsona® gotas prednisolona 3mg/ml",p:"Fybeca · pediátrico · receta ✅"},{m:"Urbason® metilprednisolona 4-40mg",p:"Fybeca · receta ✅"}],
-ind:"Crisis asmática · Croup · Laringitis · Reacción alérgica severa · EPOC exacerbado",
-dos:"Pediátrico: 1-2mg/kg/día c/12-24h ×3-5d (Máx 60mg) · Croup: 1-2mg/kg dosis única · Adulto: 40-60mg/día",
+mp:[{m:"Dacortin®/Prednisona genérico 5/20/50mg",p:"Fybeca/Pharmacys/Económicas · receta ✅"},{m:"Estilsona® gotas prednisolona 3mg/ml",p:"Fybeca · pediátrico · receta ✅"},{m:"Urbason® metilprednisolona 4-40mg",p:"Fybeca · receta ✅"}],
+ind:"Crisis asmática · Croup · Laringitis · Reacción alérgica severa",
+dosNino:"1-2mg/kg/día c/12-24h ×3-5d (Máx 60mg) · Croup: 1-2mg/kg dosis única",dosAdulto:"40-60mg/día ×5-7d",
 ci:"Infección grave · Varicela activa · Úlcera péptica (relativa)",adv:"Hiperglicemia · HTA · Insomnio · Irritabilidad",
-cp:true,cf:1.5,cma:60,cu:"mg/día ÷2"},
+calcPeso:true,calcF:1.5,calcMax:60,calcU:"mg/día ÷2"},
  
-{id:41,cat:"Corticoide Oral",via:"🟢 Oral",n:"Dexametasona (Fortecortín) 6× prednisolona — desde RN",eMin:0,eL:"Desde RN",
+{id:36,cat:"Corticoide Oral",tipo:"jarabes_no",via:"Oral",n:"Dexametasona (Fortecortín) 6× prednisolona",eMin:0,eL:"Desde RN",
 comp:"Dexametasona 0.5/4mg comp · 4mg/ml amp · Corticoide potente (6× prednisolona)",
-mp:[{m:"Fortecortín® 1/4mg comp · amp 4mg/ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Dexametasona genérico",p:"Económicas/Mia · receta ✅"}],
+mp:[{m:"Fortecortín®/Decadron® 1/4mg comp · amp 4mg/ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Dexametasona genérico",p:"Económicas/Mia · receta ✅"}],
 ind:"Croup/laringotraqueitis · Asma severa · Edema cerebral · COVID-19 grave",
-dos:"Croup: 0.15-0.6mg/kg VO/IM dosis única (Máx 10mg) · Adulto: 4-8mg c/6-12h",
-ci:"Infección fúngica · Vacunas virus vivos",adv:"Hiperglicemia · Insomnio · Irritabilidad · HTA",
-cp:true,cf:0.6,cma:10,cu:"mg dosis única croup"},
+dosNino:"Croup: 0.15-0.6mg/kg VO/IM dosis única (Máx 10mg)",dosAdulto:"4-8mg c/6-12h IV",
+ci:"Infección fúngica · Vacunas virus vivos",adv:"Hiperglicemia · Insomnio · HTA",
+calcPeso:true,calcF:0.6,calcMax:10,calcU:"mg dosis única croup"},
  
-// ══ ANTIBIÓTICOS ══════════════════════════════════════════════════
-{id:42,cat:"Antibiótico",via:"🟢 Oral",n:"Amoxicilina suspensión — desde 1 mes",eMin:0.07,eL:"Desde 1 mes",
+// ── ANTIBIÓTICOS ─────────────────────────────────────────────────
+{id:37,cat:"Antibiótico",tipo:"jarabe",via:"Oral",n:"Amoxicilina suspensión — desde 1 mes",eMin:0.07,eL:"Desde 1 mes",
 comp:"Amoxicilina 250/400mg/5ml susp · 500mg cáps · 875mg comp · Betalactámico penicilínico",
-mp:[{m:"Amoxil® 250mg/5ml · 100ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Clamoxyl® 250/400mg/5ml",p:"Fybeca · receta ✅"},{m:"Gramaxin® / Amoxicilina genérico 250mg/5ml",p:"Económicas/Mia · receta ✅ más económico"},{m:"Amoxicilina 500mg cáps · 875mg comp",p:"todas las farmacias · receta ✅"}],
-ind:"Otitis media · Faringoamigdalitis · Sinusitis · Neumonía leve · Desde 1 mes de vida",
-dos:">1-2m: 40mg/kg/día c/12h · >2m: 40-90mg/kg/día c/8h · Adulto: 500mg c/8h o 875mg c/12h",
+mp:[{m:"Amoxil® 250mg/5ml · 100ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Clamoxyl® 250/400mg/5ml",p:"Fybeca · receta ✅"},{m:"Gramaxin®/Amoxicilina genérico 250mg/5ml",p:"Económicas/Mia · receta ✅"},{m:"Amoxicilina 500mg cáps · 875mg comp",p:"todas las farmacias · receta ✅"}],
+ind:"Otitis media · Faringoamigdalitis · Sinusitis · Neumonía leve · Desde 1 mes",
+dosNino:">1-2m: 40mg/kg/día c/12h · >2m: 40-90mg/kg/día c/8h",dosAdulto:"500mg c/8h o 875mg c/12h",
 ci:"Alergia penicilinas · Mononucleosis infecciosa",adv:"Diarrea · Náuseas · Rash · Candidiasis",
-cp:true,cf:45,cma:3000,cu:"mg/día ÷3",cd:3},
+calcPeso:true,calcF:45,calcMax:3000,calcU:"mg/día ÷3",calcDiv:3},
  
-{id:43,cat:"Antibiótico",via:"🟢 Oral",n:"Amoxicilina+Clavulánico (Augmentine) — desde 3 meses",eMin:0.25,eL:"≥ 3 meses",
-comp:"Amoxicilina + ácido clavulánico 400/57mg/5ml · 875/125mg comp · Betalactámico+inhibidor",
-mp:[{m:"Augmentine® / Augmentin® 400/57mg/5ml · 70-100ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Augmentine® 875/125mg comp C/14",p:"Fybeca · adultos · receta ✅"},{m:"Amoxicilina/Clavulánico genérico 400/57mg",p:"Económicas/Mia · receta ✅ más económico"}],
-ind:"Otitis media recurrente · Sinusitis · Bronquitis bacteriana · Neumonía · H.influenzae · M.catarrhalis",
-dos:"≥3m: 40-45mg/kg/día c/8h · Adulto: 875/125mg c/12h",
-ci:"Alergia penicilinas · Ictericia colestásica previa · <3m",adv:"Diarrea frecuente · Náuseas · Elevación transaminasas",
-cp:true,cf:40,cma:3000,cu:"mg/día amox ÷3",cd:3},
+{id:38,cat:"Antibiótico",tipo:"jarabe",via:"Oral",n:"Amoxicilina+Clavulánico (Augmentine) ≥3m",eMin:0.25,eL:"≥ 3 meses",
+comp:"Amoxicilina+ácido clavulánico 400/57mg/5ml · 875/125mg comp · Betalactámico+inhibidor",
+mp:[{m:"Augmentine®/Augmentin® 400/57mg/5ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Augmentine® 875/125mg comp C/14",p:"Fybeca · adultos · receta ✅"},{m:"Amoxicilina/Clavulánico genérico 400/57mg",p:"Económicas/Mia · receta ✅"}],
+ind:"Otitis media recurrente · Sinusitis · Bronquitis bacteriana · Neumonía",
+dosNino:"≥3m: 40-45mg/kg/día c/8h (Máx 3g/día)",dosAdulto:"875/125mg c/12h",
+ci:"Alergia penicilinas · Ictericia colestásica previa · <3m",adv:"Diarrea frecuente · Náuseas",
+calcPeso:true,calcF:40,calcMax:3000,calcU:"mg/día amox ÷3",calcDiv:3},
  
-{id:44,cat:"Antibiótico",via:"🟢 Oral",n:"Azitromicina (Zithromax/Mintlab) — desde 6 meses",eMin:0.5,eL:"≥ 6 meses",
+{id:39,cat:"Antibiótico",tipo:"jarabe",via:"Oral",n:"Azitromicina (Zithromax/Mintlab) ≥6m",eMin:0.5,eL:"≥ 6 meses",
 comp:"Azitromicina 200mg/5ml susp · 500mg comp · Macrólido azálido",
-mp:[{m:"Zithromax® / Sumamed® 200mg/5ml · 30ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Azitromicina Mintlab® Tabs 500mg C/3 · $3.72",p:"Fybeca · receta ✅"},{m:"Azitromicina genérico 200mg/5ml",p:"Económicas/Mia · receta ✅ más económico"}],
-ind:"Neumonía atípica (Mycoplasma/Chlamydia) · Faringoamigdalitis (alergia penicilina) · Bronquitis",
-dos:"≥6m: 10mg/kg/día ×3d · Adulto: 500mg/día ×3d",
+mp:[{m:"Zithromax®/Sumamed® 200mg/5ml · 30ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Azitromicina Mintlab® 500mg C/3 · $3.72",p:"Fybeca · receta ✅"},{m:"Azitromicina genérico 200mg/5ml",p:"Económicas/Mia · receta ✅"}],
+ind:"Neumonía atípica (Mycoplasma) · Faringoamigdalitis (alergia penicilina) · Bronquitis",
+dosNino:"≥6m: 10mg/kg/día ×3d",dosAdulto:"500mg/día ×3d",
 ci:"Hipersensibilidad macrólidos · Prolongación QT",adv:"Diarrea · Náuseas · Prolongación QT (raro)",
-cp:true,cf:10,cma:500,cu:"mg/día dosis única",cd:1},
+calcPeso:true,calcF:10,calcMax:500,calcU:"mg/día dosis única",calcDiv:1},
  
-{id:45,cat:"Antibiótico",via:"🟢 Oral",n:"Claritromicina (Klacid/Medigener) — desde 6 meses",eMin:0.5,eL:"≥ 6 meses",
-comp:"Claritromicina 125/250mg/5ml susp · Macrólido",
+{id:40,cat:"Antibiótico",tipo:"jarabe",via:"Oral",n:"Claritromicina (Klacid/Medigener) ≥6m",eMin:0.5,eL:"≥ 6 meses",
+comp:"Claritromicina 125/250mg/5ml susp · 500mg comp · Macrólido",
 mp:[{m:"Klacid® 125/250mg/5ml",p:"Fybeca/Pharmacys · receta ✅"},{m:"Claritromicina Medigener® 500mg C/10 · $8",p:"Fybeca · receta ✅"},{m:"Claritromicina genérico",p:"Económicas · receta ✅"}],
 ind:"Neumonía atípica · Faringoamigdalitis · Sinusitis",
-dos:"≥6m: 15mg/kg/día c/12h · Adulto: 250-500mg c/12h",
-ci:"Hipersensibilidad macrólidos · QT prolongado",adv:"Sabor metálico · Diarrea · Prolongación QT",
-cp:true,cf:15,cma:1000,cu:"mg/día ÷2",cd:2},
+dosNino:"≥6m: 15mg/kg/día c/12h",dosAdulto:"250-500mg c/12h",
+ci:"Hipersensibilidad macrólidos · QT prolongado",adv:"Sabor metálico · Diarrea",
+calcPeso:true,calcF:15,calcMax:1000,calcU:"mg/día ÷2",calcDiv:2},
  
-{id:46,cat:"Antibiótico",via:"🟢 Oral",n:"Cefuroxima axetilo (Zinnat) — desde 3 meses",eMin:0.25,eL:"≥ 3 meses",
+{id:41,cat:"Antibiótico",tipo:"jarabe",via:"Oral",n:"Cefuroxima axetilo (Zinnat) ≥3m",eMin:0.25,eL:"≥ 3 meses",
 comp:"Cefuroxima axetilo 125mg/5ml susp · Cefalosporina 2ª gen.",
 mp:[{m:"Zinnat® 125mg/5ml susp · comp 250/500mg",p:"Fybeca/Pharmacys · receta ✅"},{m:"Cefuroxima genérico 125mg/5ml",p:"Económicas · receta ✅"}],
-ind:"Otitis media · Faringoamigdalitis · Sinusitis · Neumonía leve · Alternativa amoxicilina",
-dos:"3m-12a: 30mg/kg/día c/12h · Adulto: 250-500mg c/12h",
-ci:"Alergia cefalosporinas · Precaución alergia penicilinas",adv:"Diarrea · Náuseas · Rash",
-cp:true,cf:30,cma:1000,cu:"mg/día ÷2",cd:2},
- 
-{id:47,cat:"Antibiótico",via:"🟢 Oral",n:"Cefalexina suspensión (Keflex) — desde 1 año",eMin:1,eL:"≥ 1 año",
-comp:"Cefalexina 250mg/5ml susp · 500mg cáps · Cefalosporina 1ª gen.",
-mp:[{m:"Keflex® 250mg/5ml susp",p:"Fybeca/Pharmacys · receta ✅"},{m:"Cefalexina genérico 250mg/5ml",p:"Económicas/Mia · receta ✅ más económico"},{m:"Cefalexina 500mg cáps",p:"todas las farmacias · receta ✅"}],
-ind:"Faringoamigdalitis · Otitis media · Infecciones piel y tejidos blandos · Alternativa penicilinas",
-dos:"1-12a: 25-50mg/kg/día c/6h · Adulto: 250-500mg c/6h",
-ci:"Alergia cefalosporinas · Precaución alergia penicilinas",adv:"Diarrea · Náuseas · Rash",
-cp:true,cf:25,cma:2000,cu:"mg/día ÷4",cd:4},
- 
-{id:48,cat:"Antibiótico",via:"🟢 Oral",n:"Cefadroxilo suspensión — desde 1 año",eMin:1,eL:"≥ 1 año",
-comp:"Cefadroxilo 250mg/5ml susp · Cefalosporina 1ª gen. (dosis 1-2 veces/día)",
-mp:[{m:"Cefadroxilo genérico 250mg/5ml",p:"Fybeca/Pharmacys/Económicas · receta ✅"},{m:"Cefadroxilo 500mg cáps · 1g comp",p:"todas las farmacias · receta ✅"}],
-ind:"Faringoamigdalitis · Otitis media · Infecciones piel · Ventaja: 1-2 dosis/día",
-dos:"1-12a: 30mg/kg/día c/12h · Adulto: 500mg-1g c/12h",
+ind:"Otitis media · Faringoamigdalitis · Sinusitis · Neumonía leve",
+dosNino:"3m-12a: 30mg/kg/día c/12h",dosAdulto:"250-500mg c/12h",
 ci:"Alergia cefalosporinas",adv:"Diarrea · Náuseas · Rash",
-cp:true,cf:30,cma:2000,cu:"mg/día ÷2",cd:2},
+calcPeso:true,calcF:30,calcMax:1000,calcU:"mg/día ÷2",calcDiv:2},
  
-{id:49,cat:"Antibiótico",via:"🟢 Oral",n:"Eritromicina suspensión — desde RN",eMin:0,eL:"Desde RN",
-comp:"Eritromicina etilsuccinato 200mg/5ml susp · Macrólido (primer macrólido, más antiguo)",
+{id:42,cat:"Antibiótico",tipo:"jarabe",via:"Oral",n:"Cefalexina (Keflex) ≥1a",eMin:1,eL:"≥ 1 año",
+comp:"Cefalexina 250mg/5ml susp · 500mg cáps · Cefalosporina 1ª gen.",
+mp:[{m:"Keflex® 250mg/5ml susp",p:"Fybeca/Pharmacys · receta ✅"},{m:"Cefalexina genérico 250mg/5ml",p:"Económicas/Mia · receta ✅"},{m:"Cefalexina 500mg cáps",p:"todas las farmacias · receta ✅"}],
+ind:"Faringoamigdalitis · Otitis media · Infecciones piel",
+dosNino:"≥1a: 25-50mg/kg/día c/6h",dosAdulto:"250-500mg c/6h",
+ci:"Alergia cefalosporinas",adv:"Diarrea · Náuseas · Rash",
+calcPeso:true,calcF:25,calcMax:2000,calcU:"mg/día ÷4",calcDiv:4},
+ 
+{id:43,cat:"Antibiótico",tipo:"jarabe",via:"Oral",n:"Cefadroxilo suspensión ≥1a",eMin:1,eL:"≥ 1 año",
+comp:"Cefadroxilo 250mg/5ml susp · Cefalosporina 1ª gen. (1-2 dosis/día)",
+mp:[{m:"Cefadroxilo genérico 250mg/5ml",p:"Fybeca/Pharmacys/Económicas · receta ✅"},{m:"Cefadroxilo 500mg cáps · 1g comp",p:"todas las farmacias · receta ✅"}],
+ind:"Faringoamigdalitis · Otitis media · Infecciones piel · 1-2 dosis/día (ventaja)",
+dosNino:"≥1a: 30mg/kg/día c/12h",dosAdulto:"500mg-1g c/12h",
+ci:"Alergia cefalosporinas",adv:"Diarrea · Náuseas · Rash",
+calcPeso:true,calcF:30,calcMax:2000,calcU:"mg/día ÷2",calcDiv:2},
+ 
+{id:44,cat:"Antibiótico",tipo:"jarabe",via:"Oral",n:"Eritromicina suspensión — desde RN (tos ferina)",eMin:0,eL:"Desde RN",
+comp:"Eritromicina etilsuccinato 200mg/5ml susp · Macrólido (1er macrólido)",
 mp:[{m:"Eritromicina 200mg/5ml susp",p:"Fybeca/Pharmacys/Económicas · receta ✅"},{m:"Eritromicina 500mg comp",p:"todas las farmacias · receta ✅"}],
 ind:"Faringoamigdalitis (alergia penicilina) · Neumonía atípica · Pertussis (tos ferina) · Desde RN",
-dos:"RN-3m: 12.5mg/kg c/6h · 3m+: 30-50mg/kg/día c/6h · Adulto: 250-500mg c/6h",
-ci:"Hipersensibilidad macrólidos · Prolongación QT · Estatinas CYP3A4",adv:"Náuseas (frecuentes) · Vómitos · Diarrea · Dolor abdominal",
-cp:true,cf:30,cma:2000,cu:"mg/día ÷4",cd:4},
+dosNino:"RN-3m: 12.5mg/kg c/6h · >3m: 30-50mg/kg/día c/6h",dosAdulto:"250-500mg c/6h",
+ci:"Hipersensibilidad macrólidos · QT prolongado",adv:"Náuseas frecuentes · Vómitos · Diarrea",
+calcPeso:true,calcF:30,calcMax:2000,calcU:"mg/día ÷4",calcDiv:4},
  
-{id:50,cat:"Antibiótico",via:"🟢 Oral",n:"Trimetoprim+Sulfametoxazol TMP/SMX — desde 2 meses",eMin:0.17,eL:"≥ 2 meses",
-comp:"Trimetoprim 40mg + Sulfametoxazol 200mg / 5ml susp (relación 1:5) · Sulfonamida + diamidopirimidina",
-mp:[{m:"Bactrim® Forte / Bactrim® Pediátrico susp",p:"Fybeca/Pharmacys · receta ✅"},{m:"Septrin® Pediátrico susp 200/40mg/5ml",p:"Fybeca · receta ✅"},{m:"TMP/SMX genérico susp",p:"Económicas · receta ✅ más económico"},{m:"Bactrim® Forte 800/160mg comp",p:"adultos · Fybeca ✅"}],
-ind:"Otitis media aguda · Sinusitis bacteriana · IVU · Neumonía por Pneumocystis jirovecii",
-dos:"≥2m: 8mg/kg/día TMP c/12h · Adulto: 1 comp Forte c/12h",
-ci:"<2m · Insuf. renal · Embarazo término · Déficit G6PD",adv:"Rash (síndrome Stevens-Johnson raro) · Náuseas · Anemia megaloblástica · Cristaluria"},
- 
+{id:45,cat:"Antibiótico",tipo:"jarabes_no",via:"Oral",n:"TMP/SMX Bactrim/Septrin ≥2m",eMin:0.17,eL:"≥ 2 meses",
+comp:"Trimetoprim 40mg + Sulfametoxazol 200mg/5ml susp · Sulfonamida",
+mp:[{m:"Bactrim® Forte / Pediátrico susp",p:"Fybeca/Pharmacys · receta ✅"},{m:"Septrin® Pediátrico susp 200/40mg/5ml",p:"Fybeca · receta ✅"},{m:"TMP/SMX genérico susp",p:"Económicas · receta ✅"}],
+ind:"Otitis media · Sinusitis bacteriana · IVU · Pneumocystis",
+dosNino:"≥2m: 8mg/kg/día TMP c/12h",dosAdulto:"1 comp Forte c/12h",
+ci:"<2m · Insuf. renal · Embarazo",adv:"Rash (Stevens-Johnson raro) · Náuseas · Anemia"},
 ];
  
-const CC={"Spray Nasal":"#0ea5e9","Puff/Aerosol":"#f59e0b","Nebulización":"#8b5cf6","Mucolítico/Jarabe":"#06b6d4","Antigripal":"#ef4444","Antihistamínico":"#a78bfa","Corticoide Oral":"#f97316","Antibiótico":"#10b981"};
-const CI={"Spray Nasal":"💨","Puff/Aerosol":"🫁","Nebulización":"🌫️","Mucolítico/Jarabe":"🧴","Antigripal":"🤧","Antihistamínico":"🌿","Corticoide Oral":"⚡","Antibiótico":"🦠"};
+// ══ CONFIG ════════════════════════════════════════════════════════
+const CC={"Spray Nasal":"#0ea5e9","Puff/Aerosol":"#f59e0b","Nebulización":"#8b5cf6","Mucolítico":"#06b6d4","Antigripal":"#ef4444","Antihistamínico":"#a78bfa","Corticoide Oral":"#f97316","Antibiótico":"#10b981"};
+const CI={"Spray Nasal":"💨","Puff/Aerosol":"🫁","Nebulización":"🌫️","Mucolítico":"🧴","Antigripal":"🤧","Antihistamínico":"🌿","Corticoide Oral":"⚡","Antibiótico":"🦠"};
 const CATS=["Todos",...Object.keys(CC)];
-let curC="Todos",curE="todos",selId=null,CH=[],busy=false;
-document.getElementById("sub").textContent=DB.length+" medicamentos · "+DB.reduce((a,m)=>a+(m.mp?.length||0),0)+" marcas Ecuador · Fybeca/Pharmacys/Mia/Económicas";
+let curTab="ia",curCat="Todos",selId=null,CH=[],busy=false,pesoGlobal=0;
  
-function bf(){
-  document.getElementById("cf").innerHTML=CATS.map(c=>{const a=CC[c];const on=c===curC;
-    return`<button class="cb" style="${on?"background:"+(a||"#2563eb")+";color:#fff":""}" onclick="sc('${c}')">${CI[c]||""} ${c}</button>`;
-  }).join("")+`<div class="agf">${[["todos","👥 Todos"],["pediatrico","👶 Pediátrico"],["adulto","🧑 Adulto"]].map(([v,l])=>
-    `<button class="ab${curE===v?" on":""}" onclick="se('${v}')">${l}</button>`).join("")}</div>`;
+document.getElementById("sub").textContent=DB.length+" medicamentos · "+DB.reduce((a,m)=>a+(m.mp?.length||0),0)+" marcas Ecuador";
+ 
+// ══ TABS ══════════════════════════════════════════════════════════
+function setTab(t){
+  curTab=t;selId=null;
+  document.querySelectorAll(".main-tab").forEach(b=>b.classList.remove("on"));
+  document.querySelector(".t-"+t).classList.add("on");
+ 
+  const sa=document.getElementById("sa");
+  const lp=document.getElementById("lp");
+  const dp=document.getElementById("dp");
+  const cp=document.getElementById("cp");
+  const pb=document.getElementById("peso-bar");
+ 
+  if(t==="ia"){
+    sa.style.display="none";lp.style.display="none";dp.style.display="none";cp.style.display="flex";
+  } else {
+    sa.style.display="block";lp.style.display="";dp.style.display="";cp.style.display="none";
+    // show/hide peso bar
+    pb.style.display = t==="ninos" ? "flex" : "none";
+    bf();rl();
+  }
 }
-function sc(c){curC=c;selId=null;bf();rl();se2();}
-function se(v){curE=v;bf();rl();}
+ 
+// ══ FILTROS ═══════════════════════════════════════════════════════
+function bf(){
+  document.getElementById("cf").innerHTML=CATS.map(c=>{
+    const a=CC[c];const on=c===curCat;
+    return`<button class="cb" style="${on?"background:"+(a||"#2563eb")+";color:#fff":""}" onclick="sc('${c}')">${CI[c]||""} ${c}</button>`;
+  }).join("");
+}
+function sc(c){curCat=c;selId=null;bf();rl();se2();}
  
 function gf(){
   const q=document.getElementById("srch").value.toLowerCase().trim();
   return DB.filter(m=>{
-    const oC=curC==="Todos"||m.cat===curC;
+    const oC=curCat==="Todos"||m.cat===curCat;
     const oQ=!q||m.n.toLowerCase().includes(q)||m.comp.toLowerCase().includes(q)||
       m.ind.toLowerCase().includes(q)||(m.mp||[]).some(x=>x.m.toLowerCase().includes(q)||x.p.toLowerCase().includes(q));
-    const oE=curE==="todos"||curE==="adulto"||(curE==="pediatrico"&&m.eMin<18);
-    return oC&&oQ&&oE;
+    // Tab filter
+    let oT=true;
+    if(curTab==="ninos") oT=m.eMin<18;
+    else if(curTab==="adultos") oT=true; // show all, but display adult doses
+    else if(curTab==="jarabes") oT=m.tipo==="jarabe";
+    return oC&&oQ&&oT;
   });
 }
+ 
 function rl(){
   const list=gf();
   document.getElementById("rc").textContent=list.length+" resultado"+(list.length!==1?"s":"");
@@ -537,10 +581,10 @@ function rl(){
     const a=CC[m.cat]||"#3b82f6",on=m.id===selId;
     const ac=m.eMin===0?"#34d399":m.eMin>=18?"#f87171":"#93c5fd";
     const ab=m.eMin===0?"rgba(16,185,129,0.12)":m.eMin>=18?"rgba(239,68,68,0.12)":"rgba(59,130,246,0.12)";
-    const at=m.eMin===0?"✅ RN":m.eMin>=18?"🔒 Solo adultos":"✅ "+m.eL;
+    const at=m.eMin===0?"✅ RN":m.eMin>=18?"🔒 Adultos":"✅ "+m.eL;
     return`<div class="mc" style="${on?"border-color:"+a+"80;background:"+a+"14":""}" onclick="sm(${m.id})">
       <div class="mn">${m.n}</div>
-      <div style="display:flex;gap:3px;margin-top:2px;align-items:center;flex-wrap:wrap">
+      <div style="display:flex;gap:3px;margin-top:2px;flex-wrap:wrap">
         <span class="mcat" style="color:${a}">${CI[m.cat]||""} ${m.cat}</span>
         <span style="font-size:8px;padding:1px 5px;border-radius:5px;background:rgba(255,255,255,0.06);color:#64748b">${m.via}</span>
       </div>
@@ -549,6 +593,8 @@ function rl(){
     </div>`;
   }).join("");
 }
+ 
+// ══ DETALLE ═══════════════════════════════════════════════════════
 function sm(id){
   selId=id;const m=DB.find(x=>x.id===id);if(!m)return;rl();
   const a=CC[m.cat]||"#3b82f6";
@@ -556,13 +602,24 @@ function sm(id){
   const ab=m.eMin===0?"rgba(16,185,129,.15)":m.eMin>=18?"rgba(239,68,68,.15)":"rgba(59,130,246,.15)";
   const at=m.eMin===0?"✅ Desde RN":m.eMin>=18?"⚠️ "+m.eL:"✅ "+m.eL;
   const mh=(m.mp||[]).map(x=>`<div class="mr"><span class="mk" style="color:${a}">${x.m}</span><span class="mp">${x.p}</span></div>`).join("");
-  const calcH=m.cp?`<div class="cs"><div class="ct">⚖️ Calculadora por peso</div>
-    <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px">
-      <input class="pi" type="number" placeholder="kg" min="0.5" max="200" oninput="cd2(${m.id},this.value)"/>
-      <span style="font-size:11px;color:#64748b">kg del paciente</span>
-    </div>
-    <div class="cr" id="cr${m.id}"><div class="crl">Dosis calculada</div><div class="crv" id="cv${m.id}"></div></div>
-  </div>`:"";
+ 
+  // Dosis según tab
+  const esNinos=curTab==="ninos";
+  const dosisTexto = esNinos ? (m.dosNino||m.dosAdulto) : (curTab==="adultos" ? m.dosAdulto : (m.dosNino+" | Adulto: "+m.dosAdulto));
+ 
+  // Calculadora peso si es pestaña niños
+  let calcH="";
+  if(esNinos && m.calcPeso){
+    const kg=pesoGlobal;
+    let dosCalc="";
+    if(kg>0) dosCalc=calcDosisVal(m,kg);
+    calcH=`<div class="dosis-calc" id="dc${m.id}" style="display:${kg>0?'block':'none'}">
+      <div class="dosis-calc-titulo">⚖️ Dosis calculada para ${kg>0?kg+' kg':'—'}</div>
+      <div class="dosis-calc-valor" id="dcv${m.id}">${dosCalc}</div>
+      <div class="dosis-calc-sub">Basado en peso introducido arriba</div>
+    </div>`;
+  }
+ 
   document.getElementById("ed").style.display="none";
   document.getElementById("dd").style.display="block";
   document.getElementById("dd").innerHTML=`<div class="dbox" style="border:1px solid ${a}30">
@@ -580,36 +637,67 @@ function sm(id){
     <div class="ms"><div class="st">🏷️ Marcas Ecuador — Fybeca · Pharmacys · Mia · Económicas</div>${mh}</div>
     <div class="ig">
       <div class="ib full" style="background:${a}07;border:1px solid ${a}18"><div class="it" style="color:#3b82f6">🎯 INDICACIÓN</div><div class="iv">${m.ind}</div></div>
-      <div class="ib full" style="background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.18)"><div class="it" style="color:#10b981">💉 DOSIS</div><div class="iv">${m.dos}</div></div>
+      <div class="ib full" style="background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.18)">
+        <div class="it" style="color:#10b981">💉 DOSIS ${esNinos?'PEDIÁTRICA':curTab==='adultos'?'ADULTO':'PEDIÁTRICA / ADULTO'}</div>
+        <div class="iv">${dosisTexto}</div>
+      </div>
       <div class="ib" style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18)"><div class="it" style="color:#ef4444">🚫 CONTRAINDICACIONES</div><div class="iv">${m.ci}</div></div>
       <div class="ib" style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.18)"><div class="it" style="color:#f59e0b">⚠️ EFECTOS ADVERSOS</div><div class="iv">${m.adv}</div></div>
     </div>
     ${calcH}
-    <div class="disc">⚕️ Verificado en Fybeca.com · PLM Ecuador · Vademecum.es/ecuador. Siempre consultar al médico tratante.</div>
+    <div class="disc">⚕️ Verificado en Fybeca.com · PLM Ecuador. Siempre consultar al médico tratante.</div>
   </div>`;
 }
+ 
 function se2(){selId=null;document.getElementById("ed").style.display="flex";document.getElementById("dd").style.display="none";rl();}
-function cd2(id,val){
-  const m=DB.find(x=>x.id===id);const kg=parseFloat(val);
-  const cr=document.getElementById("cr"+id);const cv=document.getElementById("cv"+id);
-  if(!m||!kg||isNaN(kg)||kg<=0){if(cr)cr.style.display="none";return;}
-  if(m.id===34){const r=[{max:15,d:"30mg c/12h"},{min:15,max:23,d:"45mg c/12h"},{min:23,max:40,d:"60mg c/12h"},{min:40,d:"75mg c/12h"}];
+ 
+// ══ CALCULADORA ═══════════════════════════════════════════════════
+function calcDosisVal(m,kg){
+  if(!m.calcPeso||!kg||kg<=0) return "";
+  // Tamiflu por rangos
+  if(m.id===29){
+    const r=[{max:15,d:"30mg c/12h"},{min:15,max:23,d:"45mg c/12h"},{min:23,max:40,d:"60mg c/12h"},{min:40,d:"75mg c/12h"}];
     const f=r.find(x=>((x.min==null||kg>=x.min)&&(x.max==null||kg<x.max)));
-    cv.textContent=f?f.d+" × 5 días":"Ver prospecto";cr.style.display="block";return;}
-  let tot=m.cf*kg;if(m.cma&&tot>m.cma)tot=m.cma;
-  let txt=tot.toFixed(1)+" "+m.cu;
-  if(m.cd&&m.cd>1)txt+=" → "+(tot/m.cd).toFixed(1)+"mg/dosis";
+    return f?f.d+" × 5 días":"Ver prospecto";
+  }
+  let tot=m.calcF*kg;
+  if(m.calcMax&&tot>m.calcMax) tot=m.calcMax;
+  let txt=tot.toFixed(1)+" "+m.calcU;
+  if(m.calcDiv&&m.calcDiv>1) txt+=" → "+(tot/m.calcDiv).toFixed(1)+"mg/dosis";
+  // Calcular ml si posible
   const mx=(m.comp||"").match(/(\d+(?:[,.]?\d+)?)\s*mg\/(\d+(?:[,.]?\d+)?)\s*ml/i);
-  if(mx){const mgml=parseFloat(mx[1])/parseFloat(mx[2]);const dv=m.cd&&m.cd>1?tot/m.cd:tot;if(!isNaN(dv/mgml))txt+=" = "+(dv/mgml).toFixed(1)+"ml/dosis";}
-  cv.textContent=txt;cr.style.display="block";
+  if(mx){
+    const mgml=parseFloat(mx[1])/parseFloat(mx[2]);
+    const dv=m.calcDiv&&m.calcDiv>1?tot/m.calcDiv:tot;
+    if(!isNaN(dv/mgml)) txt+=" = "+(dv/mgml).toFixed(1)+"ml/dosis";
+  }
+  return txt;
 }
-function showTab(t){
-  const il=t==="l";
-  document.querySelectorAll(".tab").forEach((x,i)=>x.classList.toggle("on",(i===0&&il)||(i===1&&!il)));
-  ["lp","dp"].forEach(id=>document.getElementById(id).style.display=il?"":"none");
-  document.getElementById("cp").style.display=il?"none":"flex";
-  document.getElementById("sa").style.display=il?"":"none";
+ 
+function updateAllDosis(){
+  pesoGlobal=parseFloat(document.getElementById("peso-global").value)||0;
+  const pd=document.getElementById("peso-display");
+  pd.textContent=pesoGlobal>0?"→ Calculando dosis para "+pesoGlobal+"kg":"";
+  // If a med is open, update its dose
+  if(selId){
+    const m=DB.find(x=>x.id===selId);
+    if(m&&m.calcPeso){
+      const dcEl=document.getElementById("dc"+m.id);
+      const dcvEl=document.getElementById("dcv"+m.id);
+      if(dcEl&&dcvEl){
+        if(pesoGlobal>0){
+          dcvEl.textContent=calcDosisVal(m,pesoGlobal);
+          dcEl.style.display="block";
+          dcEl.querySelector(".dosis-calc-titulo").textContent="⚖️ Dosis calculada para "+pesoGlobal+" kg";
+        } else {
+          dcEl.style.display="none";
+        }
+      }
+    }
+  }
 }
+ 
+// ══ CHAT GROQ ═════════════════════════════════════════════════════
 function askS(btn){document.getElementById("ci").value=btn.textContent.replace("💬 ","").trim();sendC();}
 function addMsg(rol,txt){
   const cw=document.getElementById("cw");if(cw)cw.style.display="none";
@@ -617,79 +705,79 @@ function addMsg(rol,txt){
   const d=document.createElement("div");d.className="cb2 "+rol;d.textContent=txt;
   ms.appendChild(d);ms.scrollTop=ms.scrollHeight;
 }
+ 
 async function sendC(){
   const inp=document.getElementById("ci");const q=inp.value.trim();
   if(!q||busy)return;
   inp.value="";addMsg("u",q);CH.push({role:"user",content:q});
   busy=true;document.getElementById("csnd").disabled=true;
-  // Remove any previous error retry buttons
-  document.getElementById("retry-btn")?.remove();
-  const ld=document.createElement("div");ld.className="cld";ld.id="cld";ld.textContent="⏳ Consultando Groq...";
+  document.getElementById("retry-btn2")?.remove();
+  const ld=document.createElement("div");ld.className="cld";ld.id="cld2";ld.textContent="⏳ Consultando Groq...";
   document.getElementById("cms").appendChild(ld);document.getElementById("cms").scrollTop=9999;
-  const ctx=DB.map(m=>`[${m.id}] ${m.n} | ${m.cat} | via:${m.via} | edadMin:${m.eMin}a | edadLabel:${m.eL} | Marcas:${(m.mp||[]).map(x=>x.m).join(",")} | Ind:${m.ind} | Dosis:${m.dos} | CI:${m.ci}`).join("\n");
-  const sys=`Eres un asistente farmacológico clínico experto en medicamentos respiratorios pediátricos y adultos. Conoces el mercado farmacéutico de Ecuador (Fybeca, Pharmacys, Mia, Farmacias Económicas).
  
-Base de datos Ecuador:
+  const ctx=DB.map(m=>`[${m.id}] ${m.n} | ${m.cat} | eMin:${m.eMin}a | eL:${m.eL} | Marcas:${(m.mp||[]).map(x=>x.m).join(",")} | DosNino:${m.dosNino} | DosAdulto:${m.dosAdulto} | CI:${m.ci}`).join("\n");
+  const sys=`Eres un asistente farmacológico clínico experto en medicamentos respiratorios pediátricos y adultos, con conocimiento del mercado farmacéutico de Ecuador (Fybeca, Pharmacys, Mia, Farmacias Económicas).
+ 
+Base de datos Ecuador verificada:
 ${ctx}
  
 INSTRUCCIONES:
-1. Responde SIEMPRE en español.
-2. Para preguntas por edad (ej: "bebé de 3 meses", "niño de 2 años"), filtra y muestra SOLO medicamentos con edadMin <= esa edad.
-3. Para cada medicamento: nombre, marcas Ecuador, edad mínima, dosis clave.
-4. Responde SI/NO claramente con justificación para preguntas de indicación por edad.
-5. Diferencia vía SUPERIOR (nasal, faríngea) de INFERIOR (bronquial, pulmonar).
-6. Indica si requiere receta médica en Ecuador.
-7. Si te preguntan por un medicamento nuevo que no está en la base de datos, usa tu conocimiento clínico para responder.
-8. Sé conciso, usa listas con •.
-9. Termina SIEMPRE con: ⚕️ Verificar con el médico tratante.`;
-  try{
-    let data, attempts=0;
-    while(attempts<3){
+1. Responde siempre en español.
+2. Filtra ESTRICTAMENTE por edad cuando la indiquen.
+3. Muestra todas las marcas disponibles en Ecuador para cada principio activo consultado.
+4. Para dosis pediátricas con peso: calcula la dosis exacta si te dan el peso.
+5. Indica si requiere receta médica.
+6. Diferencia vía aérea SUPERIOR (nasal) de INFERIOR (bronquial).
+7. Si te preguntan por un medicamento no en la base de datos, responde con tu conocimiento clínico general.
+8. Usa listas con • y sé conciso.
+9. Termina siempre con: ⚕️ Verificar con el médico tratante.`;
+ 
+  let intentos=0;let rep=null;
+  while(intentos<3&&!rep){
+    try{
+      if(intentos>0){
+        document.getElementById("cld2").textContent="⏳ Reintentando... ("+(intentos+1)+"/3)";
+        await new Promise(r=>setTimeout(r,1500));
+      }
       const res=await fetch("https://api.groq.com/openai/v1/chat/completions",{
         method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+GK},
         body:JSON.stringify({model:"llama-3.3-70b-versatile",max_tokens:1000,temperature:0.2,
           messages:[{role:"system",content:sys},...CH.slice(-10)]})
       });
-      data=await res.json();
-      if(data.choices?.[0]?.message?.content) break;
-      // Rate limited or empty - wait and retry
-      attempts++;
-      if(attempts<3){
-        document.getElementById("cld").textContent="⏳ Reintentando... ("+attempts+"/3)";
-        await new Promise(r=>setTimeout(r,1500));
-      }
-    }
-    const rep=data?.choices?.[0]?.message?.content||null;
-    if(!rep) throw new Error("empty");
-    CH.push({role:"assistant",content:rep});
-    document.getElementById("cld")?.remove();addMsg("a",rep);
-  }catch(e){
-    document.getElementById("cld")?.remove();
+      const data=await res.json();
+      rep=data.choices?.[0]?.message?.content||null;
+    }catch(e){}
+    intentos++;
+  }
+ 
+  document.getElementById("cld2")?.remove();
+  if(rep){
+    CH.push({role:"assistant",content:rep});addMsg("a",rep);
+  } else {
     CH.pop();
-    busy=false;document.getElementById("csnd").disabled=false;
-    // Show retry button instead of error message
-    const ms=document.getElementById("cms");
     const errDiv=document.createElement("div");
-    errDiv.className="cb2 a";errDiv.id="retry-btn";
-    errDiv.innerHTML='❌ Sin respuesta. <button onclick="retrySend()" style="background:#2563eb;color:#fff;border:none;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:11px;margin-left:8px;font-weight:700;">🔄 Reintentar</button>';
-    ms.appendChild(errDiv);ms.scrollTop=ms.scrollHeight;
-    return;
+    errDiv.className="cb2 a";errDiv.id="retry-btn2";
+    errDiv.innerHTML='❌ Sin respuesta. <button onclick="retrySendChat()" style="background:#8b5cf6;color:#fff;border:none;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:11px;margin-left:8px;font-weight:700;">🔄 Reintentar</button>';
+    document.getElementById("cms").appendChild(errDiv);
+    document.getElementById("cms").scrollTop=9999;
   }
   busy=false;document.getElementById("csnd").disabled=false;
 }
-function retrySend(){
-  document.getElementById("retry-btn")?.remove();
+ 
+function retrySendChat(){
+  document.getElementById("retry-btn2")?.remove();
   if(CH.length>0&&CH[CH.length-1].role==="user"){
-    const lastQ=CH[CH.length-1].content;
-    CH.pop();
-    document.getElementById("ci").value=lastQ;
-    sendC();
+    const lastQ=CH[CH.length-1].content;CH.pop();
+    document.getElementById("ci").value=lastQ;sendC();
   }
 }
+ 
 document.getElementById("ci").addEventListener("keydown",function(e){
   if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendC();}
 });
-bf();rl();
+ 
+// INIT — start on IA tab
+setTab("ia");
 </script>
 </body>
 </html>
